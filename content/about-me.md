@@ -6,11 +6,12 @@ date = 2021-09-16
 tags = ["personal"]
 +++
 
-## A Little About Me
-
 Hello, thanks for finding my page. I am a senior data engineer based in Leeds, UK.
 I enjoy long walks, playing sports, playing games and taking names.
 
+<!-- more -->
+
+## A Little About Me
 Fortunately, 2020-21 led to the unforseen benefit of having some free time,
 so I decided to put together a simple website with no tracking or ads that
 I can use as a blogging platform to share my thoughts on things from time to time.
