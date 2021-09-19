@@ -16,7 +16,8 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  line-height: 1.3em
+  line-height: 1.3em;
+  color: #81b29a
 }
 
 fieldset {
@@ -34,20 +35,20 @@ pre {
 }
 
 code[class*=language-], pre[class*=language-], pre code {
-  font-weight: 100;
+  font-weight: 300;
   text-shadow: none;
   margin: 1.75rem 0
 }
 
 a {
   cursor: pointer;
-  color: #ff2e88;
+  color: #f7768e;
   text-decoration: none;
-  border-bottom: 1px solid #ff2e88
+  border-bottom: 1px solid #f7768e
 }
 
 a:hover {
-  background-color: #ff2e88;
+  background-color: #f7768e;
   color: #fff
 }
 
@@ -451,8 +452,8 @@ table tbody td:first-child {
 }
 
 .form-group.form-success label {
-  color: #4caf50 !important;
-  border-color: #4caf50 !important
+  color: #9ece6a !important;
+  border-color: #9ece6a !important
 }
 
 .form-group.form-warning label {
@@ -574,8 +575,8 @@ select.form-control {
 
 .btn-success {
   color: #fff;
-  background-color: #4caf50;
-  border: 1px solid #4caf50
+  background-color: #9ece6a;
+  border: 1px solid #9ece6a
 }
 
 .btn-success:focus:not(.btn-ghost), .btn-success:hover {
@@ -584,8 +585,8 @@ select.form-control {
 }
 
 .btn-success.btn-ghost {
-  border-color: #4caf50;
-  color: #4caf50
+  border-color: #9ece6a;
+  color: #9ece6a
 }
 
 .btn-success.btn-ghost:focus, .btn-success.btn-ghost:hover {
@@ -640,8 +641,8 @@ select.form-control {
 
 .btn-info {
   color: #fff;
-  background-color: #00bcd4;
-  border: 1px solid #00bcd4
+  background-color: #73daca;
+  border: 1px solid #73daca
 }
 
 .btn-info:focus:not(.btn-ghost), .btn-info:hover {
@@ -650,8 +651,8 @@ select.form-control {
 }
 
 .btn-info.btn-ghost {
-  border-color: #00bcd4;
-  color: #00bcd4
+  border-color: #73daca;
+  color: #73daca
 }
 
 .btn-info.btn-ghost:focus, .btn-info.btn-ghost:hover {
@@ -713,8 +714,8 @@ select.form-control {
 }
 
 .alert-success {
-  color: #4caf50;
-  border-color: #4caf50
+  color: #9ece6a;
+  border-color: #9ece6a
 }
 
 .alert-error {
@@ -723,8 +724,8 @@ select.form-control {
 }
 
 .alert-info {
-  color: #00bcd4;
-  border-color: #00bcd4
+  color: #73daca;
+  border-color: #73daca
 }
 
 .alert-warning {
@@ -874,11 +875,12 @@ select.form-control {
 .dark pre {
   padding: 10px;
   border: 1px;
-  background-color: #fffff;
+  background-color: transparent;
 }
 
 .dark pre code {
-  color: #00bcd4
+  color: #73daca;
+  font-weight: 500;
 }
 
 .dark h1 a, .dark h2 a, .dark h3 a, .dark h4 a, .dark h5 a {

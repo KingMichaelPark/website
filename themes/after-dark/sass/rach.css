@@ -111,7 +111,6 @@ body {
 .marquee img {
   display: inline-block;
   object-fit: cover;
-  max-height: 100%;
   height: inherit;
   max-height: inherit;
   padding-left: 100%;
