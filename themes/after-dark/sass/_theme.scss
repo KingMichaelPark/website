@@ -57,19 +57,26 @@ blockquote cite::before {
 .main {
   padding: 20px 10px;
 }
-nav a {
-  padding-left: 1em;
-  padding-right: 1em;
-  border:  1px dashed #7aa2f7;
-}
-nav a.active {
-  background-color: #7aa2f7;
-  color: #fff;
-}
+
 a[itemprop="url"] {
   color:  #ff9e64;
+  padding-left: .75em;
+  padding-right: .75em;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #ff9e64;
+  border-radius: 18px;
 }
 a[itemprop="url"]:hover {
+  color: #fff;
+  background-color: #ff9e64;
+}
+.readmore a[itemprop="url"] {
+  color: #fff;
+  border-bottom: 1px dashed #7aa2f7;
+  border-radius: 0px;
+  padding-left: .5em;
+}
+.readmore a[itemprop="url"]:hover {
   color: #fff;
   background-color: #7aa2f7;
   border-bottom: 1px solid #7aa2f7;
