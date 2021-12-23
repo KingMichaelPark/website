@@ -77,7 +77,7 @@ and get back to enjoying life's little momemnts instead of tearing them down.
 	For life is quite absurd and death's the final word
 	You must always face the curtain with a bow
 	Forget about your sin, give the audience a grin
->       Enjoy it it's your last chance anyhow
+	Enjoy it it's your last chance anyhow
 
 	So always look on the bright side of death
 	Just before you draw your terminal breath
@@ -97,7 +97,7 @@ and get back to enjoying life's little momemnts instead of tearing them down.
 
 	Always look on the bright side of life
 
->       ~ The Life of Brian, Monty Python
+	~ The Life of Brian, Monty Python
 
 ## Other Goals
 
