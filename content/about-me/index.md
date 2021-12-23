@@ -14,7 +14,7 @@ I enjoy long walks, playing sports, playing games and taking names.
 
 ## A Little About Me
 
-{{ resize_image(path="about-me.jpg", width=0, height=350, op="fit_height") }}
+{{ resize_image(path="about-me.jpg", width=380, height=0, op="fit_width") }}
 
 Fortunately, 2020-21 led to the unforseen benefit of having some free time,
 so I decided to put together a simple website with no tracking or ads that

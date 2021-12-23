@@ -59,16 +59,21 @@ blockquote cite::before {
 }
 
 a[itemprop="url"] {
-  color:  #ff9e64;
-  padding-left: .75em;
-  padding-right: .75em;
-  padding-bottom: 3px;
-  border-bottom: 1px solid #ff9e64;
-  border-radius: 18px;
+  color:  #7aa2f7;
+  padding-right: .5em;
+  :is-active & {
+    background-color: #f7768e;
+    border-bottom: 1px solid #f7768e
+  }
+  :hover & {
+    background-color: #f7768e;
+    border-bottom: 1px solid #f7768e
+  }
 }
 a[itemprop="url"]:hover {
   color: #fff;
   background-color: #ff9e64;
+  border-bottom: 1px solid #f7768e
 }
 .readmore a[itemprop="url"] {
   color: #fff;
