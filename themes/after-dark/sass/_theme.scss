@@ -61,14 +61,6 @@ blockquote cite::before {
 a[itemprop="url"] {
   color:  #7aa2f7;
   padding-right: .5em;
-  :is-active & {
-    background-color: #f7768e;
-    border-bottom: 1px solid #f7768e
-  }
-  :hover & {
-    background-color: #f7768e;
-    border-bottom: 1px solid #f7768e
-  }
 }
 a[itemprop="url"]:hover {
   color: #fff;
