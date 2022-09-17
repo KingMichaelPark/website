@@ -6,75 +6,6 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-    <link
-      rel="apple-touch-icon"
-      sizes="57x57"
-      href="{{ get_url(path="fav/apple-icon-57x57.png", trailing_slash=false) | safe }}"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="60x60"
-      href="{{ get_url(path="fav/apple-icon-60x60.png", trailing_slash=false) | safe }}"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="72x72"
-      href="{{ get_url(path="fav/apple-icon-72x72.png", trailing_slash=false) | safe }}"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="76x76"
-      href="{{ get_url(path="fav/apple-icon-76x76.png", trailing_slash=false) | safe }}"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="114x114"
-      href="{{ get_url(path="fav/apple-icon-114x114.png", trailing_slash=false) | safe }}"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="120x120"
-      href="{{ get_url(path="fav/apple-icon-120x120.png", trailing_slash=false) | safe }}"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="144x144"
-      href="{{ get_url(path="fav/apple-icon-144x144.png", trailing_slash=false) | safe }}"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="{{ get_url(path="fav/apple-icon-152x152.png", trailing_slash=false) | safe }}"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="{{ get_url(path="fav/apple-icon-180x180.png", trailing_slash=false) | safe }}"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="{{ get_url(path="fav/android-icon-192x192.png", trailing_slash=false) | safe }}"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="{{ get_url(path="fav/favicon-32x32.png", trailing_slash=false) | safe }}"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="{{ get_url(path="fav/favicon-96x96.png", trailing_slash=false) | safe }}"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="{{ get_url(path="fav/favicon-16x16.png", trailing_slash=false) | safe }}"
-    />
       <!-- Enable responsiveness on mobile devices-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
@@ -93,23 +24,16 @@
     </head>
 
     <body class="hack dark main container">
-
         {% block content %}
             {% block header %}
                 {% if config.extra.after_dark_menu %}
                     <header>
-                        <div class="banner">
-                          <div class="marquee" background="blue">
-                             <img src="{{ get_url(path="me.webp", trailing_slash=false) | safe }}" alt="A picture of me jumping" height="auto" width="auto"/>
-                          </div>
-                        </div>
                         <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
                         {% for item in config.extra.after_dark_menu %}
                             <a itemprop="url"
                                class="{% if item.url | replace(from="$BASE_URL", to=config.base_url) == current_url %}active{% endif %}"
                                href="{{ item.url | safe | replace(from="$BASE_URL", to=config.base_url) }}">
-                                <span itemprop="name">{{ item.name }}
-                                </span></a>
+                                <span itemprop="name">{{ item.name }}</span></a>
                         {% endfor %}
                         </nav>
                     </header>

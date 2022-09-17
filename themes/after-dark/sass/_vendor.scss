@@ -11,13 +11,12 @@ body {
   font-size: 1rem;
   line-height: 1.5rem;
   margin: 0;
-  font-family: Iosevka SS14, Fira Code, Iosevka, Jetbrains Mono, Ubuntu Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
   word-wrap: break-word
 }
 
 h1, h2, h3, h4, h5, h6 {
-  line-height: 1.3em;
-  color: #81b29a
+  line-height: 1.3em
 }
 
 fieldset {
@@ -35,22 +34,21 @@ pre {
 }
 
 code[class*=language-], pre[class*=language-], pre code {
-  font-weight: 300;
+  font-weight: 100;
   text-shadow: none;
   margin: 1.75rem 0
 }
 
 a {
   cursor: pointer;
-  color: #f7768e;
+  color: #ff2e88;
   text-decoration: none;
-
+  border-bottom: 1px solid #ff2e88
 }
 
 a:hover {
-  background-color: #f7768e;
-  color: #fff;
-  border-bottom: 1px solid #f7768e
+  background-color: #ff2e88;
+  color: #fff
 }
 
 .grid {
@@ -182,7 +180,7 @@ a:hover {
 .hack, .hack blockquote, .hack code, .hack em, .hack h1, .hack h2, .hack h3, .hack h4, .hack h5, .hack h6, .hack strong {
   font-size: 1rem;
   font-style: normal;
-  font-family: Iosevka SS14, Fira Code, Iosevka, Jetbrains Mono, Ubuntu Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif
 }
 
 .hack blockquote, .hack code, .hack em, .hack strong {
@@ -213,8 +211,11 @@ a:hover {
   overflow: hidden
 }
 
-.hack h1:after,h1:before {
-  content: " -- ";
+.hack h1:after {
+  content: "====================================================================================================";
+  position: absolute;
+  bottom: 10px;
+  left: 0
 }
 
 .hack h1 + * {
@@ -453,8 +454,8 @@ table tbody td:first-child {
 }
 
 .form-group.form-success label {
-  color: #9ece6a !important;
-  border-color: #9ece6a !important
+  color: #4caf50 !important;
+  border-color: #4caf50 !important
 }
 
 .form-group.form-warning label {
@@ -576,8 +577,8 @@ select.form-control {
 
 .btn-success {
   color: #fff;
-  background-color: #9ece6a;
-  border: 1px solid #9ece6a
+  background-color: #4caf50;
+  border: 1px solid #4caf50
 }
 
 .btn-success:focus:not(.btn-ghost), .btn-success:hover {
@@ -586,8 +587,8 @@ select.form-control {
 }
 
 .btn-success.btn-ghost {
-  border-color: #9ece6a;
-  color: #9ece6a
+  border-color: #4caf50;
+  color: #4caf50
 }
 
 .btn-success.btn-ghost:focus, .btn-success.btn-ghost:hover {
@@ -642,8 +643,8 @@ select.form-control {
 
 .btn-info {
   color: #fff;
-  background-color: #73daca;
-  border: 1px solid #73daca
+  background-color: #00bcd4;
+  border: 1px solid #00bcd4
 }
 
 .btn-info:focus:not(.btn-ghost), .btn-info:hover {
@@ -652,8 +653,8 @@ select.form-control {
 }
 
 .btn-info.btn-ghost {
-  border-color: #73daca;
-  color: #73daca
+  border-color: #00bcd4;
+  color: #00bcd4
 }
 
 .btn-info.btn-ghost:focus, .btn-info.btn-ghost:hover {
@@ -715,8 +716,8 @@ select.form-control {
 }
 
 .alert-success {
-  color: #9ece6a;
-  border-color: #9ece6a
+  color: #4caf50;
+  border-color: #4caf50
 }
 
 .alert-error {
@@ -725,8 +726,8 @@ select.form-control {
 }
 
 .alert-info {
-  color: #73daca;
-  border-color: #73daca
+  color: #00bcd4;
+  border-color: #00bcd4
 }
 
 .alert-warning {
@@ -875,13 +876,11 @@ select.form-control {
 
 .dark pre {
   padding: 10px;
-  border: 1px;
-  background-color: transparent;
+  border: none
 }
 
 .dark pre code {
-  color: #73daca;
-  font-weight: 500;
+  color: #00bcd4
 }
 
 .dark h1 a, .dark h2 a, .dark h3 a, .dark h4 a, .dark h5 a {
