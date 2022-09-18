@@ -1,8 +1,13 @@
+article img {
+  width: 100%;
+  height: auto;
+}
+
 .main {
   display: grid;
   grid-auto-rows: minmax(min-content, max-content);
 
-  grid-gap: .5em;
+  grid-gap: 0.5em;
 }
 
 .site-header {
