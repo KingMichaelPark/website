@@ -1,14 +1,16 @@
 # The URL the site will be built for
 base_url = "https://mhpark.me"
 
+description = "The personal, rarely updated, blog of Michael Park"
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 compile_feed = true
+generate_feed = true
 feed_filename = "atom.xml"
 # When set to "true", the generated HTML files are minified.
 minify_html = true
 # Whether to build a search index to be used later on by a JavaScript library
-build_search_index = false
+build_search_index = true
 
 theme = "after-dark"
 taxonomies = [
@@ -33,4 +35,4 @@ after_dark_menu = [
     {url = "$BASE_URL/tags", name = "Tags"},
 ]
 after_dark_title = "Mike's Personal Blog"
-author = "Michael"
+author = "Michael Park"

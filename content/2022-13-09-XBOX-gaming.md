@@ -15,6 +15,15 @@ found the lag in FPS games pretty unbreable after switching the firmware.
 
 <!-- more -->
 
+## Update 2023-01-30
+
+I have switched to a mesh router system as certain parts of my flat weren't
+getting the coverage I wanted, however, the default on the router I got was
+that upnp was enabled. You can disable that and follow the same steps as
+before.
+
+## Background cont...
+
 There are two possible reason for this, the first of thought of was
 the lack of hardware acceleration that is missing in openwrt as opposed to
 the stock firmware which does enable this. However, because I am on a 150 Mbps
@@ -30,17 +39,18 @@ like me probably see Moderate NAT and recommends you use Open NAT using
 [UPnP](https://openwrt.org/docs/guide-user/firewall/upnp/upnp_setup) which has security
 concerns for reasons beyond my care to properly understand. (I am no networking guru).
 
-My previous TPLink firmware may have had that enabled and forwarded traffic using UPnP
-(which seems to be the case [here](https://community.tp-link.com/en/home/forum/topic/168302)).
-OpenWRT doesn't recommend doing this and recommends port forwarding instead.
+My previous TPLink firmware may have had that enabled and forwarded traffic
+using UPnP (which seems to be the case
+[here](https://community.tp-link.com/en/home/forum/topic/168302)). OpenWRT
+doesn't recommend doing this and recommends port forwarding instead.
 
 ## Actual Fix
 
 ### On the Xbox
 
 This is actually really easy to do. On your Xbox, go to
-`Settings > Network Options > Advanced Network Settings > Something Something Port` and
-set one of the 8 ports explicitly.
+`Settings > Network Options > Advanced Network Settings > Something Something
+Port` and set one of the 8 ports explicitly.
 
 Take note of these 8 ports.
 
