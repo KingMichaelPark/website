@@ -1,5 +1,6 @@
 +++
 title = "Testing in the Terminal"
+date = 2023-02-16
 
 [taxonomies]
 tags = ["testing", "python", "entr"]
