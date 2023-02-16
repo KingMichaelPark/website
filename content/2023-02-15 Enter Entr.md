@@ -9,7 +9,7 @@ categories = ["programming", "help"]
 
 ## Background
 
-Find yourself running a pytest command repeatadly trying to work out
+Find yourself running a pytest command repeatedly trying to work out
 what a problem is and getting sick of clicking back on the terminal
 window where the output is and pressing arrow up to re-run the test?
 Or even running tests in an IDE and sick of re-running the test
@@ -34,9 +34,9 @@ fd -e py | entr -c pytest tests/
 
 This basically equates to the following in plain english/behaviour testing language
 
-_WHEN_ any file with the file extension `py` gets saved/modified.
-_THEN_ clear the screen (clear, cls, or ctrl+l equivalent) and
-_THEN_ re-run the supplied `pytest` command
+- _WHEN_ any file with the file extension `py` gets saved/modified.
+- _THEN_ clear the screen (clear, cls, or ctrl+l equivalent) and
+- _THEN_ re-run the supplied `pytest` command
 
 This is a split with vim/neovim/whatever on the left and the test output on the right
 is amazingly convenient when debugging, checking test coverage, etc...
