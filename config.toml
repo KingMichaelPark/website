@@ -1,6 +1,6 @@
 # The URL the site will be built for
 base_url = "https://mhpark.me"
-
+title = "Mike's Blog"
 description = "The personal, rarely updated, blog of Michael Park"
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
@@ -12,7 +12,7 @@ minify_html = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
-theme = "after-dark"
+theme = "DeepThought"
 taxonomies = [
     # You can enable/disable RSS
     {name = "categories", feed = true},
@@ -23,16 +23,36 @@ taxonomies = [
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
 highlight_code = true
-highlight_theme = "base16-ocean-dark"
+highlight_theme = "one-dark"
 
 [extra]
-# Put all your custom variables here
-after_dark_menu = [
+katex.enabled = true
+katex.auto_render = true
+
+chart.enabled = true
+mermaid.enabled = true
+galleria.enabled = true
+
+navbar_items = [
+ { code = "en", nav_items = [
     {url = "$BASE_URL", name = "Home"},
+    {url = "$BASE_URL/posts", name = "Posts"},
     {url = "$BASE_URL/about-me", name = "About Me"},
-    {url = "$BASE_URL/contact", name = "Contact"},
     {url = "$BASE_URL/categories", name = "Categories"},
     {url = "$BASE_URL/tags", name = "Tags"},
+ ]},
 ]
-after_dark_title = "Mike's Personal Blog"
-author = "Michael Park"
+
+[extra.author]
+name = "Michael Park"
+avatar = "m1.jpg"
+
+# Social links
+[extra.social]
+email = "mike@..."
+github = "KingMichaelPark"
+gitlab = "of_jorts"
+keybase = "mparkypark"
+linkedin = "michael-h-park"
+mastodon_username = "mdawg"
+mastodon_server = "https://fosstodon.org"
