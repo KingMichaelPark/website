@@ -49,10 +49,10 @@ avatar = "m1.jpg"
 
 # Social links
 [extra.social]
-email = "mike@..."
+email = "webmaster@mhpark.me"
 github = "KingMichaelPark"
 gitlab = "of_jorts"
 keybase = "mparkypark"
 linkedin = "michael-h-park"
 mastodon_username = "mdawg"
-mastodon_server = "https://fosstodon.org"
+mastodon_server = "fosstodon.org"
