@@ -62,7 +62,7 @@ that brew path to the **$PATH** as well.
 ```config
 set -g mouse on
 set -s set-clipboard on
-set-environment -g PATH "/opt/homebrew/bin:/bin:/usr/bin"
+set-environment -g PATH "/opt/homebrew/bin:/bin:$PATH"
 # ADD THIS LINE ^^^
 
 set-window-option -g mode-keys vi
