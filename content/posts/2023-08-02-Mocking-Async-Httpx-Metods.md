@@ -26,8 +26,7 @@ Quick and simple post for getting at the method that you want to patch
 
 ```py
 @patch("httpx.AsyncClient"). # The client to patch
-async def test_admin_create_organisation_admin_with_new_organisation(
-    mock_valid_management_api_bearer_token,
+async def test_auth0_post_request_example(
     mock_httpx_client,
 ):
     mock_httpx_client.return_value.__aenter__.return_value.post.return_value = Response(
