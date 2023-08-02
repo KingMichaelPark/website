@@ -12,12 +12,12 @@ A quick snippet for mocking HTTP requests with an the async
 
 ```py
 async with httpx.AsyncClient() as client:
-        signup_response = await client.post(
-            f"https://{AUTH0_DOMAIN}/api/v2/users",
-            data=signup_request_body,
-            headers=signup_request_headers,
-            timeout=30,
-        )
+    signup_response = await client.post(
+        f"https://{AUTH0_DOMAIN}/api/v2/users",
+        data=signup_request_body,
+        headers=signup_request_headers,
+        timeout=30,
+    )
 ```
 
 <!-- more -->
