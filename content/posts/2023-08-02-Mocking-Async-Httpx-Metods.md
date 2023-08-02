@@ -1,6 +1,6 @@
 +++
 title = "Mocking the Post Method on an Async HTTPX Post Request"
-date = 2023-06-20
+date = 2023-08-02
 
 [taxonomies]
 tags = ["python"]
