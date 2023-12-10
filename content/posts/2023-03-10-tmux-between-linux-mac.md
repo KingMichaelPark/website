@@ -100,4 +100,4 @@ bind r source-file ~/.tmux.conf
 run '~/.tmux/plugins/tpm/tpm'
 ```
 
-All of this can be seen in my [dotfiles](https://gitlab.com/of_jorts/dotfiles).
+All of this can be seen in my [dotfiles](https://github.com/KingMichaelPark/dotfiles).
