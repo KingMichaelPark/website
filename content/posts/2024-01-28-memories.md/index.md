@@ -1,6 +1,6 @@
 +++
 title = "The Flaw in Taking Photos to Capture Memories (and how to fix it)"
-date = 2024-01-24
+date = 2024-01-28
 
 [taxonomies]
 tags = ["tips"]
@@ -8,21 +8,20 @@ categories = ["life", "photography"]
 +++
 
 Years ago, I was looking through old photo collections of my youth.
-There were so many things I remembered but there was always something
-that was missing, despite the happiness on my face, the people smiling
+Despite the happiness on my face, the people smiling
 around me, there something missing, my father.
 
 <!-- more -->
 
 ## The Realisation
 
-My family finally got around to turning our old video recordings from
-the small tapes that only played when plugged into the camera.
+A few years ago, my family finally got around to turning our old video recordings from
+the small tapes that only played when plugged into the camera into digital copies. So I've watched them a few times now.
 
 There were so many beautiful memories that I had with my brother and mother
 both on video and as stills, but because my dad was always the one taking
-the photos, I never got to see him and I so wish that I had the ability
-to see more of his growth and development throughout the early years of my own.
+the photos, I never got to see him as often as I wanted. I wish that I had the ability
+to see more of his growth and development throughout the early years of my own. Thankfully, you can help yourself by helping others.
 
 ## The Solution
 
