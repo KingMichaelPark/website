@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Mike&#x27;s Blog - life</title>
+    <subtitle>The personal, rarely updated, blog of Michael Park</subtitle>
+    <link href="https://mhpark.me/categories/life/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://mhpark.me"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-01-28T00:00:00+00:00</updated>
+    <id>https://mhpark.me/categories/life/atom.xml</id>
+    <entry xml:lang="en">
+        <title>The Flaw in Taking Photos to Capture Memories (and how to fix it)</title>
+        <published>2024-01-28T00:00:00+00:00</published>
+        <updated>2024-01-28T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://mhpark.me/posts/memories-md/" type="text/html"/>
+        <id>https://mhpark.me/posts/memories-md/</id>
+        
+        <summary type="html">&lt;p&gt;Years ago, I was looking through old photo collections of my youth.
+Despite the happiness on my face, the people smiling
+around me, there something missing, my father.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>The Little Things</title>
+        <published>2021-11-28T00:00:00+00:00</published>
+        <updated>2021-11-28T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://mhpark.me/posts/2021-28-11-the-little-things/" type="text/html"/>
+        <id>https://mhpark.me/posts/2021-28-11-the-little-things/</id>
+        
+        <summary type="html">&lt;p&gt;The dozens of predictions that economists have been making over the last two
+years centers around this idea that once everything returns to a certain level
+of &lt;em&gt;normal&lt;&#x2F;em&gt; - probably better to use safe instead of normal but I&#x27;m sure we all
+agree &lt;em&gt;normal&lt;&#x2F;em&gt; means something different than it used to - consumers are going
+to start splurging on all the money they have been saving up. Personally, even
+if this turns out to be the case eventually, I think this saga of our
+lives really has given us enjoyment in the little things.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>

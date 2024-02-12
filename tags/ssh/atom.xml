@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Mike&#x27;s Blog - ssh</title>
+    <subtitle>The personal, rarely updated, blog of Michael Park</subtitle>
+    <link href="https://mhpark.me/tags/ssh/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://mhpark.me"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-10-19T00:00:00+00:00</updated>
+    <id>https://mhpark.me/tags/ssh/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Connecting to Internal VPC Through Bastion in One Hop</title>
+        <published>2023-10-19T00:00:00+00:00</published>
+        <updated>2023-10-19T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://mhpark.me/posts/connecting-to-internal-vpc-with-ssh/" type="text/html"/>
+        <id>https://mhpark.me/posts/connecting-to-internal-vpc-with-ssh/</id>
+        
+        <summary type="html">&lt;p&gt;If you&#x27;ve ever wanted to load up your local database IDE to view
+a database that sits inside an internal VPC. You may be a bit puzzled
+on how to do it considering most tools like DBeaver, DataGrip, TablePlus
+allow you to connect via SSH, but that SSH connection is always to a
+bastion instance. How does one connect directly?&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Git Signing and Authentication with SSH</title>
+        <published>2023-10-04T00:00:00+00:00</published>
+        <updated>2023-10-04T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://mhpark.me/posts/ssh-signing-and-auth-with-git/" type="text/html"/>
+        <id>https://mhpark.me/posts/ssh-signing-and-auth-with-git/</id>
+        
+        <summary type="html">&lt;p&gt;This is a quick guide to set up git with SSH ed25519 keys
+not only for authenticating with GitHub or GitLab but also
+for signing commits without the need to install GPG&#x2F;PGP
+which has some serious &lt;a href=&quot;https:&#x2F;&#x2F;www.latacora.com&#x2F;blog&#x2F;2019&#x2F;07&#x2F;16&#x2F;the-pgp-problem&#x2F;&quot;&gt;criticisms &#x2F; flaws&lt;&#x2F;a&gt; that has led me to move
+into a world without it. The new world isn&#x27;t &lt;em&gt;as&lt;&#x2F;em&gt; straightforward
+as the old so I thought I&#x27;d just throw together a quick guide
+to help you out.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>
