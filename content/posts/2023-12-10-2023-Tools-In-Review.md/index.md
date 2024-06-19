@@ -32,7 +32,7 @@ shell you use.
 #### Age & SOPS
 
 One of the best revelations for me this year has been that I am able to
-finally get rid of GPG by replacing it with SSH and with Age. For the 
+finally get rid of GPG by replacing it with SSH and with Age. For the
 SSH level signing please read this [post](../2023-10-05-ssh-signing-and-auth-with-git.md).
 
 Age is a fast and cryptographically secure encryption library that can
@@ -69,7 +69,7 @@ this successfully across projects.
 
 #### The Old Boys
 
-This section is a list of tools I have been using for years and 
+This section is a list of tools I have been using for years and
 have no plans on stopping. I use these every day.
 
 - [Bat](https://github.com/sharkdp/bat) - Cat replacement with syntax
@@ -90,9 +90,9 @@ have no plans on stopping. I use these every day.
   memory. Instead of typing `cd dir1/client1/project1/submodule1` after you've
   done it once, you can then just type `z d1c1s1` and it will take you there.
 
-#### RTX
+#### Mise
 
-[Rtx](https://github.com/jdx/rtx) is an asdf replacement written in, you
+[Mise](https://github.com/jdx/mise) is an asdf replacement written in, you
 guessed it 🦀 that allows you to install and manage multiple versions of your
 project. Let's say a repo needs `python` 3.12, `terraform` 1.6, and `go` 1.21
 and you need to make sure that your aws cli runs in `eu-west-2` it might be
@@ -101,12 +101,12 @@ project and don't break other projects using different versions of the same
 languages. It's as simple as...
 
 ```bash
-rtx p install python terraform go
-rtx install python@3.12 terraform@1.6 go@1.21
-rtx use python@3.12 terraform@1.6 go@1.21
+mise p install python terraform go
+mise install python@3.12 terraform@1.6 go@1.21
+mise use python@3.12 terraform@1.6 go@1.21
 ```
 
-This will make a file in your project called `.rtx.toml`
+This will make a file in your project called `.mise.toml`
 
 Open that up and you'll see...
 
@@ -122,7 +122,7 @@ AWS_PROFILE="profile_name"
 AWS_REGION="eu-west-2"
 ```
 
-Save and close, and run `rtx trust`. And now you will see that those
+Save and close, and run `mise trust`. And now you will see that those
 two environment variables have been set and your tools will be the versions
 that you have specified in this file.
 
@@ -133,57 +133,61 @@ feel free to skip ahead. Here is a list of plugins that I use. These are all
 on GitHub so just search for them. I will add a tiny note over ones that are
 slightly more niche.
 
-    ● age.nvim
+    ○ ChatGPT.nvim
+    ○ LuaSnip
+    ○ age.nvim
+    ○ cmp-buffer
+    ○ cmp-cmdline
+    ○ cmp-nvim-lsp
+    ○ cmp-path
+    ○ cmp_luasnip
+    ○ conform.nvim
+    ○ diffview.nvim
+    ○ friendly-snippets
+    ○ gitsigns.nvim
+    ○ harpoon
+    ○ leap.nvim
+    ○ mason-lspconfig.nvim
+    ○ mason.nvim
+    ○ mini.trailspace
+    ○ nui.nvim
+    ○ nvim-cmp
+    ○ nvim-dap
+    ○ nvim-dap-python
+    ○ nvim-dap-ui
+    ○ nvim-dap-virtual-text
+    ○ nvim-lspconfig
+    ○ nvim-nio
+    ○ nvim-spectre
+    ○ nvim-treesitter
+    ○ nvim-treesitter-context
+    ○ nvim-treesitter-refactor
+    ○ nvim-treesitter-textobjects
+    ○ oil.nvim
+    ○ telescope-fzf-native.nvim
+    ○ telescope-ui-select.nvim
+    ○ telescope.nvim
+    ○ todo-comments.nvim
+    ○ undotree
+    ○ vim-dadbod
+    ○ vim-dadbod-completion
+    ○ vim-dadbod-ui
     ● alpha-nvim
-    ● catppuccin (My favourite colour theme)
-    ● chatgpt.nvim (Pass what you want, questions or code snippets for help)
-    ● cmp
-    ● cmp-buffer
-    ● cmp-nvim-lsp
-    ● cmp-path
-    ● comment.nvim
-    ● conform.nvim
-    ● diffview.nvim (Git diff resolution)
-    ● friendly-snippets
-    ● gitsigns.nvim
-    ● harpoon (Marker manager to hop between files)
+    ● catppuccin
     ● lazy.nvim
-    ● lazygit.nvim
-    ● leap.nvim
     ● lualine.nvim
-    ● luasnip
-    ● mason-lspconfig.nvim
-    ● mason.nvim
-    ● mini.trailspace
-    ● nvim-autopairs
-    ● nvim-cmp
-    ● nvim-dap
-    ● nvim-dap-python
-    ● nvim-dap-ui
-    ● nvim-dap-virtual-text
-    ● nvim-lspconfig
-    ● nvim-spectre
+    ● nvim-lint
     ● nvim-surround
-    ● nvim-treesitter
-    ● nvim-treesitter-context
-    ● nvim-treesitter-refactor
-    ● nvim-treesitter-textobjects
     ● nvim-web-devicons
-    ● oil.nvim (Manage your files in neovim buffers)
     ● plenary.nvim
-    ● telescope-fzf-native.nvim
-    ● telescope.nvim (Fuzzy find all files and ripgrep text)
-      Uses fzf, ripgrep and fd.
-    ● undotree (Complete edit history access)
+    ● toggleterm.nvim
+    ● ts-comments.nvim
     ● which-key.nvim
-    ● wtf.nvim (Pass error and warning messages
-      and code snippets to ChatGPT to tell you 
-      how to fix the issue)
 
 ## Colour Themes
 
-Very quickly on colour themes. I have tried many colour schemes over the 
-years, if you can name it, I have probably tried it. I have settled on 
+Very quickly on colour themes. I have tried many colour schemes over the
+years, if you can name it, I have probably tried it. I have settled on
 [catppuccin](https://github.com/catppuccin) due to its availability across
 many tools and software. I will list my top 5 so if you hate it, you can
 look at some others instead.
@@ -321,14 +325,14 @@ From `json`:
 - JSON, JS, TS -> [Biome](https://biomejs.dev/)
 - SQL -> [SQLFluff](https://sqlfluff.com/)
 
-Other languages tend to have built-in formatters or I don't 
+Other languages tend to have built-in formatters or I don't
 use those languages so sorry. The main point is... in python land
 I no longer need Flake8, Black or iSort. And in JS land, biome
 has replaced prettier and `eslint` for me.
 
 ## Grab Bag
 
-This is just a grab bag of favourites I want to use as a point of 
+This is just a grab bag of favourites I want to use as a point of
 reflection on where my life was at the moment. Some of these things
 are old, they are just things that I hadn't experienced until this year
 and would recommend them.
@@ -339,7 +343,7 @@ and would recommend them.
 
 - The Act of Killing
 - Dark Waters
-- The VVitch 
+- The VVitch
 
 #### TV
 
