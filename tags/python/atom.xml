@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Mike&#x27;s Blog - python</title>
+    <subtitle>The personal, rarely updated, blog of Michael Park</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://mhpark.me/tags/python/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://mhpark.me"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-11-20T00:00:00+00:00</updated>
+    <id>https://mhpark.me/tags/python/atom.xml</id>
+    <entry xml:lang="en">
+        <title>SQLAlchemy, OnUpdate &amp; Datetime UTCNOW deprecation in 3.12</title>
+        <published>2023-11-20T00:00:00+00:00</published>
+        <updated>2023-11-20T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/sqlalchemy-updatedat-on-update/"/>
+        <id>https://mhpark.me/posts/sqlalchemy-updatedat-on-update/</id>
+        
+        <summary type="html">&lt;p&gt;This is a quick post about migrating your &lt;code&gt;utcnow()&lt;&#x2F;code&gt; to &lt;code&gt;now(tz=UTC)&lt;&#x2F;code&gt;
+in SQLAlchemy for your &lt;code&gt;onupdate&lt;&#x2F;code&gt; function argument to your SQL Models.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Big Uploads and Checksum Validation</title>
+        <published>2023-10-04T00:00:00+00:00</published>
+        <updated>2023-10-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/big-uploads-with-fastapi/"/>
+        <id>https://mhpark.me/posts/big-uploads-with-fastapi/</id>
+        
+        <summary type="html">&lt;p&gt;Ever wanted to upload big files without storing
+them in memory as they are being written with FastAPI?&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Mocking the Post Method on an Async HTTPX Post Request</title>
+        <published>2023-08-02T00:00:00+00:00</published>
+        <updated>2023-08-02T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/mocking-async-httpx-metods/"/>
+        <id>https://mhpark.me/posts/mocking-async-httpx-metods/</id>
+        
+        <summary type="html">&lt;p&gt;A quick snippet for mocking HTTP requests with an the async
+&lt;a href=&quot;https:&#x2F;&#x2F;www.python-httpx.org&#x2F;&quot;&gt;httpx&lt;&#x2F;a&gt; context manager.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;py&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-py &quot;&gt;&lt;code class=&quot;language-py&quot; data-lang=&quot;py&quot;&gt;&lt;span style=&quot;color:#cd74e8;&quot;&gt;async with &lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;httpx.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;AsyncClient&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cd74e8;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;client:
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;    signup_response &lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cd74e8;&quot;&gt;await &lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;client.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;post&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;(
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cd74e8;&quot;&gt;f&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;AUTH0_DOMAIN&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&#x2F;api&#x2F;v2&#x2F;users&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;,
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;data&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;signup_request_body,
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;headers&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;signup_request_headers,
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;timeout&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#db9d63;&quot;&gt;30&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;,
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;    )
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Testing in the Terminal</title>
+        <published>2023-02-16T00:00:00+00:00</published>
+        <updated>2023-02-16T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/enter-entr/"/>
+        <id>https://mhpark.me/posts/enter-entr/</id>
+        
+        <summary type="html">&lt;p&gt;Find yourself running a &lt;code&gt;pytest&lt;&#x2F;code&gt; command repeatedly trying to work out
+what a problem is and getting sick of clicking back on the terminal
+window where the output is and pressing arrow up to re-run the test?
+Or even running tests in an IDE and sick of re-running the test
+time after time with your mouse?&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>
