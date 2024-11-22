@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Mike&#x27;s Blog - life</title>
+    <subtitle>The personal, rarely updated, blog of Michael Park</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://mhpark.me/tags/life/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://mhpark.me"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2022-05-28T00:00:00+00:00</updated>
+    <id>https://mhpark.me/tags/life/atom.xml</id>
+    <entry xml:lang="en">
+        <title>The Pursuit</title>
+        <published>2022-05-28T00:00:00+00:00</published>
+        <updated>2022-05-28T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/the-pursuit/"/>
+        <id>https://mhpark.me/posts/the-pursuit/</id>
+        
+        <summary type="html">&lt;p&gt;The pursuit of excellence can sometimes be
+overwhelming. Whether it be in sports, your career,
+games.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Looking Forward to 2022; The Ease of Being a Cynic</title>
+        <published>2021-12-23T00:00:00+00:00</published>
+        <updated>2021-12-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/2021-25-12-christmas-wishes/"/>
+        <id>https://mhpark.me/posts/2021-25-12-christmas-wishes/</id>
+        
+        <summary type="html">&lt;p&gt;My goals for 2022 are nothing out of the ordinary; apart from having some of
+them be to actually travel somewhere of relatively far distance in a hopefully
+more open world. The main goal that should hopefully help drive the rest is
+&lt;strong&gt;optimism&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>
