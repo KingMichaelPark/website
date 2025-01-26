@@ -1,13 +1,12 @@
 +++
-title = "Welcome"
 description = "To a collection of my thoughts, tips & tricks"
 
+
 [extra]
+header = {title = "Howdy! I'm Mike", img = "me512.png", img_alt = "Michael Park" }
 section_path = "posts/_index.md"  # Where to find your posts.
 max_posts = 5  # Show 5 posts on the home page.
 +++
-
-## Welcome!
 
 Hello and thanks for finding my website. I am a principal data engineer based
 in Leeds, United Kingdom. I'm a pretty easy going guy who can sometimes be

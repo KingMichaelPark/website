@@ -20,6 +20,10 @@ highlight_theme = "css"
 [extra]
 email = "webmaster@mhpark.me"
 skin = "sakura"
+base_url = "https://example.com"
+default_language = "en"
+build_search_index = true
+
 menu = [
     { name = "posts", url = "posts", trailing_slash = true },
     { name = "tags", url = "tags", trailing_slash = true },
@@ -37,6 +41,11 @@ socials = [
 [extra.author]
 name = "Michael Park"
 avatar = "me512.png"
+[search]
+index_format = "elasticlunr_json" # Or the less efficient "elasticlunr_javascript".
+include_title = true
+include_description = true
+include_path = true
+include_content = true
 
-# Social links
 

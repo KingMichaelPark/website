@@ -1,10 +1,14 @@
 +++
 title = "About Me"
+description = "To a collection of my thoughts, tips & tricks"
+
+
+[extra]
+header = {title = "About Me", img = "#", img_alt = "" }
 
 
 +++
 
-## A Little About Me
 
 ![me](about-me.jpg)
 
