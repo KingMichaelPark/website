@@ -18,23 +18,25 @@ highlight_code = true
 highlight_theme = "css"
 
 [extra]
+email = "webmaster@mhpark.me"
 skin = "sakura"
 menu = [
     { name = "posts", url = "posts", trailing_slash = true },
     { name = "tags", url = "tags", trailing_slash = true },
     { name = "projects", url = "projects", trailing_slash = true },
+    { name = "about-me", url = "about-me", trailing_slash = false},
 ]
+socials = [
+    { name = "bluesky", url = "https://bsky.app/profile/mhpark.me", icon = "bluesky" },
+    { name = "github", url = "https://github.com/KingMichaelPark/", icon = "github" },
+    { name = "hacker-news", url = "https://news.ycombinator.com/user?id=Zizizizz", icon = "hacker-news" },
+    { name = "mastodon", url = "https://fosstodon.org/@mdawg", icon = "mastodon" },
+]
+
 
 [extra.author]
 name = "Michael Park"
 avatar = "me512.png"
 
 # Social links
-[extra.social]
-email = "webmaster@mhpark.me"
-github = "KingMichaelPark"
-keybase = "mparkypark"
-linkedin = "michael-h-park"
-mastodon_username = "mdawg"
-mastodon_server = "fosstodon.org"
-bluesky_username = "mhpark.me"
+
