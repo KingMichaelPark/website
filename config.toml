@@ -5,6 +5,7 @@ description = "The personal, rarely updated, blog of Michael Park"
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 generate_feeds = true
+build_search_index = true
 
 theme = "tabi"
 taxonomies = [
@@ -20,9 +21,8 @@ highlight_theme = "css"
 [extra]
 email = "webmaster@mhpark.me"
 skin = "sakura"
-base_url = "https://example.com"
+base_url = "https://mhpark.me"
 default_language = "en"
-build_search_index = true
 
 menu = [
     { name = "posts", url = "posts", trailing_slash = true },
