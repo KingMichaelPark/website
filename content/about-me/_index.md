@@ -1,10 +1,7 @@
 +++
 title = "About Me"
-date = 2022-09-18
 
-[taxonomies]
-tags = ["personal"]
-categories = ["life"]
+
 +++
 
 ## A Little About Me
