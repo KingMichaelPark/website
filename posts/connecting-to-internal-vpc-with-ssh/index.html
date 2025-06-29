@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+
+
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <!-- Verifications -->
+    <link href="https://github.com/KingMichaelPark" rel="me">
+    <link href="https://mhpark.me" rel="me">
+    <link href="https://fosstodon.org/@mdawg" rel="me">
+    <link href="https://bsky.app/profile/mhpark.me" rel="me"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src &#x27;self&#x27; data:;img-src &#x27;self&#x27; https:&#x2F;&#x2F;* data:;media-src &#x27;self&#x27;;style-src &#x27;self&#x27;;frame-src player.vimeo.com https:&#x2F;&#x2F;www.youtube-nocookie.com;connect-src 'self';script-src 'self' 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://mhpark.me">
+
+    
+    <title>Mike's Blog • Connecting to Internal VPC Through Bastion in One Hop</title>
+
+    
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="Mike's Blog - Atom Feed" href="https://mhpark.me/atom.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://mhpark.me/custom_subset.css?h=9973c1bd7f7404b8d10e">
+        
+    
+
+    <link rel="stylesheet" href="https://mhpark.me/rach.css?h=3b7a2a01573cee5367b5">
+
+    
+        <link rel="stylesheet" href="https://mhpark.me/main.css?h=d6c71a392afd8a4f37e6" />
+        <link rel="stylesheet" href="https://mhpark.me/skins/sakura.css?h=b91b2d4d922eedbf6ad8" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="If you've ever wanted to load up your local database IDE to view
+a database that sits inside an internal VPC. You may be a bit puzzled
+on how to do it considering most tools like DBeaver, DataGrip, TablePlus
+allow you to connect via SSH, but that SSH connection is always to a
+bastion instance. How does one connect directly?
+…" />
+        <meta property="og:description" content="If you've ever wanted to load up your local database IDE to view
+a database that sits inside an internal VPC. You may be a bit puzzled
+on how to do it considering most tools like DBeaver, DataGrip, TablePlus
+allow you to connect via SSH, but that SSH connection is always to a
+bastion instance. How does one connect directly?
+…" />
+
+    
+
+    <meta property="og:title" content="Connecting to Internal VPC Through Bastion in One Hop" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;mhpark.me&#x2F;posts&#x2F;connecting-to-internal-vpc-with-ssh&#x2F;" /><meta property="og:site_name" content="Mike&#x27;s Blog">
+        <noscript><link rel="stylesheet" href="https://mhpark.me/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://mhpark.me/js/initializeTheme.min.js"></script>
+        <script defer src="https://mhpark.me/js/themeSwitcher.min.js"></script>
+        <script defer src="https://mhpark.me/js/searchElasticlunr.min.js?h=3626c0ef99daa745b31e"></script>
+
+        </head>
+
+
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://mhpark.me">Mike&#x27;s Blog</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/posts/">
+                                posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/tags/">
+                                tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/projects/">
+                                projects
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/about-me">
+                                about-me
+                                </a>
+                            </li>
+                        <div class="nav-navs" id="menu-icons-group">
+                        <li class="js">
+                            <div role="button" tabindex="0" id="search-button" class="search-icon interactive-icon" title="Click or press $SHORTCUT to open search" aria-label="Click or press $SHORTCUT to open search">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                                </svg>
+                            </div>
+                        </li>
+
+                        
+                        
+
+                        <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</div>
+                </ul>
+            </div>
+        
+    </nav>
+    <div class="banner">
+      <a id="rotator"
+        ><img src="https://mhpark.me/me.webp"
+        /></a
+      >
+    </div>
+</header>
+
+
+    <div class="content">
+
+        
+        
+
+
+
+
+<main>
+    <article>
+        <h1 class="article-title">
+            Connecting to Internal VPC Through Bastion in One Hop
+        </h1>
+
+        <ul class="meta">
+                <li>19th Oct 2023</li><li title="216 words"><span class='separator' aria-hidden='true'>•</span>2 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a href="https://mhpark.me/tags/ssh/">ssh</a>,&nbsp;</li><li class="tag"><a href="https://mhpark.me/tags/git/">git</a></li>
+        </ul>
+
+        <section class="body"><p>If you've ever wanted to load up your local database IDE to view
+a database that sits inside an internal VPC. You may be a bit puzzled
+on how to do it considering most tools like DBeaver, DataGrip, TablePlus
+allow you to connect via SSH, but that SSH connection is always to a
+bastion instance. How does one connect directly?</p>
+<span id="continue-reading"></span><h2 id="the-conundrum">The Conundrum</h2>
+<p>To illustrate the problem, this is how the connection would
+work if you were to do this manually using the mysql client
+from within the VPC.</p>
+<p><img src="https://mhpark.me/posts/connecting-to-internal-vpc-with-ssh/ssh.png" alt="ssh" /></p>
+<ol>
+<li>Connect to the bastion</li>
+<li>Hop to the operator</li>
+<li>Connect to the MySQL database</li>
+</ol>
+<h3 id="the-solution">The Solution</h3>
+<p>In your <code>~/.ssh/config</code> you can add a <strong>ProxyCommand</strong>
+entry to an additional host that specifies how you will hop
+through the network in order to land directly where you would like
+to. In the test below, you can see that we tunnel through the bastion
+to the operator directly.</p>
+<pre class="z-code"><code><span class="z-text z-plain">Host bastion
+</span><span class="z-text z-plain">    HostName &lt;PUBLIC_IP_ADDRESS&gt;
+</span><span class="z-text z-plain">    ForwardAgent yes
+</span><span class="z-text z-plain">    User user
+</span><span class="z-text z-plain">    IdentityFile ~/.ssh/id_ed25519
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">Host operator
+</span><span class="z-text z-plain">    HostName 10.0.0.1
+</span><span class="z-text z-plain">    ForwardAgent yes
+</span><span class="z-text z-plain">    User user
+</span><span class="z-text z-plain">    ProxyCommand ssh -W %h:%p bastion
+</span></code></pre>
+<p>This means that if you run <code>ssh operator</code> you will land in the internal VPC!
+Which is where that pesky IP address for the MySQL database is reachable.</p>
+<p>This means that in your SQL Client, you can then configure it like so:</p>
+<p><img src="https://mhpark.me/posts/connecting-to-internal-vpc-with-ssh/sql.png" alt="sql" /></p>
+<p>And it will tunnel through directly to your database from your own machine.</p>
+
+        </section>
+
+        
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        
+
+    </article>
+</main>
+
+
+<span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://mhpark.me/js/copyCodeToClipboard.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel=""  href="https://mhpark.me/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://mhpark.me/social_icons/rss.svg">
+                        </a>
+                    </li><li class="js"><a class="nav-links no-hover-padding social" href="#" data-encoded-email="d2VibWFzdGVyQG1ocGFyay5tZQ=="><img loading="lazy" alt="email" title="email" src="https://mhpark.me/social_icons/email.svg">
+                            </a>
+                        </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://bsky.app/profile/mhpark.me">
+                                    <img loading="lazy" alt="bluesky" title="bluesky" src="https://mhpark.me/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://github.com/KingMichaelPark/">
+                                    <img loading="lazy" alt="github" title="github" src="https://mhpark.me/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://news.ycombinator.com/user?id=Zizizizz">
+                                    <img loading="lazy" alt="hacker-news" title="hacker-news" src="https://mhpark.me/social_icons/hacker-news.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://fosstodon.org/@mdawg">
+                                    <img loading="lazy" alt="mastodon" title="mastodon" src="https://mhpark.me/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+
+                
+                Powered by
+                <a rel=""  href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel=""  href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    <script src="https://mhpark.me/js/decodeMail.min.js" async></script><div id="searchModal" class="search-modal js" role="dialog" aria-labelledby="modalTitle">
+    <h1 id="modalTitle" class="visually-hidden">Search</h1>
+    <div id="modal-content">
+        <div id="searchBar">
+            <div class="search-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                </svg>
+            </div>
+            <input id="searchInput" role="combobox" autocomplete="off" spellcheck="false" aria-expanded="false" aria-controls="results-container" placeholder="Search…"/>
+            <div id="clear-search" class="close-icon interactive-icon" tabindex="0" role="button" title="Clear search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </div>
+        </div>
+        <div id="results-container">
+            <div id="results-info"><span id="zero_results"> No results</span>
+                <span id="one_results"> $NUMBER result</span>
+                <span id="many_results"> $NUMBER results</span><span id="two_results"> $NUMBER results</span>
+                <span id="few_results"> $NUMBER results</span>
+            </div>
+            <div id="results" role="listbox"></div>
+        </div>
+    </div>
+</div>
+</footer>
+
+</body>
+
+</html>

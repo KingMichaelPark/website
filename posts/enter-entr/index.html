@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+
+
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <!-- Verifications -->
+    <link href="https://github.com/KingMichaelPark" rel="me">
+    <link href="https://mhpark.me" rel="me">
+    <link href="https://fosstodon.org/@mdawg" rel="me">
+    <link href="https://bsky.app/profile/mhpark.me" rel="me"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src &#x27;self&#x27; data:;img-src &#x27;self&#x27; https:&#x2F;&#x2F;* data:;media-src &#x27;self&#x27;;style-src &#x27;self&#x27;;frame-src player.vimeo.com https:&#x2F;&#x2F;www.youtube-nocookie.com;connect-src 'self';script-src 'self' 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://mhpark.me">
+
+    
+    <title>Mike's Blog • Testing in the Terminal</title>
+
+    
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="Mike's Blog - Atom Feed" href="https://mhpark.me/atom.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://mhpark.me/custom_subset.css?h=9973c1bd7f7404b8d10e">
+        
+    
+
+    <link rel="stylesheet" href="https://mhpark.me/rach.css?h=3b7a2a01573cee5367b5">
+
+    
+        <link rel="stylesheet" href="https://mhpark.me/main.css?h=d6c71a392afd8a4f37e6" />
+        <link rel="stylesheet" href="https://mhpark.me/skins/sakura.css?h=b91b2d4d922eedbf6ad8" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="Find yourself running a pytest command repeatedly trying to work out
+what a problem is and getting sick of clicking back on the terminal
+window where the output is and pressing arrow up to re-run the test?
+Or even running tests in an IDE and sick of re-running the test
+time after time with your mouse?
+…" />
+        <meta property="og:description" content="Find yourself running a pytest command repeatedly trying to work out
+what a problem is and getting sick of clicking back on the terminal
+window where the output is and pressing arrow up to re-run the test?
+Or even running tests in an IDE and sick of re-running the test
+time after time with your mouse?
+…" />
+
+    
+
+    <meta property="og:title" content="Testing in the Terminal" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;mhpark.me&#x2F;posts&#x2F;enter-entr&#x2F;" /><meta property="og:site_name" content="Mike&#x27;s Blog">
+        <noscript><link rel="stylesheet" href="https://mhpark.me/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://mhpark.me/js/initializeTheme.min.js"></script>
+        <script defer src="https://mhpark.me/js/themeSwitcher.min.js"></script>
+        <script defer src="https://mhpark.me/js/searchElasticlunr.min.js?h=3626c0ef99daa745b31e"></script>
+
+        </head>
+
+
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://mhpark.me">Mike&#x27;s Blog</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/posts/">
+                                posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/tags/">
+                                tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/projects/">
+                                projects
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/about-me">
+                                about-me
+                                </a>
+                            </li>
+                        <div class="nav-navs" id="menu-icons-group">
+                        <li class="js">
+                            <div role="button" tabindex="0" id="search-button" class="search-icon interactive-icon" title="Click or press $SHORTCUT to open search" aria-label="Click or press $SHORTCUT to open search">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                                </svg>
+                            </div>
+                        </li>
+
+                        
+                        
+
+                        <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</div>
+                </ul>
+            </div>
+        
+    </nav>
+    <div class="banner">
+      <a id="rotator"
+        ><img src="https://mhpark.me/me.webp"
+        /></a
+      >
+    </div>
+</header>
+
+
+    <div class="content">
+
+        
+        
+
+
+
+
+<main>
+    <article>
+        <h1 class="article-title">
+            Testing in the Terminal
+        </h1>
+
+        <ul class="meta">
+                <li>16th Feb 2023</li><li title="244 words"><span class='separator' aria-hidden='true'>•</span>2 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a href="https://mhpark.me/tags/testing/">testing</a>,&nbsp;</li><li class="tag"><a href="https://mhpark.me/tags/python/">python</a>,&nbsp;</li><li class="tag"><a href="https://mhpark.me/tags/entr/">entr</a></li>
+        </ul>
+
+        <section class="body"><p>Find yourself running a <code>pytest</code> command repeatedly trying to work out
+what a problem is and getting sick of clicking back on the terminal
+window where the output is and pressing arrow up to re-run the test?
+Or even running tests in an IDE and sick of re-running the test
+time after time with your mouse?</p>
+<span id="continue-reading"></span>
+<p>This tip is short and sweet. I have been using this for ages and don't
+see it listed too often. What you will need is <a href="https://github.com/sharkdp/fd">fd</a>
+(or just <code>find</code> will do), <a href="https://eradman.com/entrproject/">entr</a>,
+if you are in a terminal with multiplexing/window splitting your're done. If not
+<a href="https://github.com/tmux/tmux/wiki">tmux</a> will probably do fine.</p>
+<p>When you are running your test suite and want to re-run tests as you iterate through
+your changes, just run the following.</p>
+<p>(The example is in python but this applies to anything)</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">fd</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>e</span> py</span> <span class="z-keyword z-operator z-logical z-pipe z-shell">|</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">entr</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>c</span> pytest tests/</span>
+</span></code></pre>
+<p>This basically equates to the following in plain English/behaviour testing language</p>
+<ul>
+<li><em>WHEN</em> any file with the file extension <code>py</code> gets saved/modified.</li>
+<li><em>THEN</em> clear the screen (clear, cls, or ctrl+l equivalent) and</li>
+<li><em>THEN</em> re-run the supplied <code>pytest</code> command</li>
+</ul>
+<p>This is a split with vim/neovim/whatever on the left and the test output on the right
+is amazingly convenient when debugging, checking test coverage, etc...
+Anything you run repeatedly in the terminal, just pipe those files to <code>entr</code> and
+let it do the work for you!</p>
+
+        </section>
+
+        
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        
+
+    </article>
+</main>
+
+
+<span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://mhpark.me/js/copyCodeToClipboard.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel=""  href="https://mhpark.me/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://mhpark.me/social_icons/rss.svg">
+                        </a>
+                    </li><li class="js"><a class="nav-links no-hover-padding social" href="#" data-encoded-email="d2VibWFzdGVyQG1ocGFyay5tZQ=="><img loading="lazy" alt="email" title="email" src="https://mhpark.me/social_icons/email.svg">
+                            </a>
+                        </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://bsky.app/profile/mhpark.me">
+                                    <img loading="lazy" alt="bluesky" title="bluesky" src="https://mhpark.me/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://github.com/KingMichaelPark/">
+                                    <img loading="lazy" alt="github" title="github" src="https://mhpark.me/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://news.ycombinator.com/user?id=Zizizizz">
+                                    <img loading="lazy" alt="hacker-news" title="hacker-news" src="https://mhpark.me/social_icons/hacker-news.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://fosstodon.org/@mdawg">
+                                    <img loading="lazy" alt="mastodon" title="mastodon" src="https://mhpark.me/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+
+                
+                Powered by
+                <a rel=""  href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel=""  href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    <script src="https://mhpark.me/js/decodeMail.min.js" async></script><div id="searchModal" class="search-modal js" role="dialog" aria-labelledby="modalTitle">
+    <h1 id="modalTitle" class="visually-hidden">Search</h1>
+    <div id="modal-content">
+        <div id="searchBar">
+            <div class="search-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                </svg>
+            </div>
+            <input id="searchInput" role="combobox" autocomplete="off" spellcheck="false" aria-expanded="false" aria-controls="results-container" placeholder="Search…"/>
+            <div id="clear-search" class="close-icon interactive-icon" tabindex="0" role="button" title="Clear search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </div>
+        </div>
+        <div id="results-container">
+            <div id="results-info"><span id="zero_results"> No results</span>
+                <span id="one_results"> $NUMBER result</span>
+                <span id="many_results"> $NUMBER results</span><span id="two_results"> $NUMBER results</span>
+                <span id="few_results"> $NUMBER results</span>
+            </div>
+            <div id="results" role="listbox"></div>
+        </div>
+    </div>
+</div>
+</footer>
+
+</body>
+
+</html>
