@@ -24,19 +24,8 @@
 @use 'parts/_theme-switch.scss';
 @use 'parts/_zola-error.scss';
 
-@font-face {
-    src: local('Iosevka Aile'),
-        url('fonts/IosevkaAile-Regular.woff2') format("woff2");
-    font-family: 'Iosevka Aile';
-    font-display: swap;
-}
 
-@font-face {
-    src: local('Iosevka Etoile'),
-        url('fonts/IosevkaEtoile-Light.woff2') format("woff2");
-    font-family: 'Iosevka Etoile';
-    font-display: swap;
-}
+
 
 @font-face {
     src: local('Iosevka SS08'),
@@ -65,14 +54,14 @@
     }
 
     @else {
-        --background-color: #1f1f1f;
-        --bg-0: #2f2f2f;
-        --bg-1: #3c3c3c;
-        --bg-2: #171717;
-        --bg-3: #535555;
+        --background-color: #11111b;
+        --bg-0: #11111b;
+        --bg-1: #181825;
+        --bg-2: #1e1e2e;
+        --bg-3: #313244;
         --hover-color: black;
         --primary-color: #91e0ee;
-        --divider-color: #4a4a4a;
+        --divider-color: #45475a;
         --text-color: #D4D4D4;
         --text-color-high-contrast: #eceeef;
         --meta-color: #B0B0B0;
@@ -92,8 +81,9 @@
     --small-layout-width: 200px;
     --paragraph-spacing: max(2.3vmin, 24px);
 
-    --sans-serif-font: 'Iosevka Aile', Helvetica, Arial, sans-serif;
-    --serif-font: 'Iosevka Etoile', 'Georgia', serif;
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+    --sans-serif-font: 'Inter', sans-serif;
     --code-font: 'Iosevka SS08';
 
     scrollbar-color: var(--primary-color) transparent;
@@ -101,6 +91,10 @@
 
     line-height: 190%;
     font-family: var(--sans-serif-font);
+}
+
+@supports (font-variation-settings: normal) {
+  :root { font-family: InterVariable, sans-serif; }
 }
 
 [data-theme='dark'] {
