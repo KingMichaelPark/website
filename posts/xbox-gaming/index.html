@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+
+
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <!-- Verifications -->
+    <link href="https://github.com/KingMichaelPark" rel="me">
+    <link href="https://mhpark.me" rel="me">
+    <link href="https://fosstodon.org/@mdawg" rel="me">
+    <link href="https://bsky.app/profile/mhpark.me" rel="me"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src &#x27;self&#x27; data:;img-src &#x27;self&#x27; https:&#x2F;&#x2F;* data:;media-src &#x27;self&#x27;;style-src &#x27;self&#x27;;frame-src player.vimeo.com https:&#x2F;&#x2F;www.youtube-nocookie.com;connect-src 'self';script-src 'self' 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://mhpark.me">
+
+    
+    <title>Mike's Blog • Gaming on Xbox with OpenWRT</title>
+
+    
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="Mike's Blog - Atom Feed" href="https://mhpark.me/atom.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://mhpark.me/custom_subset.css?h=9973c1bd7f7404b8d10e">
+        
+    
+
+    <link rel="stylesheet" href="https://mhpark.me/rach.css?h=3b7a2a01573cee5367b5">
+
+    
+        <link rel="stylesheet" href="https://mhpark.me/main.css?h=d6c71a392afd8a4f37e6" />
+        <link rel="stylesheet" href="https://mhpark.me/skins/sakura.css?h=b91b2d4d922eedbf6ad8" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="If you are like me and decided to switch their router firmware
+to the much praised OpenWRT you may - like me -
+found the lag in FPS games pretty unbreable after switching the firmware.
+…" />
+        <meta property="og:description" content="If you are like me and decided to switch their router firmware
+to the much praised OpenWRT you may - like me -
+found the lag in FPS games pretty unbreable after switching the firmware.
+…" />
+
+    
+
+    <meta property="og:title" content="Gaming on Xbox with OpenWRT" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;mhpark.me&#x2F;posts&#x2F;xbox-gaming&#x2F;" /><meta property="og:site_name" content="Mike&#x27;s Blog">
+        <noscript><link rel="stylesheet" href="https://mhpark.me/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://mhpark.me/js/initializeTheme.min.js"></script>
+        <script defer src="https://mhpark.me/js/themeSwitcher.min.js"></script>
+        <script defer src="https://mhpark.me/js/searchElasticlunr.min.js?h=3626c0ef99daa745b31e"></script>
+
+        </head>
+
+
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://mhpark.me">Mike&#x27;s Blog</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/posts/">
+                                posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/tags/">
+                                tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/projects/">
+                                projects
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/about-me">
+                                about-me
+                                </a>
+                            </li>
+                        <div class="nav-navs" id="menu-icons-group">
+                        <li class="js">
+                            <div role="button" tabindex="0" id="search-button" class="search-icon interactive-icon" title="Click or press $SHORTCUT to open search" aria-label="Click or press $SHORTCUT to open search">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                                </svg>
+                            </div>
+                        </li>
+
+                        
+                        
+
+                        <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</div>
+                </ul>
+            </div>
+        
+    </nav>
+    <div class="banner">
+      <a id="rotator"
+        ><img src="https://mhpark.me/me.webp"
+        /></a
+      >
+    </div>
+</header>
+
+
+    <div class="content">
+
+        
+        
+
+
+
+
+<main>
+    <article>
+        <h1 class="article-title">
+            Gaming on Xbox with OpenWRT
+        </h1>
+
+        <ul class="meta">
+                <li>13th Sep 2022</li><li title="446 words"><span class='separator' aria-hidden='true'>•</span>3 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a href="https://mhpark.me/tags/guide/">guide</a>,&nbsp;</li><li class="tag"><a href="https://mhpark.me/tags/xbox/">xbox</a>,&nbsp;</li><li class="tag"><a href="https://mhpark.me/tags/openwrt/">openwrt</a></li>
+        </ul>
+
+        <section class="body"><p>If you are like me and decided to switch their router firmware
+to the much praised <a href="https://openwrt.org/">OpenWRT</a> you may - like me -
+found the lag in FPS games pretty unbreable after switching the firmware.</p>
+<span id="continue-reading"></span><h2 id="update-2023-01-30">Update 2023-01-30</h2>
+<p>I have switched to a mesh router system as certain parts of my flat weren't
+getting the coverage I wanted, however, the default on the router I got was
+that upnp was enabled. You can disable that and follow the same steps as
+before.</p>
+<h2 id="background-cont">Background cont...</h2>
+<p>There are two possible reason for this, the first of thought of was
+the lack of hardware acceleration that is missing in openwrt as opposed to
+the stock firmware which does enable this. However, because I am on a 150 Mbps
+up/down connection, the router I have, (an Archer C7) should be able to
+handle this level of speed no problem. I also thought that it could be
+<a href="https://openwrt.org/docs/guide-user/network/traffic-shaping/sqm?s%5B%5D=bufferbloat">bufferbloat</a>
+but this also didn't seem to be an issue after some testing.</p>
+<h2 id="actual-issue-identification-method">Actual Issue Identification Method</h2>
+<p>In your Xbox, go to <code>Settings &gt; Network Options &gt; Test NAT Type</code> and you will,
+like me probably see Moderate NAT and recommends you use Open NAT using
+<a href="https://openwrt.org/docs/guide-user/firewall/upnp/upnp_setup">UPnP</a> which has security
+concerns for reasons beyond my care to properly understand. (I am no networking guru).</p>
+<p>My previous TPLink firmware may have had that enabled and forwarded traffic
+using UPnP (which seems to be the case
+<a href="https://community.tp-link.com/en/home/forum/topic/168302">here</a>). OpenWRT
+doesn't recommend doing this and recommends port forwarding instead.</p>
+<h2 id="actual-fix">Actual Fix</h2>
+<h3 id="on-the-xbox">On the Xbox</h3>
+<p>This is actually really easy to do. On your Xbox, go to
+<code>Settings &gt; Network Options &gt; Advanced Network Settings &gt; Something Something Port</code> and set one of the 8 ports explicitly.</p>
+<p>Take note of these 8 ports.</p>
+<h3 id="in-openwrt-admin">In OpenWRT Admin</h3>
+<p>In the OpenWRT <a href="http://192.168.1.1">admin</a></p>
+<ol>
+<li>Scroll down and find the XBOX device, set the ip for this device to static (you may not
+need to do this but I like to make it so this local ip stays set for the next step.</li>
+<li>Go to Network</li>
+<li>Go to Firewall</li>
+<li>Go to Port Forwards</li>
+<li>Add UDP WAN forwarding of the 8 ports above (there will be 8 rules to add) to the XBOX
+lan address. The same port external and internal.</li>
+<li>Save and Apply</li>
+</ol>
+<p>Now Reboot your Xbox, quit the game you had open, and go back to settings and run the
+NAT test type and you should see NAT Type <strong>Open</strong>.</p>
+<p>Gaming should now be very smooth. (Tested with Halo Infinite).</p>
+
+        </section>
+
+        
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        
+
+    </article>
+</main>
+
+
+<span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://mhpark.me/js/copyCodeToClipboard.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel=""  href="https://mhpark.me/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://mhpark.me/social_icons/rss.svg">
+                        </a>
+                    </li><li class="js"><a class="nav-links no-hover-padding social" href="#" data-encoded-email="d2VibWFzdGVyQG1ocGFyay5tZQ=="><img loading="lazy" alt="email" title="email" src="https://mhpark.me/social_icons/email.svg">
+                            </a>
+                        </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://bsky.app/profile/mhpark.me">
+                                    <img loading="lazy" alt="bluesky" title="bluesky" src="https://mhpark.me/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://github.com/KingMichaelPark/">
+                                    <img loading="lazy" alt="github" title="github" src="https://mhpark.me/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://news.ycombinator.com/user?id=Zizizizz">
+                                    <img loading="lazy" alt="hacker-news" title="hacker-news" src="https://mhpark.me/social_icons/hacker-news.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://fosstodon.org/@mdawg">
+                                    <img loading="lazy" alt="mastodon" title="mastodon" src="https://mhpark.me/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+
+                
+                Powered by
+                <a rel=""  href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel=""  href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    <script src="https://mhpark.me/js/decodeMail.min.js" async></script><div id="searchModal" class="search-modal js" role="dialog" aria-labelledby="modalTitle">
+    <h1 id="modalTitle" class="visually-hidden">Search</h1>
+    <div id="modal-content">
+        <div id="searchBar">
+            <div class="search-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                </svg>
+            </div>
+            <input id="searchInput" role="combobox" autocomplete="off" spellcheck="false" aria-expanded="false" aria-controls="results-container" placeholder="Search…"/>
+            <div id="clear-search" class="close-icon interactive-icon" tabindex="0" role="button" title="Clear search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </div>
+        </div>
+        <div id="results-container">
+            <div id="results-info"><span id="zero_results"> No results</span>
+                <span id="one_results"> $NUMBER result</span>
+                <span id="many_results"> $NUMBER results</span><span id="two_results"> $NUMBER results</span>
+                <span id="few_results"> $NUMBER results</span>
+            </div>
+            <div id="results" role="listbox"></div>
+        </div>
+    </div>
+</div>
+</footer>
+
+</body>
+
+</html>

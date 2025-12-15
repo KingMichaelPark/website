@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+
+
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <!-- Verifications -->
+    <link href="https://github.com/KingMichaelPark" rel="me">
+    <link href="https://mhpark.me" rel="me">
+    <link href="https://fosstodon.org/@mdawg" rel="me">
+    <link href="https://bsky.app/profile/mhpark.me" rel="me"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src &#x27;self&#x27; data:;img-src &#x27;self&#x27; https:&#x2F;&#x2F;* data:;media-src &#x27;self&#x27;;style-src &#x27;self&#x27;;frame-src player.vimeo.com https:&#x2F;&#x2F;www.youtube-nocookie.com;connect-src 'self';script-src 'self' 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://mhpark.me">
+
+    
+    <title>Mike's Blog • Tmux in Linux and Mac With Wezterm</title>
+
+    
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="Mike's Blog - Atom Feed" href="https://mhpark.me/atom.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://mhpark.me/custom_subset.css?h=9973c1bd7f7404b8d10e">
+        
+    
+
+    <link rel="stylesheet" href="https://mhpark.me/rach.css?h=3b7a2a01573cee5367b5">
+
+    
+        <link rel="stylesheet" href="https://mhpark.me/main.css?h=d6c71a392afd8a4f37e6" />
+        <link rel="stylesheet" href="https://mhpark.me/skins/sakura.css?h=b91b2d4d922eedbf6ad8" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="After struggling to get tmux to run seamlessly between Mac (on ARM i.e. M1/M2)
+and linux due to the fact that brew installs packages to /opt/homebrew/bin/
+and it isn't on the path before the shell loads, I have finally worked out how to
+get tmux to launch/attach to existing sessions when launching a new terminal both
+in linux and on MacOS.
+…" />
+        <meta property="og:description" content="After struggling to get tmux to run seamlessly between Mac (on ARM i.e. M1/M2)
+and linux due to the fact that brew installs packages to /opt/homebrew/bin/
+and it isn't on the path before the shell loads, I have finally worked out how to
+get tmux to launch/attach to existing sessions when launching a new terminal both
+in linux and on MacOS.
+…" />
+
+    
+
+    <meta property="og:title" content="Tmux in Linux and Mac With Wezterm" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;mhpark.me&#x2F;posts&#x2F;tmux-between-linux-mac&#x2F;" /><meta property="og:site_name" content="Mike&#x27;s Blog">
+        <noscript><link rel="stylesheet" href="https://mhpark.me/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://mhpark.me/js/initializeTheme.min.js"></script>
+        <script defer src="https://mhpark.me/js/themeSwitcher.min.js"></script>
+        <script defer src="https://mhpark.me/js/searchElasticlunr.min.js?h=3626c0ef99daa745b31e"></script>
+
+        </head>
+
+
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://mhpark.me">Mike&#x27;s Blog</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/posts/">
+                                posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/tags/">
+                                tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/projects/">
+                                projects
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/about-me">
+                                about-me
+                                </a>
+                            </li>
+                        <div class="nav-navs" id="menu-icons-group">
+                        <li class="js">
+                            <div role="button" tabindex="0" id="search-button" class="search-icon interactive-icon" title="Click or press $SHORTCUT to open search" aria-label="Click or press $SHORTCUT to open search">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                                </svg>
+                            </div>
+                        </li>
+
+                        
+                        
+
+                        <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</div>
+                </ul>
+            </div>
+        
+    </nav>
+    <div class="banner">
+      <a id="rotator"
+        ><img src="https://mhpark.me/me.webp"
+        /></a
+      >
+    </div>
+</header>
+
+
+    <div class="content">
+
+        
+        
+
+
+
+
+<main>
+    <article>
+        <h1 class="article-title">
+            Tmux in Linux and Mac With Wezterm
+        </h1>
+
+        <ul class="meta">
+                <li>10th Mar 2023</li><li title="208 words"><span class='separator' aria-hidden='true'>•</span>2 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a href="https://mhpark.me/tags/tmux/">tmux</a>,&nbsp;</li><li class="tag"><a href="https://mhpark.me/tags/wezterm/">wezterm</a>,&nbsp;</li><li class="tag"><a href="https://mhpark.me/tags/brew/">brew</a></li>
+        </ul>
+
+        <section class="body"><p>After struggling to get <code>tmux</code> to run seamlessly between Mac (on ARM i.e. M1/M2)
+and linux due to the fact that <code>brew</code> installs packages to <code>/opt/homebrew/bin/</code>
+and it isn't on the path before the shell loads, I have finally worked out how to
+get tmux to launch/attach to existing sessions when launching a new terminal both
+in linux and on MacOS.</p>
+<span id="continue-reading"></span>
+<p>I use <a href="https://wezfurlong.org/wezterm/">wezterm</a> as my terminal emulator as I can
+maintain the same settings for the terminal between my linux and mac (sorry
+iterm peeps).</p>
+<p>I won't get into why I love it, but it is fast, has a very nice dev, and supports
+ligatures in fonts which - while divisive to some - I like so I use this.</p>
+<p>Long story short. Here is the <code>wezterm.lua</code> config that you can store in your
+<code>~/.config/wezterm/wezterm.lua</code>.</p>
+<pre data-lang="lua" class="language-lua z-code"><code class="language-lua" data-lang="lua"><span class="z-source z-lua"><span class="z-storage z-modifier z-lua">local</span> <span class="z-variable z-other z-lua">wezterm</span> <span class="z-keyword z-operator z-assignment z-lua">=</span> <span class="z-support z-function z-builtin z-lua">require</span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>wezterm<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span>
+</span><span class="z-source z-lua">
+</span><span class="z-source z-lua"><span class="z-storage z-modifier z-lua">local</span> <span class="z-variable z-other z-lua">tmux</span> <span class="z-keyword z-operator z-assignment z-lua">=</span> <span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span><span class="z-punctuation z-section z-block z-end z-lua">}</span></span>
+</span><span class="z-source z-lua"><span class="z-keyword z-control z-conditional z-lua">if</span> <span class="z-variable z-other z-lua">wezterm</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">target_triple</span> <span class="z-keyword z-operator z-comparison z-lua">==</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>aarch64-apple-darwin<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span> <span class="z-meta z-block z-lua"><span class="z-keyword z-control z-conditional z-lua">then</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-block z-lua">    <span class="z-variable z-other z-lua">tmux</span> <span class="z-keyword z-operator z-assignment z-lua">=</span> <span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>/opt/homebrew/bin/tmux<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-field z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>new<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-field z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>-As0<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-block z-end z-lua">}</span></span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-block z-lua"><span class="z-keyword z-control z-conditional z-lua">else</span></span></span><span class="z-meta z-block z-lua">
+</span></span><span class="z-source z-lua"><span class="z-meta z-block z-lua">    <span class="z-variable z-other z-lua">tmux</span> <span class="z-keyword z-operator z-assignment z-lua">=</span> <span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>tmux<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-field z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>new<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-field z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>-As0<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span> <span class="z-punctuation z-section z-block z-end z-lua">}</span></span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-block z-lua"><span class="z-keyword z-control z-end z-lua">end</span></span>
+</span><span class="z-source z-lua">
+</span><span class="z-source z-lua"><span class="z-keyword z-control z-return z-lua">return</span> <span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">color_scheme</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>Catppuccin Mocha<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">default_prog</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-variable z-other z-lua">tmux</span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">font</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-variable z-other z-lua">wezterm</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">font</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span> </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">family</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>IosevkaTerm Nerd Font<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span> </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">stretch</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>Normal<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-end z-lua">}</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">font_dirs</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>~/.local/share/fonts<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span> <span class="z-punctuation z-section z-block z-end z-lua">}</span></span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">font_size</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-constant z-numeric z-integer z-decimal z-lua">13</span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">hide_tab_bar_if_only_one_tab</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-constant z-language z-boolean z-true z-lua">true</span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">initial_cols</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-constant z-numeric z-integer z-decimal z-lua">150</span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">initial_rows</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-constant z-numeric z-integer z-decimal z-lua">35</span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">tab_bar_at_bottom</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-constant z-language z-boolean z-true z-lua">true</span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">warn_about_missing_glyphs</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-constant z-language z-boolean z-true z-lua">false</span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">window_background_opacity</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-constant z-numeric z-float z-decimal z-lua">1<span class="z-punctuation z-separator z-decimal z-lua">.</span>0</span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-end z-lua">}</span></span>
+</span></code></pre>
+<p>They key lines is the local <code>tmux</code> path. Wezterm won't launch
+if you don't pass it explicitly as the path is not known by default
+to wezterm.</p>
+<p>The second thing you need to change is to get your tmux config to append
+that brew path to the <strong>$PATH</strong> as well.</p>
+<p><code>.tmux.conf</code> :</p>
+<pre data-lang="config" class="language-config z-code"><code class="language-config" data-lang="config"><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">set</span> </span><span class="z-keyword z-operator z-genconfig">-</span>g mouse <span class="z-constant z-language z-genconfig">on</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">set</span> </span><span class="z-keyword z-operator z-genconfig">-</span>s set<span class="z-keyword z-operator z-genconfig">-</span>clipboard <span class="z-constant z-language z-genconfig">on</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">set-environment</span> </span><span class="z-keyword z-operator z-genconfig">-</span>g <span class="z-support z-constant z-genconfig">PATH</span> <span class="z-string z-quoted z-double z-genconfig">&quot;/opt/homebrew/bin:/bin:$PATH&quot;</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-comment z-genconfig"><span class="z-comment z-line z-number-sign z-genconfig"># ADD THIS LINE ^^^
+</span></span></span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">set-window-option</span> </span><span class="z-keyword z-operator z-genconfig">-</span>g mode<span class="z-keyword z-operator z-genconfig">-</span>keys vi
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">bind</span> </span><span class="z-keyword z-operator z-genconfig">/</span> split<span class="z-keyword z-operator z-genconfig">-</span>window <span class="z-keyword z-operator z-genconfig">-</span>h <span class="z-keyword z-operator z-genconfig">-</span>c <span class="z-string z-quoted z-double z-genconfig">&quot;#{pane_current_path}&quot;</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">bind</span> </span><span class="z-keyword z-operator z-genconfig">-</span> split<span class="z-keyword z-operator z-genconfig">-</span>window <span class="z-keyword z-operator z-genconfig">-</span>v <span class="z-keyword z-operator z-genconfig">-</span>c <span class="z-string z-quoted z-double z-genconfig">&quot;#{pane_current_path}&quot;</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">unbind</span> </span><span class="z-string z-quoted z-signle z-genconfig">&#39;&quot;&#39;</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">unbind</span> </span><span class="z-keyword z-operator z-genconfig">%</span>
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">bind</span> </span><span class="z-keyword z-operator z-genconfig">-</span>r <span class="z-keyword z-operator z-genconfig">^</span> last<span class="z-keyword z-operator z-genconfig">-</span>window
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">bind</span> </span><span class="z-keyword z-operator z-genconfig">-</span>r k select<span class="z-keyword z-operator z-genconfig">-</span>pane <span class="z-keyword z-operator z-genconfig">-</span><span class="z-support z-constant z-genconfig">U</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">bind</span> </span><span class="z-keyword z-operator z-genconfig">-</span>r j select<span class="z-keyword z-operator z-genconfig">-</span>pane <span class="z-keyword z-operator z-genconfig">-</span><span class="z-support z-constant z-genconfig">D</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">bind</span> </span><span class="z-keyword z-operator z-genconfig">-</span>r h select<span class="z-keyword z-operator z-genconfig">-</span>pane <span class="z-keyword z-operator z-genconfig">-</span><span class="z-support z-constant z-genconfig">L</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">bind</span> </span><span class="z-keyword z-operator z-genconfig">-</span>r l select<span class="z-keyword z-operator z-genconfig">-</span>pane <span class="z-keyword z-operator z-genconfig">-</span><span class="z-support z-constant z-genconfig">R</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">bind</span> </span><span class="z-support z-constant z-genconfig">C</span> new<span class="z-keyword z-operator z-genconfig">-</span>window <span class="z-keyword z-operator z-genconfig">-</span>c <span class="z-string z-quoted z-double z-genconfig">&quot;#{pane_current_path}&quot;</span>
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-comment z-genconfig"><span class="z-comment z-line z-number-sign z-genconfig"># Current projects
+</span></span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">bind-key</span> </span><span class="z-keyword z-operator z-genconfig">-</span>r f run<span class="z-keyword z-operator z-genconfig">-</span>shell <span class="z-string z-quoted z-double z-genconfig">&quot;tmux neww ~/.local/bin/tmux-sessionizer&quot;</span>
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-comment z-genconfig"><span class="z-comment z-line z-number-sign z-genconfig"># set -g default-terminal &quot;tmux-256color&quot;
+</span></span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">set</span> </span><span class="z-keyword z-operator z-genconfig">-</span>ga terminal<span class="z-keyword z-operator z-genconfig">-</span>overrides <span class="z-string z-quoted z-double z-genconfig">&quot;,xterm-256color:Tc&quot;</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">set-option</span> </span><span class="z-keyword z-operator z-genconfig">-</span>sa terminal<span class="z-keyword z-operator z-genconfig">-</span>overrides <span class="z-string z-quoted z-signle z-genconfig">&#39;,screen-256color:RGB&#39;</span>
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-comment z-genconfig"><span class="z-comment z-line z-number-sign z-genconfig"># # List of plugins
+</span></span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">set</span> </span><span class="z-keyword z-operator z-genconfig">-</span>g <span class="z-storage z-source z-genconfig">@plugin</span> <span class="z-string z-quoted z-signle z-genconfig">&#39;tmux-plugins/tpm&#39;</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">set</span> </span><span class="z-keyword z-operator z-genconfig">-</span>g <span class="z-storage z-source z-genconfig">@plugin</span> <span class="z-string z-quoted z-signle z-genconfig">&#39;catppuccin/tmux&#39;</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">set</span> </span><span class="z-keyword z-operator z-genconfig">-</span>g <span class="z-storage z-source z-genconfig">@plugin</span> <span class="z-string z-quoted z-signle z-genconfig">&#39;tmux-plugins/tmux-sensible&#39;</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">set</span> </span><span class="z-keyword z-operator z-genconfig">-</span>sg escape<span class="z-keyword z-operator z-genconfig">-</span>time <span class="z-constant z-numeric z-genconfig">5</span>
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">set-option</span> </span><span class="z-keyword z-operator z-genconfig">-</span>g focus<span class="z-keyword z-operator z-genconfig">-</span>events <span class="z-constant z-language z-genconfig">on</span>
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">set-option</span> </span><span class="z-keyword z-operator z-genconfig">-</span>g default<span class="z-keyword z-operator z-genconfig">-</span>shell <span class="z-keyword z-operator z-genconfig">/</span>bin<span class="z-keyword z-operator z-genconfig">/</span>zsh
+</span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">bind</span> </span>r source<span class="z-keyword z-operator z-genconfig">-</span>file <span class="z-keyword z-operator z-genconfig">~</span><span class="z-keyword z-operator z-genconfig">/</span><span class="z-keyword z-operator z-genconfig">.</span>tmux<span class="z-keyword z-operator z-genconfig">.</span>conf
+</span><span class="z-source z-genconfig">
+</span><span class="z-source z-genconfig"><span class="z-meta z-comment z-genconfig"><span class="z-comment z-line z-number-sign z-genconfig"># Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+</span></span></span><span class="z-source z-genconfig"><span class="z-meta z-param z-genconfig"><span class="z-variable z-parameter z-genconfig">run</span> </span><span class="z-string z-quoted z-signle z-genconfig">&#39;~/.tmux/plugins/tpm/tpm&#39;</span>
+</span></code></pre>
+<p>All of this can be seen in my <a href="https://github.com/KingMichaelPark/dotfiles">dotfiles</a>.</p>
+
+        </section>
+
+        
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        
+
+    </article>
+</main>
+
+
+<span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://mhpark.me/js/copyCodeToClipboard.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel=""  href="https://mhpark.me/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://mhpark.me/social_icons/rss.svg">
+                        </a>
+                    </li><li class="js"><a class="nav-links no-hover-padding social" href="#" data-encoded-email="d2VibWFzdGVyQG1ocGFyay5tZQ=="><img loading="lazy" alt="email" title="email" src="https://mhpark.me/social_icons/email.svg">
+                            </a>
+                        </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://bsky.app/profile/mhpark.me">
+                                    <img loading="lazy" alt="bluesky" title="bluesky" src="https://mhpark.me/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://github.com/KingMichaelPark/">
+                                    <img loading="lazy" alt="github" title="github" src="https://mhpark.me/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://news.ycombinator.com/user?id=Zizizizz">
+                                    <img loading="lazy" alt="hacker-news" title="hacker-news" src="https://mhpark.me/social_icons/hacker-news.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://fosstodon.org/@mdawg">
+                                    <img loading="lazy" alt="mastodon" title="mastodon" src="https://mhpark.me/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+
+                
+                Powered by
+                <a rel=""  href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel=""  href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    <script src="https://mhpark.me/js/decodeMail.min.js" async></script><div id="searchModal" class="search-modal js" role="dialog" aria-labelledby="modalTitle">
+    <h1 id="modalTitle" class="visually-hidden">Search</h1>
+    <div id="modal-content">
+        <div id="searchBar">
+            <div class="search-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                </svg>
+            </div>
+            <input id="searchInput" role="combobox" autocomplete="off" spellcheck="false" aria-expanded="false" aria-controls="results-container" placeholder="Search…"/>
+            <div id="clear-search" class="close-icon interactive-icon" tabindex="0" role="button" title="Clear search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </div>
+        </div>
+        <div id="results-container">
+            <div id="results-info"><span id="zero_results"> No results</span>
+                <span id="one_results"> $NUMBER result</span>
+                <span id="many_results"> $NUMBER results</span><span id="two_results"> $NUMBER results</span>
+                <span id="few_results"> $NUMBER results</span>
+            </div>
+            <div id="results" role="listbox"></div>
+        </div>
+    </div>
+</div>
+</footer>
+
+</body>
+
+</html>
