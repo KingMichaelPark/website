@@ -15,9 +15,12 @@ I would like to share two that I think are quite nifty and useful!
 
 ## JJ Aliases
 
-But I wanted to share two based on my month's use of JJ. The one thing that I do quite often is checkout
-other people's branches (bookmarks sorry 😉) to help them out. So my usual flow would have been to
-run something like...
+I wanted to share two aliased that I have found useful that I found necessary
+to automate based on my month's use of JJ. The one thing that I do quite often
+is checkout other people's branches (bookmarks sorry 😉) to help them out or do
+code reviews.
+
+So my usual flow would have been to run something like...
 
 ```bash
 jj bookmark list --all

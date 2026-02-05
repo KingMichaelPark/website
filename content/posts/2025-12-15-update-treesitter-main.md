@@ -53,7 +53,6 @@ return {
             "jsdoc",
             "json",
             "json5",
-            "jsonc",
             "lua",
             "make",
             "markdown",
@@ -79,14 +78,22 @@ return {
             ts.install(parser)
         end
 
+        -- Not every tree-sitter parser is the same as the file type detected
+        -- So the patterns need to be registered more cleverly
+        local patterns = {}
+        for _, parser in ipairs(parsers) do
+            local parser_patterns = vim.treesitter.language.get_filetypes(parser)
+            for _, pp in pairs(parser_patterns) do
+                table.insert(patterns, pp)
+            end
+        end
+
         vim.treesitter.language.register("groovy", "Jenkinsfile")
         vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
         vim.wo[0][0].foldmethod = 'expr'
-        vim.api.nvim_command("set nofoldenable")
-
 
         vim.api.nvim_create_autocmd('FileType', {
-            pattern = parsers,
+            pattern = patterns,
             callback = function()
                 vim.treesitter.start()
             end,
@@ -96,6 +103,14 @@ return {
 
 ```
 
+> Update: 2026-02-05
+>
+> A friendly reader [Manuel De Toma](https://www.manueldetoma.it/) noticed that my
+> autocommand wasn't properly starting treesitter for filetypes that had different
+> vim filetypes to the tree-sitter parser name. This meant that it wasn't starting
+> for - example - tsx files because the filetype for tsx files is typescriptreact.
+> So I have added the `local patterns = ...` block to account for any mismatches
+> in parser -> pattern names. Thanks again!
 
 ## Treesitter Text-Objects
 
