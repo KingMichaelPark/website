@@ -30,7 +30,7 @@ which acts as a comprehensive dictionary of Nerd Font icons (VS Code codicons,
 Devicons, Font Awesome, etc.). By piping this into fzf-lua, I get a
 lightning-fast, searchable interface for thousands of symbols.
 
-I hooked a new picker into my [fzf.lua]() config under `<leader>fn` _(Find Nerd-font)_.
+I hooked a new picker into my `fzf.lua` config under `<leader>fn` _(Find Nerd-font)_.
 
 ```lua
 {
