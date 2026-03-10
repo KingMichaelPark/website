@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+
+
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <!-- Verifications -->
+    <link href="https://github.com/KingMichaelPark" rel="me">
+    <link href="https://mhpark.me" rel="me">
+    <link href="https://fosstodon.org/@mdawg" rel="me">
+    <link href="https://bsky.app/profile/mhpark.me" rel="me"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src &#x27;self&#x27; data:;img-src &#x27;self&#x27; https:&#x2F;&#x2F;* data:;media-src &#x27;self&#x27;;style-src &#x27;self&#x27;;frame-src player.vimeo.com https:&#x2F;&#x2F;www.youtube-nocookie.com;connect-src 'self';script-src 'self' 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://mhpark.me">
+
+    
+    <title>Mike's Blog • Finding Nerd Fonts in Neovim</title>
+
+    
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="Mike's Blog - Atom Feed" href="https://mhpark.me/atom.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://mhpark.me/custom_subset.css?h=9973c1bd7f7404b8d10e">
+        
+    
+
+    <link rel="stylesheet" href="https://mhpark.me/rach.css?h=3b7a2a01573cee5367b5">
+
+    
+        <link rel="stylesheet" href="https://mhpark.me/main.css?h=d6c71a392afd8a4f37e6" />
+        <link rel="stylesheet" href="https://mhpark.me/skins/sakura.css?h=b91b2d4d922eedbf6ad8" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="I have been writing quite a few presentations in presenterm
+and was repeatedly going over to the nerd font website to search for the icon that I wanted to pick
+copying it, then pasting it in neovim. Surely... there is a better way.
+…" />
+        <meta property="og:description" content="I have been writing quite a few presentations in presenterm
+and was repeatedly going over to the nerd font website to search for the icon that I wanted to pick
+copying it, then pasting it in neovim. Surely... there is a better way.
+…" />
+
+    
+
+    <meta property="og:title" content="Finding Nerd Fonts in Neovim" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;mhpark.me&#x2F;posts&#x2F;nerd-font-icon-picker-fzf-lua&#x2F;" /><meta property="og:site_name" content="Mike&#x27;s Blog">
+        <noscript><link rel="stylesheet" href="https://mhpark.me/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://mhpark.me/js/initializeTheme.min.js"></script>
+        <script defer src="https://mhpark.me/js/themeSwitcher.min.js"></script>
+        <script defer src="https://mhpark.me/js/searchElasticlunr.min.js?h=3626c0ef99daa745b31e"></script>
+
+        </head>
+
+
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://mhpark.me">Mike&#x27;s Blog</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/posts/">
+                                posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/tags/">
+                                tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/projects/">
+                                projects
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/about-me">
+                                about-me
+                                </a>
+                            </li>
+                        <div class="nav-navs" id="menu-icons-group">
+                        <li class="js">
+                            <div role="button" tabindex="0" id="search-button" class="search-icon interactive-icon" title="Click or press $SHORTCUT to open search" aria-label="Click or press $SHORTCUT to open search">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                                </svg>
+                            </div>
+                        </li>
+
+                        
+                        
+
+                        <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</div>
+                </ul>
+            </div>
+        
+    </nav>
+    <div class="banner">
+      <a id="rotator"
+        ><img src="https://mhpark.me/me.webp"
+        /></a
+      >
+    </div>
+</header>
+
+
+    <div class="content">
+
+        
+        
+
+
+
+
+<main>
+    <article>
+        <h1 class="article-title">
+            Finding Nerd Fonts in Neovim
+        </h1>
+
+        <ul class="meta">
+                <li>10th Mar 2026</li><li title="229 words"><span class='separator' aria-hidden='true'>•</span>2 min read</li>
+        </ul>
+
+        <section class="body"><p>I have been writing quite a few presentations in <a href="https://mfontanini.github.io/presenterm/">presenterm</a>
+and was repeatedly going over to the nerd font website to search for the icon that I wanted to pick
+copying it, then pasting it in neovim. Surely... there is a better way.</p>
+<span id="continue-reading"></span>
+<p>Searching through web-based cheat sheets annoyed me so much that I decided to
+bring the search directly into Neovim using <code>fzf-lua</code>. There was an existing <a href="https://github.com/2KAbhishek/nerdy.nvim">nerdy.nvim</a>
+that looks like it does the same thing. <em>(thanks for the python utility script to get the icon names)</em>, but it used
+<code>telescope</code> or <code>snacks.nvim</code> for the picker and I use <a href="https://github.com/ibhagwan/fzf-lua">fzf.lua</a>.</p>
+<p>The benefit is pretty simple:</p>
+<ul>
+<li>hit a keymap</li>
+<li>fuzzy-search for an icon by name</li>
+<li>and drop that bad boy straight into the buffer.</li>
+</ul>
+<p>To power this, I added a new utility module in my neovim
+<a href="https://github.com/KingMichaelPark/dotfiles/blob/main/nvim/.config/nvim/lua/utils/nerd_icons.lua">config</a>,
+which acts as a comprehensive dictionary of Nerd Font icons (VS Code codicons,
+Devicons, Font Awesome, etc.). By piping this into fzf-lua, I get a
+lightning-fast, searchable interface for thousands of symbols.</p>
+<p>I hooked a new picker into my <code>fzf.lua</code> config under <code>&lt;leader&gt;fn</code> <em>(Find Nerd-font)</em>.</p>
+<pre data-lang="lua" class="language-lua z-code"><code class="language-lua" data-lang="lua"><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua">    <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>&lt;leader&gt;fn<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua">    <span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-storage z-type z-function z-lua">function</span><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span>
+</span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua">        <span class="z-storage z-modifier z-lua">local</span> <span class="z-variable z-other z-lua">nerd_icons</span> <span class="z-keyword z-operator z-assignment z-lua">=</span> <span class="z-support z-function z-builtin z-lua">require</span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>utils.nerd_icons<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span>
+</span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua">        <span class="z-storage z-modifier z-lua">local</span> <span class="z-variable z-other z-lua">items</span> <span class="z-keyword z-operator z-assignment z-lua">=</span> <span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span><span class="z-punctuation z-section z-block z-end z-lua">}</span></span>
+</span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua">        <span class="z-keyword z-control z-loop z-lua">for</span> <span class="z-variable z-other z-lua">_</span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-variable z-other z-lua">item</span> <span class="z-keyword z-control z-loop z-lua">in</span> <span class="z-support z-function z-builtin z-lua">ipairs</span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-variable z-other z-lua">nerd_icons</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">list</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span> <span class="z-meta z-block z-lua"><span class="z-keyword z-control z-lua">do</span>
+</span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-block z-lua">            <span class="z-support z-constant z-builtin z-lua">table</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua"><span class="z-support z-function z-builtin z-lua">insert</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-variable z-other z-lua">items</span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-support z-constant z-builtin z-lua">string</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua"><span class="z-support z-function z-builtin z-lua">format</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>%s  %s<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-variable z-other z-lua">item</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">char</span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-variable z-other z-lua">item</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">name</span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span>
+</span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-block z-lua">        <span class="z-keyword z-control z-end z-lua">end</span></span>
+</span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua">        <span class="z-support z-function z-builtin z-lua">require</span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>fzf-lua<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">fzf_exec</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-variable z-other z-lua">items</span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span>
+</span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-lua">            </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">prompt</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>Icons&gt; <span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-lua">            </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">multiselect</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-constant z-language z-boolean z-true z-lua">true</span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-lua">            </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">winopts</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span>
+</span></span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-mapping z-lua">                </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">height</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-constant z-numeric z-float z-decimal z-lua">0<span class="z-punctuation z-separator z-decimal z-lua">.</span>33</span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-mapping z-lua">                </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">width</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-constant z-numeric z-float z-decimal z-lua">0<span class="z-punctuation z-separator z-decimal z-lua">.</span>33</span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-mapping z-lua">            <span class="z-punctuation z-section z-block z-end z-lua">}</span></span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-lua">            </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">actions</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span>
+</span></span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-mapping z-lua">                </span><span class="z-meta z-mapping z-key z-lua"><span class="z-meta z-brackets z-lua"><span class="z-punctuation z-section z-brackets z-begin z-lua">[</span><span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>default<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-brackets z-end z-lua">]</span></span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-storage z-type z-function z-lua">function</span><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-variable z-parameter z-function z-lua">selected</span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span>
+</span></span></span></span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua">                    <span class="z-storage z-modifier z-lua">local</span> <span class="z-variable z-other z-lua">icons</span> <span class="z-keyword z-operator z-assignment z-lua">=</span> <span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span><span class="z-punctuation z-section z-block z-end z-lua">}</span></span>
+</span></span></span></span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua">                    <span class="z-keyword z-control z-loop z-lua">for</span> <span class="z-variable z-other z-lua">_</span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-variable z-other z-lua">line</span> <span class="z-keyword z-control z-loop z-lua">in</span> <span class="z-support z-function z-builtin z-lua">ipairs</span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-variable z-other z-lua">selected</span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span> <span class="z-meta z-block z-lua"><span class="z-keyword z-control z-lua">do</span>
+</span></span></span></span></span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-block z-lua">                        <span class="z-storage z-modifier z-lua">local</span> <span class="z-variable z-other z-lua">icon</span> <span class="z-keyword z-operator z-assignment z-lua">=</span> <span class="z-variable z-other z-lua">vim</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">fn</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">split</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-variable z-other z-lua">line</span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>  <span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span><span class="z-meta z-brackets z-lua"><span class="z-punctuation z-section z-brackets z-begin z-lua">[</span><span class="z-constant z-numeric z-integer z-decimal z-lua">1</span><span class="z-punctuation z-section z-brackets z-end z-lua">]</span></span>
+</span></span></span></span></span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-block z-lua">                        <span class="z-support z-constant z-builtin z-lua">table</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua"><span class="z-support z-function z-builtin z-lua">insert</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-variable z-other z-lua">icons</span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-variable z-other z-lua">icon</span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span>
+</span></span></span></span></span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-block z-lua">                    <span class="z-keyword z-control z-end z-lua">end</span></span>
+</span></span></span></span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua">                    <span class="z-variable z-other z-lua">vim</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua">api</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua"><span class="z-variable z-function z-lua">nvim_put</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-begin z-lua">{</span> <span class="z-support z-constant z-builtin z-lua">table</span><span class="z-punctuation z-accessor z-lua">.</span><span class="z-meta z-property z-lua"><span class="z-support z-function z-builtin z-lua">concat</span></span><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-punctuation z-section z-group z-begin z-lua">(</span><span class="z-variable z-other z-lua">icons</span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span><span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span> <span class="z-punctuation z-section z-block z-end z-lua">}</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>c<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-constant z-language z-boolean z-true z-lua">true</span><span class="z-punctuation z-separator z-comma z-lua">,</span> <span class="z-constant z-language z-boolean z-true z-lua">true</span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span>
+</span></span></span></span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua">                <span class="z-keyword z-control z-end z-lua">end</span></span></span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-value z-lua"><span class="z-meta z-mapping z-lua">            <span class="z-punctuation z-section z-block z-end z-lua">}</span></span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span></span></span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua"><span class="z-meta z-function-call z-arguments z-lua"><span class="z-meta z-group z-lua"><span class="z-meta z-mapping z-lua">        <span class="z-punctuation z-section z-block z-end z-lua">}</span></span><span class="z-punctuation z-section z-group z-end z-lua">)</span></span></span>
+</span></span></span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-meta z-function z-lua"><span class="z-meta z-block z-lua">    <span class="z-keyword z-control z-end z-lua">end</span></span></span><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua">    </span><span class="z-meta z-mapping z-key z-lua"><span class="z-string z-unquoted z-key z-lua">desc</span></span><span class="z-meta z-mapping z-lua"> </span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-key-value z-lua">=</span></span><span class="z-meta z-mapping z-value z-lua"> <span class="z-string z-quoted z-double z-lua"><span class="z-punctuation z-definition z-string z-begin z-lua">&quot;</span>Find Nerd Font Icon<span class="z-punctuation z-definition z-string z-end z-lua">&quot;</span></span></span><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-separator z-field z-lua">,</span>
+</span></span><span class="z-source z-lua"><span class="z-meta z-mapping z-lua"><span class="z-punctuation z-section z-block z-end z-lua">}</span></span>,
+</span></code></pre>
+<p><em>and</em> <strong>bada-bing, bada-boom...</strong></p>
+
+
+<img src="https:&#x2F;&#x2F;mhpark.me&#x2F;processed_images&#x2F;nerd.fdc2728f359f5a34.jpg" />
+        </section>
+
+        
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        
+
+    </article>
+</main>
+
+
+<span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://mhpark.me/js/copyCodeToClipboard.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel=""  href="https://mhpark.me/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://mhpark.me/social_icons/rss.svg">
+                        </a>
+                    </li><li class="js"><a class="nav-links no-hover-padding social" href="#" data-encoded-email="d2VibWFzdGVyQG1ocGFyay5tZQ=="><img loading="lazy" alt="email" title="email" src="https://mhpark.me/social_icons/email.svg">
+                            </a>
+                        </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://bsky.app/profile/mhpark.me">
+                                    <img loading="lazy" alt="bluesky" title="bluesky" src="https://mhpark.me/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://github.com/KingMichaelPark/">
+                                    <img loading="lazy" alt="github" title="github" src="https://mhpark.me/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://news.ycombinator.com/user?id=Zizizizz">
+                                    <img loading="lazy" alt="hacker-news" title="hacker-news" src="https://mhpark.me/social_icons/hacker-news.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://fosstodon.org/@mdawg">
+                                    <img loading="lazy" alt="mastodon" title="mastodon" src="https://mhpark.me/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+
+                
+                Powered by
+                <a rel=""  href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel=""  href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    <script src="https://mhpark.me/js/decodeMail.min.js" async></script><div id="searchModal" class="search-modal js" role="dialog" aria-labelledby="modalTitle">
+    <h1 id="modalTitle" class="visually-hidden">Search</h1>
+    <div id="modal-content">
+        <div id="searchBar">
+            <div class="search-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                </svg>
+            </div>
+            <input id="searchInput" role="combobox" autocomplete="off" spellcheck="false" aria-expanded="false" aria-controls="results-container" placeholder="Search…"/>
+            <div id="clear-search" class="close-icon interactive-icon" tabindex="0" role="button" title="Clear search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </div>
+        </div>
+        <div id="results-container">
+            <div id="results-info"><span id="zero_results"> No results</span>
+                <span id="one_results"> $NUMBER result</span>
+                <span id="many_results"> $NUMBER results</span><span id="two_results"> $NUMBER results</span>
+                <span id="few_results"> $NUMBER results</span>
+            </div>
+            <div id="results" role="listbox"></div>
+        </div>
+    </div>
+</div>
+</footer>
+
+</body>
+
+</html>

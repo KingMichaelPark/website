@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+
+
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <!-- Verifications -->
+    <link href="https://github.com/KingMichaelPark" rel="me">
+    <link href="https://mhpark.me" rel="me">
+    <link href="https://fosstodon.org/@mdawg" rel="me">
+    <link href="https://bsky.app/profile/mhpark.me" rel="me"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src &#x27;self&#x27; data:;img-src &#x27;self&#x27; https:&#x2F;&#x2F;* data:;media-src &#x27;self&#x27;;style-src &#x27;self&#x27;;frame-src player.vimeo.com https:&#x2F;&#x2F;www.youtube-nocookie.com;connect-src 'self';script-src 'self' 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://mhpark.me">
+
+    
+    <title>Mike's Blog • 2023 - A Tech Year in Review</title>
+
+    
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="Mike's Blog - Atom Feed" href="https://mhpark.me/atom.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://mhpark.me/custom_subset.css?h=9973c1bd7f7404b8d10e">
+        
+    
+
+    <link rel="stylesheet" href="https://mhpark.me/rach.css?h=3b7a2a01573cee5367b5">
+
+    
+        <link rel="stylesheet" href="https://mhpark.me/main.css?h=d6c71a392afd8a4f37e6" />
+        <link rel="stylesheet" href="https://mhpark.me/skins/sakura.css?h=b91b2d4d922eedbf6ad8" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="2023 gave me the ability to experience a lot of different
+tools, languages, and technologies, many did not make the
+cut long-term but I would like to put together a list of
+the core tooling that I use day to day with an example or two
+along the way.
+…" />
+        <meta property="og:description" content="2023 gave me the ability to experience a lot of different
+tools, languages, and technologies, many did not make the
+cut long-term but I would like to put together a list of
+the core tooling that I use day to day with an example or two
+along the way.
+…" />
+
+    
+
+    <meta property="og:title" content="2023 - A Tech Year in Review" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;mhpark.me&#x2F;posts&#x2F;2023-tools-in-review-md&#x2F;" /><meta property="og:site_name" content="Mike&#x27;s Blog">
+        <noscript><link rel="stylesheet" href="https://mhpark.me/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://mhpark.me/js/initializeTheme.min.js"></script>
+        <script defer src="https://mhpark.me/js/themeSwitcher.min.js"></script>
+        <script defer src="https://mhpark.me/js/searchElasticlunr.min.js?h=3626c0ef99daa745b31e"></script>
+
+        </head>
+
+
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://mhpark.me">Mike&#x27;s Blog</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/posts/">
+                                posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/tags/">
+                                tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/projects/">
+                                projects
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/about-me">
+                                about-me
+                                </a>
+                            </li>
+                        <div class="nav-navs" id="menu-icons-group">
+                        <li class="js">
+                            <div role="button" tabindex="0" id="search-button" class="search-icon interactive-icon" title="Click or press $SHORTCUT to open search" aria-label="Click or press $SHORTCUT to open search">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                                </svg>
+                            </div>
+                        </li>
+
+                        
+                        
+
+                        <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</div>
+                </ul>
+            </div>
+        
+    </nav>
+    <div class="banner">
+      <a id="rotator"
+        ><img src="https://mhpark.me/me.webp"
+        /></a
+      >
+    </div>
+</header>
+
+
+    <div class="content">
+
+        
+        
+
+
+
+
+<main>
+    <article>
+        <h1 class="article-title">
+            2023 - A Tech Year in Review
+        </h1>
+
+        <ul class="meta">
+                <li>10th Dec 2023</li><li title="1550 words"><span class='separator' aria-hidden='true'>•</span>8 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a href="https://mhpark.me/tags/2023/">2023</a></li>
+        </ul>
+
+        <section class="body"><p>2023 gave me the ability to experience a lot of different
+tools, languages, and technologies, many did not make the
+cut long-term but I would like to put together a list of
+the core tooling that I use day to day with an example or two
+along the way.</p>
+<span id="continue-reading"></span><h2 id="cli">CLI</h2>
+<p>This section involves tools that I use on the CLI on any given day. Mostly
+everything that I talk about will be available with my settings/install
+instructions in my <a href="https://github.com/KingMichaelPark/dotfiles">dotfiles</a>.</p>
+<p>This will also apply to the neovim section as well.</p>
+<h3 id="shell">Shell</h3>
+<p>This sections is strictly about tools that I am calling from zsh. Mostly
+everything discussed here will be available for bash and whatever other
+shell you use.</p>
+<h4 id="age-sops">Age &amp; SOPS</h4>
+<p>One of the best revelations for me this year has been that I am able to
+finally get rid of GPG by replacing it with SSH and with Age. For the
+SSH level signing please read this <a href="../2023-10-05-ssh-signing-and-auth-with-git.md">post</a>.</p>
+<p>Age is a fast and cryptographically secure encryption library that can
+be used as a replacement for asymmetric encryption of secrets and files.
+It follows a similar pattern to GPG but the commands are fewer, defaults
+are secure, and the subcommands make sense. This example below is taken
+from the project's <a href="https://github.com/FiloSottile/age">README</a>.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">$</span></span><span class="z-meta z-function-call z-arguments z-shell"> age-keygen<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>o</span> key.txt</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Public</span></span><span class="z-meta z-function-call z-arguments z-shell"> key: age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac8p</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">$</span></span><span class="z-meta z-function-call z-arguments z-shell"> tar cvz <span class="z-meta z-group z-expansion z-tilde"><span class="z-variable z-language z-tilde z-shell">~</span></span>/data</span> <span class="z-keyword z-operator z-logical z-pipe z-shell">|</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">age</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>r</span> age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac8p <span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span> data.tar.gz.age</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">$</span></span><span class="z-meta z-function-call z-arguments z-shell"> age<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>decrypt</span><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>i</span> key.txt data.tar.gz.age <span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span> data.tar.gz</span>
+</span></code></pre>
+<p>You'll see a private key on the homepage of this site that you can use to send
+secrets (I can't think what you'd possibly send). But the principal is the same
+in that you simply can share your public key and people can encrypt files to
+you, or... you can store secrets to yourself in your dotfiles - like I have for
+saving my OpenAI api token - and simply decrypt it when using it Neovim with
+<a href="https://github.com/jackMort/ChatGPT.nvim">chatgpt.nvim</a> by decrypting it by
+using my plugin (age.nvim)</p>
+<p>The best part however, is to get everyone on your team to generate one
+and use for with <a href="https://github.com/getsops/sops">SOPS</a> to manage
+project secrets. You can use this in conjunction with cloud keys like
+Vault, KMS, etc... so your dev, staging and prod environments can be
+managed strictly with the KMS key to encrypt and decrypt, while your
+local environment (or even dev) has secrets easily available to the team.
+Just set up another age key pair for GitHub in it's secrets section and
+add it as a recipient to your env files. --add-age &lt;GITHUB-Age-Identity.txt&gt;
+so all your Actions can decrypt whatever you need too. I've used
+this successfully across projects.</p>
+<h4 id="the-old-boys">The Old Boys</h4>
+<p>This section is a list of tools I have been using for years and
+have no plans on stopping. I use these every day.</p>
+<ul>
+<li><a href="https://github.com/sharkdp/bat">Bat</a> - Cat replacement with syntax
+highlighting written in 🦀</li>
+<li><a href="https://eza.rocks/">Eza</a> - A modern, maintained replacement for ls</li>
+<li><a href="https://github.com/sharkdp/fd">Fd</a> - A rust find replacement with a simpler
+syntax</li>
+<li><a href="https://github.com/junegunn/fzf">Fzf</a> - Command line fuzzy finder. It also
+let's you fuzzy find files <code>&lt;ctrl+t&gt;</code>, change directories <code>&lt;Alt+c&gt;</code>, and most
+useful, searching your command history interactively for that one git command
+you can't remember <code>&lt;ctrl+r&gt;</code>.</li>
+<li><a href="https://starship.rs">Starship</a> - Useful shell theme for tooling and
+environment settings</li>
+<li><a href="https://github.com/jesseduffield/lazydocker">LazyGit</a> - Git some superpowers
+🐐</li>
+<li><a href="https://github.com/BurntSushi/ripgrep">Ripgrep</a> - 🦀 grep replacement.</li>
+<li><a href="https://github.com/ajeetdsouza/zoxide">Zoxide</a> - Super fast cd with a
+memory. Instead of typing <code>cd dir1/client1/project1/submodule1</code> after you've
+done it once, you can then just type <code>z d1c1s1</code> and it will take you there.</li>
+</ul>
+<h4 id="mise">Mise</h4>
+<p><a href="https://github.com/jdx/mise">Mise</a> is an asdf replacement written in, you
+guessed it 🦀 that allows you to install and manage multiple versions of your
+project. Let's say a repo needs <code>python</code> 3.12, <code>terraform</code> 1.6, and <code>go</code> 1.21
+and you need to make sure that your aws cli runs in <code>eu-west-2</code> it might be
+daunting getting all those tools, making sure you're using that tool in this
+project and don't break other projects using different versions of the same
+languages. It's as simple as...</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">mise</span></span><span class="z-meta z-function-call z-arguments z-shell"> p install python terraform go</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">mise</span></span><span class="z-meta z-function-call z-arguments z-shell"> install python@3.12 terraform@1.6 go@1.21</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">mise</span></span><span class="z-meta z-function-call z-arguments z-shell"> use python@3.12 terraform@1.6 go@1.21</span>
+</span></code></pre>
+<p>This will make a file in your project called <code>.mise.toml</code></p>
+<p>Open that up and you'll see...</p>
+<pre data-lang="toml" class="language-toml z-code"><code class="language-toml" data-lang="toml"><span class="z-source z-toml"><span class="z-punctuation z-definition z-table z-begin z-toml">[</span><span class="z-meta z-tag z-table z-toml"><span class="z-entity z-name z-table z-toml">tools</span></span><span class="z-punctuation z-definition z-table z-end z-toml">]</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">python</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>3.12<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">terraform</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>1.6<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">go</span></span> <span class="z-punctuation z-definition z-key-value z-toml">=</span> <span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>1.21<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span>
+</span><span class="z-source z-toml">
+</span><span class="z-source z-toml"><span class="z-comment z-line z-number-sign z-toml"><span class="z-punctuation z-definition z-comment z-toml">#</span># Let&#39;s make sure we are deploying in the same region and profile</span>
+</span><span class="z-source z-toml"><span class="z-punctuation z-definition z-table z-begin z-toml">[</span><span class="z-meta z-tag z-table z-toml"><span class="z-entity z-name z-table z-toml">env</span></span><span class="z-punctuation z-definition z-table z-end z-toml">]</span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">AWS_PROFILE</span></span><span class="z-punctuation z-definition z-key-value z-toml">=</span><span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>profile_name<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span>
+</span><span class="z-source z-toml"><span class="z-meta z-tag z-key z-toml"><span class="z-entity z-name z-tag z-toml">AWS_REGION</span></span><span class="z-punctuation z-definition z-key-value z-toml">=</span><span class="z-string z-quoted z-double z-basic z-toml"><span class="z-punctuation z-definition z-string z-begin z-toml">&quot;</span>eu-west-2<span class="z-punctuation z-definition z-string z-end z-toml">&quot;</span></span>
+</span></code></pre>
+<p>Save and close, and run <code>mise trust</code>. And now you will see that those
+two environment variables have been set and your tools will be the versions
+that you have specified in this file.</p>
+<h3 id="neovim">Neovim</h3>
+<p>For people who use neovim, this section might be of interest to you but if not
+feel free to skip ahead. Here is a list of plugins that I use. These are all
+on GitHub so just search for them. I will add a tiny note over ones that are
+slightly more niche.</p>
+<pre class="z-code"><code><span class="z-text z-plain">○ ChatGPT.nvim
+</span><span class="z-text z-plain">○ LuaSnip
+</span><span class="z-text z-plain">○ age.nvim
+</span><span class="z-text z-plain">○ cmp-buffer
+</span><span class="z-text z-plain">○ cmp-cmdline
+</span><span class="z-text z-plain">○ cmp-nvim-lsp
+</span><span class="z-text z-plain">○ cmp-path
+</span><span class="z-text z-plain">○ cmp_luasnip
+</span><span class="z-text z-plain">○ conform.nvim
+</span><span class="z-text z-plain">○ diffview.nvim
+</span><span class="z-text z-plain">○ friendly-snippets
+</span><span class="z-text z-plain">○ gitsigns.nvim
+</span><span class="z-text z-plain">○ harpoon
+</span><span class="z-text z-plain">○ leap.nvim
+</span><span class="z-text z-plain">○ mason-lspconfig.nvim
+</span><span class="z-text z-plain">○ mason.nvim
+</span><span class="z-text z-plain">○ mini.trailspace
+</span><span class="z-text z-plain">○ nui.nvim
+</span><span class="z-text z-plain">○ nvim-cmp
+</span><span class="z-text z-plain">○ nvim-dap
+</span><span class="z-text z-plain">○ nvim-dap-python
+</span><span class="z-text z-plain">○ nvim-dap-ui
+</span><span class="z-text z-plain">○ nvim-dap-virtual-text
+</span><span class="z-text z-plain">○ nvim-lspconfig
+</span><span class="z-text z-plain">○ nvim-nio
+</span><span class="z-text z-plain">○ nvim-spectre
+</span><span class="z-text z-plain">○ nvim-treesitter
+</span><span class="z-text z-plain">○ nvim-treesitter-context
+</span><span class="z-text z-plain">○ nvim-treesitter-refactor
+</span><span class="z-text z-plain">○ nvim-treesitter-textobjects
+</span><span class="z-text z-plain">○ oil.nvim
+</span><span class="z-text z-plain">○ telescope-fzf-native.nvim
+</span><span class="z-text z-plain">○ telescope-ui-select.nvim
+</span><span class="z-text z-plain">○ telescope.nvim
+</span><span class="z-text z-plain">○ todo-comments.nvim
+</span><span class="z-text z-plain">○ undotree
+</span><span class="z-text z-plain">○ vim-dadbod
+</span><span class="z-text z-plain">○ vim-dadbod-completion
+</span><span class="z-text z-plain">○ vim-dadbod-ui
+</span><span class="z-text z-plain">● alpha-nvim
+</span><span class="z-text z-plain">● catppuccin
+</span><span class="z-text z-plain">● lazy.nvim
+</span><span class="z-text z-plain">● lualine.nvim
+</span><span class="z-text z-plain">● nvim-lint
+</span><span class="z-text z-plain">● nvim-surround
+</span><span class="z-text z-plain">● nvim-web-devicons
+</span><span class="z-text z-plain">● plenary.nvim
+</span><span class="z-text z-plain">● toggleterm.nvim
+</span><span class="z-text z-plain">● ts-comments.nvim
+</span><span class="z-text z-plain">● which-key.nvim
+</span></code></pre>
+<h2 id="colour-themes">Colour Themes</h2>
+<p>Very quickly on colour themes. I have tried many colour schemes over the
+years, if you can name it, I have probably tried it. I have settled on
+<a href="https://github.com/catppuccin">catppuccin</a> due to its availability across
+many tools and software. I will list my top 5 so if you hate it, you can
+look at some others instead.</p>
+<ol>
+<li>Catppuccin</li>
+<li>Gruvbox</li>
+<li>Rose Pine</li>
+<li>Tokyo Night</li>
+<li>Everforest</li>
+</ol>
+<h2 id="programming">Programming</h2>
+<h3 id="frameworks">Frameworks</h3>
+<h4 id="python">Python</h4>
+<p>FastAPI - with the inclusion of pydantic 2.0 has been really great to build
+API's in. I don't particularly like JS/TS frameworks so using <code>FastAPI</code> + Jinja
+to template out API first websites with automatically generated redoc and
+<code>openapi.json</code>. Here come the haters to say that I am ten years behind the time
+and you need interactivity and fancy animations. Guess what? Animations just
+use some css or animated svgs. And for just updating parts of a page there is a
+simpler way... <a href="https://htmx.org/">htmx</a>. All the interactivity you need
+without needing to manage two projects. Use your templates and stick some htmx
+attributes on your html and you can update those live status icons without
+needing to write any javascript.</p>
+<p>I'd like to try the same pattern with Go or Rust as the backend and <code>htmx</code> and
+<code>html</code> with the front-end. I am a simple man who likes simple tools and simple
+maintainable solutions. JS and TS frameworks have their place, but that's not my
+area of work.</p>
+<h4 id="elixir">Elixir</h4>
+<p>This philosophy extends even further than the <code>htmx</code> reactivity when it comes
+to resiliance and efficiency of data being transferred over websockets with the
+minimal payload required with the beauty that is <a href="https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html">Phoenix
+Liveview</a>. I am
+anxiously awaiting a long running project that will allow me to take my
+learnings from private testing to full blown projects. Changes of objects are
+passed simply over the websocket with the minimal amount of info required to
+update. So while <code>htmx</code> or a JS request needs to send your API token, header,
+cookies and minimal data response, with Phoenix, if we change a row in a 50
+column 100 row table from yes -&gt; no the resulting network traffic looks similar
+to.</p>
+<pre data-lang="json" class="language-json z-code"><code class="language-json" data-lang="json"><span class="z-source z-json"><span class="z-meta z-mapping z-json"><span class="z-punctuation z-section z-mapping z-begin z-json">{</span><span class="z-invalid z-illegal z-expected-mapping-key z-json">1</span><span class="z-punctuation z-separator z-mapping z-key-value z-json">:</span> </span><span class="z-meta z-mapping z-value z-json"><span class="z-string z-quoted z-double z-json"><span class="z-punctuation z-definition z-string z-begin z-json">&quot;</span>no<span class="z-punctuation z-definition z-string z-end z-json">&quot;</span></span><span class="z-punctuation z-section z-mapping z-end z-json">}</span></span>
+</span></code></pre>
+<p>Which is... 11 whole bytes!</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-support z-function z-echo z-shell">echo</span></span><span class="z-meta z-function-call z-arguments z-shell"> <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>{1: &quot;no&quot;} <span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span></span> <span class="z-keyword z-operator z-logical z-pipe z-shell">|</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">wc</span></span>
+</span><span class="z-source z-shell z-bash">    <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">1</span></span><span class="z-meta z-function-call z-arguments z-shell">       2      11</span>
+</span></code></pre>
+<p>Oh yeah...and <code>tailwind.css</code> comes pre-bundled so you can even avoid the css if you want 😉.</p>
+<iframe
+    width="560"
+    height="315"
+    src="https://www.youtube-nocookie.com/embed/x1rx4-AAcMQ?si=GYJzlGGAo-H282DB"
+    title="Phoenix Liveview Demo"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+<h3 id="packages-tools">Packages/Tools</h3>
+<h4 id="duckdb">DuckDB</h4>
+<p><a href="https://duckdb.org/">DuckDB</a> is a really great tool that has replaced my need
+to use <code>jq</code> for cutting down big json files and has let me also search and
+filter csvs from the command line with nearly no issues. Not only is it a
+performant local database, but it can also read, query and write json, csv and
+parquet files.</p>
+<p>Here are some examples:</p>
+<p>Reading <code>csv</code> from the command line:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">❯</span></span><span class="z-meta z-function-call z-arguments z-shell"> titanic=<span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span>
+</span><span class="z-source z-shell z-bash"> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">❯</span></span><span class="z-meta z-function-call z-arguments z-shell"> duckdb<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>c</span> <span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>select Pclass, Survived, PassengerId  from read_csv_auto(&#39;<span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">titanic</span></span>&#39;) where Fare &lt;= 15 limit 10<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">┌────────┬──────────┬─────────────┐</span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell"> Pclass │ Survived │ PassengerId │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell"> int64  │  int64   │    int64    │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">├────────┼──────────┼─────────────┤</span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">      3 │        0 │           1 │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">      3 │        1 │           3 │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">      3 │        0 │           5 │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">      3 │        0 │           6 │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">      3 │        1 │           9 │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">      3 │        0 │          13 │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">      3 │        0 │          15 │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">      2 │        1 │          18 │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">      3 │        1 │          20 │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">      2 │        1 │          22 │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">├────────┴──────────┴─────────────┤</span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell"> 10 rows               3 columns │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">└─────────────────────────────────┘</span></span>
+</span></code></pre>
+<p>From <code>json</code>:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">❯</span></span><span class="z-meta z-function-call z-arguments z-shell"> iris=<span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>https://raw.githubusercontent.com/domoritz/maps/master/data/iris.json<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">❯</span></span><span class="z-meta z-function-call z-arguments z-shell"> duckdb<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>c</span> <span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>from read_json_auto(&#39;<span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">iris</span></span>&#39;) where sepalWidth &lt;= 3 limit 10<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">┌─────────────┬────────────┬─────────────┬────────────┬────────────┐</span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell"> sepalLength │ sepalWidth │ petalLength │ petalWidth │  species   │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">   double    │   double   │   double    │   double   │  varchar   │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">├─────────────┼────────────┼─────────────┼────────────┼────────────┤</span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">         4.9 │        3.0 │         1.4 │        0.2 │ setosa     │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">         4.4 │        2.9 │         1.4 │        0.2 │ setosa     │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">         4.8 │        3.0 │         1.4 │        0.1 │ setosa     │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">         4.3 │        3.0 │         1.1 │        0.1 │ setosa     │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">         5.0 │        3.0 │         1.6 │        0.2 │ setosa     │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">         4.4 │        3.0 │         1.3 │        0.2 │ setosa     │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">         4.5 │        2.3 │         1.3 │        0.3 │ setosa     │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">         4.8 │        3.0 │         1.4 │        0.3 │ setosa     │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">         5.5 │        2.3 │         4.0 │        1.3 │ versicolor │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell">         6.5 │        2.8 │         4.6 │        1.5 │ versicolor │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">├─────────────┴────────────┴─────────────┴────────────┴────────────┤</span></span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">│</span></span><span class="z-meta z-function-call z-arguments z-shell"> 10 rows                                                5 columns │</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">└──────────────────────────────────────────────────────────────────┘</span></span>
+</span></code></pre>
+<h4 id="formatters">Formatters</h4>
+<ul>
+<li>Python -&gt; <a href="https://github.com/astral-sh/ruff">Ruff</a></li>
+<li>JSON, JS, TS -&gt; <a href="https://biomejs.dev/">Biome</a></li>
+<li>SQL -&gt; <a href="https://sqlfluff.com/">SQLFluff</a></li>
+</ul>
+<p>Other languages tend to have built-in formatters or I don't
+use those languages so sorry. The main point is... in python land
+I no longer need Flake8, Black or iSort. And in JS land, biome
+has replaced prettier and <code>eslint</code> for me.</p>
+<h2 id="grab-bag">Grab Bag</h2>
+<p>This is just a grab bag of favourites I want to use as a point of
+reflection on where my life was at the moment. Some of these things
+are old, they are just things that I hadn't experienced until this year
+and would recommend them.</p>
+<h3 id="some-favourites-of-the-year">Some Favourites of the Year</h3>
+<h4 id="movies">Movies</h4>
+<ul>
+<li>The Act of Killing</li>
+<li>Dark Waters</li>
+<li>The VVitch</li>
+</ul>
+<h4 id="tv">TV</h4>
+<ul>
+<li>Band of Brothers</li>
+<li>Jujustu Kaisen</li>
+<li>Succession</li>
+</ul>
+<h4 id="books">Books</h4>
+<ul>
+<li>The Road - Cormac McCarthy</li>
+<li>The Meditations - Marcus Aurelius</li>
+<li>The Ministry for Future - Kim Stanley Robinson</li>
+</ul>
+<h4 id="video-games">Video Games</h4>
+<ul>
+<li>The Outer Wilds - Echoes of the Eye</li>
+<li>Metroid Dread</li>
+<li>The Legend of Zelda - Tears of the Kingdom</li>
+</ul>
+
+        </section>
+
+        
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        
+
+    </article>
+</main>
+
+
+<span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://mhpark.me/js/copyCodeToClipboard.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel=""  href="https://mhpark.me/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://mhpark.me/social_icons/rss.svg">
+                        </a>
+                    </li><li class="js"><a class="nav-links no-hover-padding social" href="#" data-encoded-email="d2VibWFzdGVyQG1ocGFyay5tZQ=="><img loading="lazy" alt="email" title="email" src="https://mhpark.me/social_icons/email.svg">
+                            </a>
+                        </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://bsky.app/profile/mhpark.me">
+                                    <img loading="lazy" alt="bluesky" title="bluesky" src="https://mhpark.me/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://github.com/KingMichaelPark/">
+                                    <img loading="lazy" alt="github" title="github" src="https://mhpark.me/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://news.ycombinator.com/user?id=Zizizizz">
+                                    <img loading="lazy" alt="hacker-news" title="hacker-news" src="https://mhpark.me/social_icons/hacker-news.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://fosstodon.org/@mdawg">
+                                    <img loading="lazy" alt="mastodon" title="mastodon" src="https://mhpark.me/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+
+                
+                Powered by
+                <a rel=""  href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel=""  href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    <script src="https://mhpark.me/js/decodeMail.min.js" async></script><div id="searchModal" class="search-modal js" role="dialog" aria-labelledby="modalTitle">
+    <h1 id="modalTitle" class="visually-hidden">Search</h1>
+    <div id="modal-content">
+        <div id="searchBar">
+            <div class="search-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                </svg>
+            </div>
+            <input id="searchInput" role="combobox" autocomplete="off" spellcheck="false" aria-expanded="false" aria-controls="results-container" placeholder="Search…"/>
+            <div id="clear-search" class="close-icon interactive-icon" tabindex="0" role="button" title="Clear search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </div>
+        </div>
+        <div id="results-container">
+            <div id="results-info"><span id="zero_results"> No results</span>
+                <span id="one_results"> $NUMBER result</span>
+                <span id="many_results"> $NUMBER results</span><span id="two_results"> $NUMBER results</span>
+                <span id="few_results"> $NUMBER results</span>
+            </div>
+            <div id="results" role="listbox"></div>
+        </div>
+    </div>
+</div>
+</footer>
+
+</body>
+
+</html>

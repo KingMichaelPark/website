@@ -1,0 +1,26 @@
+@font-face {
+	font-family: 'Iosevka SS08 Web';
+	font-display: swap;
+	font-weight: 400;
+	font-stretch: normal;
+	font-style: normal;
+	src: url('WOFF2/IosevkaSS08-Regular.woff2') format('woff2'), url('TTF/IosevkaSS08-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Iosevka Aile Web';
+	font-display: swap;
+	font-weight: 400;
+	font-stretch: normal;
+	font-style: normal;
+	src: url('WOFF2/IosevkaAile-Regular.woff2') format('woff2'), url('TTF/IosevkaAile-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Iosevka Etoile Web';
+	font-display: swap;
+	font-weight: 400;
+	font-stretch: normal;
+	font-style: normal;
+	src: url('WOFF2/IosevkaEtoile-Regular.woff2') format('woff2'), url('TTF/IosevkaEtoile-Regular.ttf') format('truetype');
+}
