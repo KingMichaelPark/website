@@ -66,4 +66,4 @@ I hooked a new picker into my `fzf.lua` config under `<leader>fn` _(Find Nerd-fo
 
 _and_ **bada-bing, bada-boom...**
 
-![nerd](nerd.webp)
+{{ resize_image(path="images/nerd.webp", width=380, height=0, op="fit_width") }}
