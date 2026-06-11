@@ -15,8 +15,10 @@ taxonomies = [
 ]
 
 [markdown]
-highlight_code = true
-highlight_theme = "css"
+
+[markdown.highlighting]
+theme = "github-dark"
+style = "class"
 
 [extra]
 email = "webmaster@mhpark.me"
