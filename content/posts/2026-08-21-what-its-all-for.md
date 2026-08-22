@@ -1,0 +1,311 @@
++++
+title = "The Value of Depleting Time"
+date = 2026-08-21
+
+[taxonomies]
+tags = ["life", "ai", "business"]
+categories = ["life", "ai", "business"]
++++
+
+I have many conflicting thoughts that I - as a data engineer, a consultant, a
+member of society, a friend to some, and husband to one - am going to try to
+articulate throughout the course of this post. I will do my best to organise my
+thoughts throughout this piece in way that at least helps me formalise how I am
+currently feeling about my long-term future in work due to the present
+experiences I have lived over the last two years as AI...
+
+<!-- more -->
+
+## Not that word!
+
+Let's get one thing out of the way. I can hear you all thinking. Surely he
+doesn't mean LLMs mean AI, they're not intelligent! We probably agree that they
+aren't. We could also probably have discussions about whether we as humans are
+doing similar things that models are, just with hundreds of millions of years
+of evolution behind us. Intelligent or not it's a term that's universally
+understood to be a catch all for this new swath of technologies grounded in
+incredibly impressive statistical models that are able to emulate human behavior
+in ways that is in many ways shocking, upsetting, and impressive all at the
+same time.
+
+I, like you, may take issue with the fact that many of our collective efforts
+saw no compensation in respect to the creation of these model's training sets.
+Books, articles, songs, art, it's endless and I recognise all of that. It's
+upsetting, but it has happened. That is not the point of this post. For the sake
+of brevity for the rest of the post, AI means the above.
+
+## Who is this guy?
+
+My background is in 10 years of programming and data engineering after two
+business degrees in finance and international business. My understanding of
+large language models from a theoretical perspective is limited, but I have
+extensive use in using them across a variety of use cases and have been
+following the progressions of such for years, as it is incredibly important to
+stay on top of because of my job. I am fortunately in a position of influence
+where I feel a duty to not only work out for myself how my industry is
+evolving, but for others I work with and sometimes lead or influence.
+Therefore, I feel like I have at least enough experience and responsibility to
+talk about it at a high level.
+
+Just in the same way I rely on doctors to give me the best treatment and I
+trust their judgment and inferences. I think it's not controversial to draw
+conclusions from experts in the industry of what these technologies -- when
+boiled down to their purest
+[form](https://karpathy.github.io/2026/02/12/microgpt/) -- are.
+
+Finally, I'm not going to guard all of my positions with the opposing view or
+say things like, _"I, like many of you may, feel"_ all of the time to make it
+sound like I'm special. I hope you hear in the sincerity of my tone, that I
+recognize that I am not a distinct case, my experience or importance is nothing
+greater than what you should feel about yourself. We've all worked very hard to
+get to where we are in life, and I'm going to be talking about it from my
+perspective. I don't want to invalidate the effort and feelings that you
+have put in. It just takes a lot of time and effort to guard every sentence in
+that way and it's not very fun to read.
+
+{{ resize_image(path="get-on-with-it.gif", op="fit_width") }}
+
+Okay.
+
+## Am I Special?
+
+For much of my career and earlier life, I felt that there was a direct
+correlation between the effort, performance, and outcomes that I put into
+things helped separate me from somebody who had done something less
+efficiently, beautifully, or valuably. They were distinguishing factors about
+my work and my colleagues' work that helped provide certain pieces of value
+that at least helped my firm stay competitive, win work, and differentiate us
+from other consultancies' approaches or technical abilities.
+
+It felt like I was on a great basketball team with a great group of guys that
+allowed for us to make it to the top of the league. Whereas now, it feels like
+the time and effort it took to develop that team was for waste; as you can
+simply enter your `A+B+A+B+L+R+L+R` cheat code to get all your players topped
+out on the technical skills that you need to be competitive. Whilst at the same
+time, every other team in the league found the same cheat code and now we have
+the '92 dream team playing against itself... on repeat... for what looks like
+the foreseeable future.
+
+In some ways, it's nice to think that I wouldn't need to go to the gym,
+practice dribbling or taking charges for years to get to the point where I am
+now. It's hard work that requires determination, sweat and sometimes blood. To
+be able to just go into that chamber and come out as Captain America or Goku is
+a tantalizing prospect until you realize that every other person can do the
+same thing.
+
+Where do I compete now? I must compete on the softer side of business where
+relationships are forged, conversations are had, and decisions are made.
+Luckily I've had a tremendous amount of luck in meeting incredible people over
+the course of my career and that makes the prospect of doing this as a
+differentiator on existing projects or clients not so bad. Being flexible,
+friendly, and helpful are all things that I love to do anyways for people I
+work with because it helps to make their days a bit better. It's valuable to
+the teams or projects I work in, helps in driving motivation and perseverence
+to the goals we set for ourselves.
+
+But how am I able to articulate that value when they're mostly hiring me for
+something else deemed to be, and almostl certainly is, much more technically
+complex, requiring years of experience and education? Working independently, it
+would be easier to make that case, but as part of a larger business where I
+find myself (_and where many even larger consultancies find themselves_) is
+that it's more challenging to use individual personas or people as the main USP
+to win multi-million £ contracts. That factors in sometimes but mostly we are
+going to be hired for our technical skill. But in the current landscape I worry
+that our differentiators are something that we can't bake into the presentation
+or bid as easily, because it's now much easier for the stragglers to look like
+the leaders.
+
+When everyone has the dream team at their disposal, none of the technical skill
+matters nearly as much.
+
+To some people, that may not matter much because they may derive value from
+seeing something delivered and take no pleasure in the process of actually
+building it. They may find the softer side, the decision-making, the most
+satisfying part of the job. I know I quite like that part of the job, but I
+would be lying if I didn't feel nostalgic for being able to be able to sit down
+for a few days and be able to fully justify spending the time to tinker and
+    play with different solutions.
+
+To learn, to grow, to feel full with the knowledge that I've gleaned over the
+course of the day. This point may be my own limitation. If I had a task that
+would take three hours in the past, I would feel satisfied. If I managed to do
+it in 30 minutes now with the help of AI, I will find more work to fill that
+two and a half hours.
+
+Some will say, "Oh, well, why don't you take that earned time of productivity
+back for to yourself". It's that it doesn't feel earned to me. It feels empty.
+I don't learn as easily when I don't do it myself. It's easier to review
+something and play with something that's been given to you than it is to write
+it from scratch. I want to feel satisfied.
+
+Some of that is a bit over the top, I recognize. Being able to utilize these
+models has helped me learn by being able to have conversations in a way that
+makes sense to me; to explain concepts that a textbook may not be hitting just
+quite right for me. Equally, I still feel immense satisfaction when I see the
+faces of others after I've helped them realise something that they've been trying
+to do for a long time, receive good feedback for my work, or help make
+someone's day a bit better by helping. I'm just calling out how it can feel
+sometimes because it's important for me to see it written down that it's okay
+to take a break.
+
+Perhaps I need to work more learning into my schedule. I feel strongly about using AI
+to only generate things that I can fully understand and could have written. It helps
+me mentally anchor the output to something that I have made. If it is not, it becomes
+a magical black box that _just works_ and that is both deeply unsatisfying and irresponsible.
+It's still me who is responsible for the product, outcomes and design. When things break,
+pulling the slot machine to fix it can make things worse, drifting ever further from
+the answer. And that is why the learning is so crucial. Whilst I can offload certain
+tasks to AI, I should be using that time to continue my understanding in other areas
+that are new to me, so that my responsible use of AI can expand and expand to more
+and more things that I understand.
+
+## What's It All For?
+
+The most interesting side effect to me when working across a multitude of
+problems at once, is that my desire of learning something for the sake of
+learning something has undoubtedly been diminished. I had a great time reading
+a book about learning Elixir and the Phoenix framework and had an enjoyable
+experience building a couple of websites to utilize live views. I could spend
+weekends happily programming for fun, learning about different concepts and
+getting better. Every now and then I still feel that inspiration and will dive
+into things, but it's undoubtedly become more rare after AI's capability
+explosion. It has gotten to the point where it's hard to sometimes justify the
+effort or the point in learning something like that. That reason being able to call
+that time valuable.
+
+Previously, I knew that my more niche programming learnings would be something
+that could be a differentiator alongside my personality skill set and value
+that I can provide to others. As someone who is a self-taught data engineer,
+this was deeply important in helping to eradicate much of impostor syndrome I
+felt. I feel incredibly fortunate that experience happened between 2015-2020
+instead of 2025-2030. Now, that skills potency has been diluted greatly due to
+the effect that people only need a cursory knowledge of something's existence
+in order to get to where it may have taken me months to get to. Not in terms of
+understanding, but solutions built off of similar things.
+
+This is probably a topic for another day, but it does make me worry for the
+motivation of open-source contributors and developers of more niche languages
+or solutions that are not being suggested by large language models. If someone
+wants an app nowadays the Next.js React full stack app is almost ubiquitous at
+this point and I feel for the long-term motivation of resisting when there's so
+much the world has to offer in terms of experiences that don't feel like
+fighting against the amoeba of AI generated solutions. That said, value and
+satisfaction comes in all kinds of places and it's not my place to say what
+somebody should spend their time on.
+
+A positive side effect has been that it has shifted my priorities back to my
+home, community and trying to find places where I can still exist as an
+individual and be seen as distinct from others. This mostly just means I go out
+on more walks with my partner and dog instead of learning a niche throwaway
+skill that could have been useful to know five years ago, so I'm not really
+complaining. I'll just try to fit learning those niche skills during working hours
+whilst the bread and butter tasks are being worked on by agents.
+
+## So Where Am I Going With This?
+
+My general takeaway and the crux of my revelation is that businesses are going
+to have to work out whether their good or service -- and the people that they
+employ to deliver that good or service -- values the struggle and the time
+sacrifice that individuals put into their job in order to create that product.
+For example, I think many people would agree that a t-shirt from a high street
+shop that's worth five pounds and was mass-produced doesn't hold a tremendous
+amount of value because the labor costs that go into producing it are
+negligible due to automation. This is in stark contrast to people much more
+willing to spend hundreds of pounds on a custom handmade pair of shoes.
+However, if that shoemonger decided to start mass-producing that pair of shoes,
+despite them being identical to the original pair that took weeks to make, they
+would almost certinaly be perceived as _less valuable_ and the cost would be
+less to buy. Great for the consumer though.
+
+This can also be seen as better for the producer in this example as they can
+sell more shoes, but the analogy doesn't really apply to the knowledge based
+industries as much. If they were analogous I suppose it would probably manifest
+in an explosion of more knowledge based services and solutions being explored
+for lower costs to deliver. Multi-year projects condensed to half-year projects
+    would mean that we'd need multiple smaller projects to fill the gap of
+    productivity and influx of money for delivering it. (It's not like it'd be
+    the same price to deliver the same thing in a quarter of the time). This
+    might be possible in the short-term but I -- perhaps ignorantly -- am
+    failing to see how scarcity and climate change doesn't eventually come to
+    bite us. We already have no shortage of things to do with our days, how
+    much more can there be without exhausting it all? I guess we'll need all
+    kinds of solutions to the problems we've built for ourselves.
+
+There is a real backlash against AI artists on Spotify and I've yet to see an
+AI generated painting in an art gallery over the last three years. I don't
+think that it's because a machine couldn't eventually generate something of a
+quality emulating humans. It's the fact that the AI didn't need to sacrifice
+anything in order to create it. And the time and effort that humans have put
+into teaching themselves the skills to give back to society to earn a living
+are often very correlated with the value of a particular good or service.
+
+Of the many software engineers around the world that are dramatically more
+brilliant in many ways to myself are almost certainly facing similar
+revelations that all of that effort will simply serve to proofread output and
+volunteer them to be those holding the responsibility of a product they no
+longer need to build. Thankfully, I think many of the technical skills are so
+specialized, including my own, that it is still very much necessary to check
+and validate the output of these AI models line by line to ensure that it's
+something that will actually be architecturally sound, will work well, and meet
+all expectations and edge cases. I don't necessarily think that all of our jobs
+are going to go (Just look at how Github's number of monthly commits has
+exploded over the last year), but I do have a sneaking suspicion that they will
+become seen as less "valuable".
+
+## Less Valuable?
+
+There need to be fewer people doing the doing, and we all can't be decision
+makers with clients, or we might be facing a [too many
+cooks](https://www.youtube.com/watch?v=QrGrOK8oZG8) situation. (_As a side
+note, I have noticed in my own experience that often times the code is not the
+bottleneck, it is these decision points and design decisions that just can't
+seem to get everyone to sign off on them_). Because there are fewer people
+doing the doing, there's more competition and more desperation to get into one
+of these jobs. Over time, I could see a flat-lining or depreciation of software
+engineering salary due to over-saturation of supply of engineers to the market.
+
+Secondly, (_and perhaps this can be seen as a lifeline depending on how you look
+at it_) ideas themselves will become less valuable. Ripping off other people's
+solutions is dramatically easier now than it used to be. This may cause a
+similar effect to how there is a real ceiling to what you might pay for
+something when there's a thousand imitations all doing similar things.
+
+And thirdly, as you might suspect I'll say, there is a less perceived sacrifice
+of a person's time that goes into building certain products now. No matter how
+technically difficult it was for a model to build it, if it can build it in a
+day, there is a ceiling to what someone is willing to pay for it because they
+can just try to vibe it themselves if they don't like the price.
+
+## Let's Wrap It Up
+
+I feel like this has already served as enough of a therapy piece for me that I
+feel that I can wrap it up. There have been some real benefits of the emergence
+of AI in my work that has led to me being able to learn more quickly. At the
+same time, whilst I can deliver more work, sometimes my patience and desire to
+work quickly and context switch back to something else means that I skim read
+more than I used to. This had an unintended side effect in me getting back into
+reading so that I could practice staying focused and improve my ability to read
+for hours as a mechanism for me to stay focused on particular tasks at work. So
+    in that respect, it's been positive, as I had forgotten how enjoyable it
+    was, and how useful it is to maintain my ability to read long-form content.
+
+Democratising knowledge also has given me back evenings of upskilling and has also
+given me the ability to compete with others who have more knowledge than I as well.
+It is just a change to my life that I am still adjusting to and whilst this post
+may have come across as overly negative, it's undoubtedly had some real positive
+effects as well, no matter how temporary they may be.
+
+What most inspired me to write this was me just trying to articulate why I feel
+excited and nervous for what my life will look like in ten years. I suspect
+I'll either be doing the same thing because AI growth flat-lines still isn't
+good enough to do my job fully from a technical perspective. But if we progress
+at the rate that we have been, I could see the economic and profession impacts
+drive me (and perhaps us all) in a race towards some form of entrepreneurship
+where we all remind ourselves what is valuable in life, and try to convince
+each other why they should spend their UBI cheques with me.
+
+
+> Thank you for reading, I hope you have a great rest of your day and feel free to reach out
+> and let me know if you have any thoughts that may help broaden my perspective on things as well.
+> I'm always happy to grow and learn new things. If you need help with any software, web, infrastructure, data problems
+> as well, please feel free to reach out. I'm sure I'll be able to help in some way!
