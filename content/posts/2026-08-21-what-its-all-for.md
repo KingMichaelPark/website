@@ -7,28 +7,27 @@ tags = ["life", "ai", "business"]
 categories = ["life", "ai", "business"]
 +++
 
-I have many conflicting thoughts that I - as a data engineer, a consultant, a
-member of society, a friend to some, and husband to one - am going to try to
+I have many conflicting thoughts that I -- as a data engineer, a consultant, a
+member of society, a friend to some, and husband to one -- am going to try to
 articulate throughout the course of this post. I will do my best to organise my
 thoughts throughout this piece in way that at least helps me formalise how I am
-currently feeling about my long-term future in work due to the present
-experiences I have lived over the last two years as AI...
+currently feeling about my long-term future in data and software engineering over the last two years of using AI to various degrees.
 
 <!-- more -->
 
 ## Not that word!
 
-Let's get one thing out of the way. I can hear you all thinking. Surely he
-doesn't mean LLMs mean AI, they're not intelligent! We probably agree that they
-aren't. We could also probably have discussions about whether we as humans are
+Let's get one thing out of the way. I can hear you all thinking. "Surely he
+doesn't mean LLMs mean AI, they're not intelligent!" We probably agree that they
+aren't. We could also have discussions about whether we as humans are
 doing similar things that models are, just with hundreds of millions of years
-of evolution behind us. Intelligent or not it's a term that's universally
-understood to be a catch all for this new swath of technologies grounded in
+of evolution behind us. Intelligent or not, the AI acronym is a term that's currently 
+understood to be a catch-all for this new swath of technologies. Grounded in 
 incredibly impressive statistical models that are able to emulate human behavior
-in ways that is in many ways shocking, upsetting, and impressive all at the
+in ways that are in many ways shocking, upsetting, and impressive all at the
 same time.
 
-I, like you, may take issue with the fact that many of our collective efforts
+I take issue with the fact that many of our collective efforts
 saw no compensation in respect to the creation of these model's training sets.
 Books, articles, songs, art, it's endless and I recognise all of that. It's
 upsetting, but it has happened. That is not the point of this post. For the sake
@@ -36,13 +35,12 @@ of brevity for the rest of the post, AI means the above.
 
 ## Who is this guy?
 
-My background is in 10 years of programming and data engineering after two
+My background is in ten years of programming (mostly data engineering) after two
 business degrees in finance and international business. My understanding of
 large language models from a theoretical perspective is limited, but I have
 extensive use in using them across a variety of use cases and have been
 following the progressions of such for years, as it is incredibly important to
-stay on top of because of my job. I am fortunately in a position of influence
-where I feel a duty to not only work out for myself how my industry is
+stay on top of because of my job. Fortunate enough to be in a position of influence, I feel a duty to not only work out for myself how my industry is
 evolving, but for others I work with and sometimes lead or influence.
 Therefore, I feel like I have at least enough experience and responsibility to
 talk about it at a high level.
@@ -69,10 +67,10 @@ Okay.
 
 ## Am I Special?
 
-For much of my career and earlier life, I felt that there was a direct
+For much of my career and earlier life, it felt that there was a direct
 correlation between the effort, performance, and outcomes that I put into
-things helped separate me from somebody who had done something less
-efficiently, beautifully, or valuably. They were distinguishing factors about
+work that helped separate me from somebody who had done something less
+efficiently, beautifully, or valuably. They were distinguished enough factors about
 my work and my colleagues' work that helped provide certain pieces of value
 that at least helped my firm stay competitive, win work, and differentiate us
 from other consultancies' approaches or technical abilities.
@@ -100,12 +98,13 @@ the course of my career and that makes the prospect of doing this as a
 differentiator on existing projects or clients not so bad. Being flexible,
 friendly, and helpful are all things that I love to do anyways for people I
 work with because it helps to make their days a bit better. It's valuable to
-the teams or projects I work in, helps in driving motivation and perseverence
+the teams or projects I work in, helps in driving motivation and perseverance
 to the goals we set for ourselves.
 
-But how am I able to articulate that value when they're mostly hiring me for
-something else deemed to be, and almostl certainly is, much more technically
-complex, requiring years of experience and education? Working independently, it
+It will be vital to be able to articulate that value convincingly and continually, despite the fact they're mostly (and rightfully) hiring me for
+my technical skills that required years of experience and education. The social skills will be even more important than they already are, as they become obvious distinguishing factors between technical persons.
+
+Working independently, it
 would be easier to make that case, but as part of a larger business where I
 find myself (_and where many even larger consultancies find themselves_) is
 that it's more challenging to use individual personas or people as the main USP
