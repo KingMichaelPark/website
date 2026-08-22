@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/mparkypark
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://mhpark.me
+  * I am mparkypark (https://keybase.io/mparkypark) on keybase.
+  * I have a public key ASCbPciLGTpn1eoilrVXqJyxIx4JOF9p3q0WSZnlHywyVwo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101275cbe1759f3671d18a4fc28690553e40197f6c62f0a107d21cb9382b5ebbdf40a",
+      "host": "keybase.io",
+      "kid": "01209b3dc88b193a67d5ea2296b557a89cb1231e09385f69dead164999e51f2c32570a",
+      "uid": "33a18708d554974bf97481041bcf7019",
+      "username": "mparkypark"
+    },
+    "merkle_root": {
+      "ctime": 1675980623,
+      "hash": "8e0277b544001c186e92f42cf6729368739437cc168819d12ef0c89a5b7182bfc7ffdd3cc3e41e080ede699525e84b9c73b476b442bc70fd493c4b74402b1c85",
+      "hash_meta": "3cf662e4a7f86e74b307da4d26ce803d0008ff7ec9f2f0e73a69606a913641f6",
+      "seqno": 24022866
+    },
+    "service": {
+      "entropy": "Snd5z58NqGsrEZL1HIccgYVI",
+      "hostname": "mhpark.me",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "6.0.4"
+  },
+  "ctime": 1675980659,
+  "expire_in": 504576000,
+  "prev": "a67b7620a96db31b4d217744f564558284b8d91e94d22cbe5c0b40dcacc1910e",
+  "seqno": 20,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgmz3Iixk6Z9XqIpa1V6icsSMeCThfad6tFkmZ5R8sMlcKp3BheWxvYWTESpcCFMQgpnt2IKltsxtNIXdE9WRVgoS42R6U0iy+XAtA3KzBkQ7EIJv/SdOmvyqXPKwyprlL2raeNMocZ2AMk6HNRNco6rPeAgHCo3NpZ8RAfqRFHccbcsaWgeeXF4CcRuMxH/kEuLZ1wjUk2heYHczIBGvXg0dIzUTqgnN8OuR5Z6sJn71PK+4XFheAQs/DAKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEICsABooVptU47xYY0OZblXEYLBQ8DSqnW3gTYh70uUgdo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mparkypark
+==================================================================

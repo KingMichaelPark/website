@@ -1,0 +1,55 @@
+@-webkit-keyframes move {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: 0%;
+  }
+}
+
+@keyframes move {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: 0%;
+  }
+}
+
+
+.banner {
+  height: 50px;
+  max-height: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+a#rotator {
+  text-decoration: none;
+  height: 100%;
+  padding-right: 20px;
+  left: 100%;
+  position: absolute;
+  -webkit-animation: move 10s ease infinite alternate;
+  animation: move 10s ease infinite alternate;
+  -ms-animation: move 10s ease infinite alternate;
+  -webkit-animation: move 10s ease infinite alternate;
+  -moz-animation: move 10s ease infinite alternate;
+}
+
+/* Inherit the height of the parent element */
+a#rotator img {
+  overflow: hidden;
+  height: 50px;
+  max-height: 50px;
+}
+
+a#rotator img:hover {
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  transform: translate();
+}

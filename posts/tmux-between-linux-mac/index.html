@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <!-- Verifications -->
+    <link href="https://github.com/KingMichaelPark" rel="me">
+    <link href="https://mhpark.me" rel="me">
+    <link href="https://fosstodon.org/@mdawg" rel="me">
+    <link href="https://bsky.app/profile/mhpark.me" rel="me"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src &#x27;self&#x27; data:;img-src &#x27;self&#x27; https:&#x2F;&#x2F;* data:;media-src &#x27;self&#x27;;style-src &#x27;self&#x27;;frame-src player.vimeo.com https:&#x2F;&#x2F;www.youtube-nocookie.com;connect-src 'self';script-src 'self' 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://mhpark.me">
+
+    
+    <title>
+Mike's Blog • Tmux in Linux and Mac With Wezterm</title>
+
+    
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="Mike's Blog - Atom Feed" href="https://mhpark.me/atom.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://mhpark.me/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    <link rel="stylesheet" href="https://mhpark.me/rach.css?h=3b7a2a01573cee5367b5">
+
+    
+        <link rel="stylesheet" href="https://mhpark.me/main.css?h=fe8c9607d92b0cda0f8f" />
+        <link rel="stylesheet" href="https://mhpark.me/skins/sakura.css?h=2d9c69af51135683e3bd" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="After struggling to get tmux to run seamlessly between Mac (on ARM i.e. M1/M2)
+and linux due to the fact that brew installs packages to /opt/homebrew/bin/
+and it isn't on the path before the shell loads, I have finally worked out how to
+get tmux to launch/attach to existing sessions when launching a new terminal both
+in linux and on MacOS…" />
+        <meta property="og:description" content="After struggling to get tmux to run seamlessly between Mac (on ARM i.e. M1/M2)
+and linux due to the fact that brew installs packages to /opt/homebrew/bin/
+and it isn't on the path before the shell loads, I have finally worked out how to
+get tmux to launch/attach to existing sessions when launching a new terminal both
+in linux and on MacOS…" />
+
+    
+
+    <meta property="og:title" content="Tmux in Linux and Mac With Wezterm" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;mhpark.me&#x2F;posts&#x2F;tmux-between-linux-mac&#x2F;" /><meta property="og:site_name" content="Mike&#x27;s Blog">
+        <noscript><link rel="stylesheet" href="https://mhpark.me/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://mhpark.me/js/initializeTheme.min.js"></script>
+        <script defer src="https://mhpark.me/js/themeSwitcher.min.js"></script>
+        <script defer src="https://mhpark.me/js/searchElasticlunr.min.js?h=3626c0ef99daa745b31e"></script>
+
+        
+    
+</head>
+
+
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://mhpark.me">Mike&#x27;s Blog</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/posts/">posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/tags/">tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/projects/">projects
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/about-me">about-me
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            <li class="js menu-icon">
+                                <div role="button" tabindex="0" id="search-button" class="search-icon interactive-icon" title="Click or press $SHORTCUT to open search" aria-label="Click or press $SHORTCUT to open search">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                                        <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                                    </svg>
+                                </div>
+                            </li>
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+    <div class="banner">
+      <a id="rotator"
+        ><img src="https://mhpark.me/me.webp"
+        /></a
+      >
+    </div>
+</header>
+
+    <div class="content">
+
+        
+        
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            Tmux in Linux and Mac With Wezterm
+        </h1>
+        <a class="u-url u-uid" href="https://mhpark.me/posts/tmux-between-linux-mac/"></a>
+
+        <ul class="meta"><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;mhpark.me" class="u-url " title=""></a>
+</span>
+<li><time class="dt-published" datetime="2023-03-10">10th Mar 2023</time></li><li title="208 words"><span class='separator' aria-hidden='true'>•</span>2 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://mhpark.me/tags/tmux/">tmux</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://mhpark.me/tags/wezterm/">wezterm</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://mhpark.me/tags/brew/">brew</a></li>
+        </ul><section class="e-content body"><p>After struggling to get <code>tmux</code> to run seamlessly between Mac (on ARM i.e. M1/M2)
+and linux due to the fact that <code>brew</code> installs packages to <code>/opt/homebrew/bin/</code>
+and it isn't on the path before the shell loads, I have finally worked out how to
+get tmux to launch/attach to existing sessions when launching a new terminal both
+in linux and on MacOS.</p>
+<span id="continue-reading"></span>
+<p>I use <a rel="external" href="https://wezfurlong.org/wezterm/">wezterm</a> as my terminal emulator as I can
+maintain the same settings for the terminal between my linux and mac (sorry
+iterm peeps).</p>
+<p>I won't get into why I love it, but it is fast, has a very nice dev, and supports
+ligatures in fonts which - while divisive to some - I like so I use this.</p>
+<p>Long story short. Here is the <code>wezterm.lua</code> config that you can store in your
+<code>~/.config/wezterm/wezterm.lua</code>.</p>
+<pre class="giallo z-code"><code data-lang="lua"><span class="giallo-l"><span class="z-keyword">local</span><span class="z-variable z-other"> wezterm</span><span class="z-keyword"> =</span><span class="z-support"> require</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;wezterm&quot;</span><span>)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-keyword">local</span><span class="z-variable z-other"> tmux</span><span class="z-keyword"> =</span><span> {}</span></span>
+<span class="giallo-l"><span class="z-keyword">if</span><span class="z-variable z-other"> wezterm.</span><span class="z-entity">target_triple</span><span class="z-keyword"> ==</span><span class="z-punctuation z-definition z-string z-string"> &quot;aarch64-apple-darwin&quot; </span><span class="z-keyword">then</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    tmux</span><span class="z-keyword"> =</span><span> {</span><span class="z-punctuation z-definition z-string z-string">&quot;/opt/homebrew/bin/tmux&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;new&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;-As0&quot;</span><span>}</span></span>
+<span class="giallo-l"><span class="z-keyword">else</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    tmux</span><span class="z-keyword"> =</span><span> { </span><span class="z-punctuation z-definition z-string z-string">&quot;tmux&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;new&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;-As0&quot; </span><span>}</span></span>
+<span class="giallo-l"><span class="z-keyword">end</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-keyword">return</span><span> {</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    color_scheme</span><span class="z-keyword"> =</span><span class="z-punctuation z-definition z-string z-string"> &quot;Catppuccin Mocha&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    default_prog</span><span class="z-keyword"> =</span><span class="z-variable z-other"> tmux,</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    font</span><span class="z-keyword"> =</span><span class="z-variable z-other"> wezterm.</span><span class="z-support">font</span><span class="z-variable z-other">({ family</span><span class="z-keyword"> =</span><span class="z-punctuation z-definition z-string z-string"> &quot;IosevkaTerm Nerd Font&quot;</span><span class="z-variable z-other">, stretch</span><span class="z-keyword"> =</span><span class="z-punctuation z-definition z-string z-string"> &quot;Normal&quot; </span><span>}),</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    font_dirs</span><span class="z-keyword"> =</span><span> { </span><span class="z-punctuation z-definition z-string z-string">&quot;~/.local/share/fonts&quot; </span><span>},</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    font_size</span><span class="z-keyword"> =</span><span class="z-constant"> 13</span><span>,</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    hide_tab_bar_if_only_one_tab</span><span class="z-keyword"> =</span><span class="z-constant"> true</span><span>,</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    initial_cols</span><span class="z-keyword"> =</span><span class="z-constant"> 150</span><span>,</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    initial_rows</span><span class="z-keyword"> =</span><span class="z-constant"> 35</span><span>,</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    tab_bar_at_bottom</span><span class="z-keyword"> =</span><span class="z-constant"> true</span><span>,</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    warn_about_missing_glyphs</span><span class="z-keyword"> =</span><span class="z-constant"> false</span><span>,</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    window_background_opacity</span><span class="z-keyword"> =</span><span class="z-constant"> 1.0</span><span>,</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p>They key lines is the local <code>tmux</code> path. Wezterm won't launch
+if you don't pass it explicitly as the path is not known by default
+to wezterm.</p>
+<p>The second thing you need to change is to get your tmux config to append
+that brew path to the <strong>$PATH</strong> as well.</p>
+<p><code>.tmux.conf</code> :</p>
+<pre class="giallo z-code"><code data-lang="plain"><span class="giallo-l"><span>set -g mouse on</span></span>
+<span class="giallo-l"><span>set -s set-clipboard on</span></span>
+<span class="giallo-l"><span>set-environment -g PATH &quot;/opt/homebrew/bin:/bin:$PATH&quot;</span></span>
+<span class="giallo-l"><span># ADD THIS LINE ^^^</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>set-window-option -g mode-keys vi</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>bind / split-window -h -c &quot;#{pane_current_path}&quot;</span></span>
+<span class="giallo-l"><span>bind - split-window -v -c &quot;#{pane_current_path}&quot;</span></span>
+<span class="giallo-l"><span>unbind &#39;&quot;&#39;</span></span>
+<span class="giallo-l"><span>unbind %</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>bind -r ^ last-window</span></span>
+<span class="giallo-l"><span>bind -r k select-pane -U</span></span>
+<span class="giallo-l"><span>bind -r j select-pane -D</span></span>
+<span class="giallo-l"><span>bind -r h select-pane -L</span></span>
+<span class="giallo-l"><span>bind -r l select-pane -R</span></span>
+<span class="giallo-l"><span>bind C new-window -c &quot;#{pane_current_path}&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Current projects</span></span>
+<span class="giallo-l"><span>bind-key -r f run-shell &quot;tmux neww ~/.local/bin/tmux-sessionizer&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># set -g default-terminal &quot;tmux-256color&quot;</span></span>
+<span class="giallo-l"><span>set -ga terminal-overrides &quot;,xterm-256color:Tc&quot;</span></span>
+<span class="giallo-l"><span>set-option -sa terminal-overrides &#39;,screen-256color:RGB&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># # List of plugins</span></span>
+<span class="giallo-l"><span>set -g @plugin &#39;tmux-plugins/tpm&#39;</span></span>
+<span class="giallo-l"><span>set -g @plugin &#39;catppuccin/tmux&#39;</span></span>
+<span class="giallo-l"><span>set -g @plugin &#39;tmux-plugins/tmux-sensible&#39;</span></span>
+<span class="giallo-l"><span>set -sg escape-time 5</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>set-option -g focus-events on</span></span>
+<span class="giallo-l"><span>set-option -g default-shell /bin/zsh</span></span>
+<span class="giallo-l"><span>bind r source-file ~/.tmux.conf</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)</span></span>
+<span class="giallo-l"><span>run &#39;~/.tmux/plugins/tpm/tpm&#39;</span></span></code></pre>
+<p>All of this can be seen in my <a rel="external" href="https://github.com/KingMichaelPark/dotfiles">dotfiles</a>.</p>
+
+        </section>
+
+        
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+
+<span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://mhpark.me/js/copyCodeToClipboard.min.js"></script>
+
+
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://mhpark.me/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://mhpark.me/social_icons/rss.svg">
+                        </a>
+                    </li><li class="js"><a class="nav-links no-hover-padding social" href="#" data-encoded-email="d2VibWFzdGVyQG1ocGFyay5tZQ=="><img loading="lazy" alt="email" title="email" src="https://mhpark.me/social_icons/email.svg">
+                            </a>
+                        </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/mhpark.me">
+                                    <img loading="lazy" alt="bluesky" title="bluesky" src="https://mhpark.me/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/KingMichaelPark/">
+                                    <img loading="lazy" alt="github" title="github" src="https://mhpark.me/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://news.ycombinator.com/user?id=Zizizizz">
+                                    <img loading="lazy" alt="hacker-news" title="hacker-news" src="https://mhpark.me/social_icons/hacker-news.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://fosstodon.org/@mdawg">
+                                    <img loading="lazy" alt="mastodon" title="mastodon" src="https://mhpark.me/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    <script src="https://mhpark.me/js/decodeMail.min.js" async></script><div id="searchModal" class="search-modal js" role="dialog" aria-labelledby="modalTitle">
+    <h1 id="modalTitle" class="visually-hidden">Search</h1>
+    <div id="modal-content">
+        <div id="searchBar">
+            <div class="search-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                </svg>
+            </div>
+            <input id="searchInput" role="combobox" autocomplete="off" spellcheck="false" aria-expanded="false" aria-controls="results-container" placeholder="Search…"/>
+            <div id="clear-search" class="close-icon interactive-icon" tabindex="0" role="button" title="Clear search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </div>
+        </div>
+        <div id="results-container">
+            <div id="results-info"><span id="zero_results"> No results</span>
+                <span id="one_results"> $NUMBER result</span>
+                <span id="many_results"> $NUMBER results</span><span id="two_results"> $NUMBER results</span>
+                <span id="few_results"> $NUMBER results</span>
+            </div>
+            <div id="results" role="listbox"></div>
+        </div>
+    </div>
+</div>
+</footer>
+
+
+    
+    
+</body>
+
+</html>

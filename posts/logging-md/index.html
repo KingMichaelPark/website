@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <!-- Verifications -->
+    <link href="https://github.com/KingMichaelPark" rel="me">
+    <link href="https://mhpark.me" rel="me">
+    <link href="https://fosstodon.org/@mdawg" rel="me">
+    <link href="https://bsky.app/profile/mhpark.me" rel="me"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src &#x27;self&#x27; data:;img-src &#x27;self&#x27; https:&#x2F;&#x2F;* data:;media-src &#x27;self&#x27;;style-src &#x27;self&#x27;;frame-src player.vimeo.com https:&#x2F;&#x2F;www.youtube-nocookie.com;connect-src 'self';script-src 'self' 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://mhpark.me">
+
+    
+    <title>
+Mike's Blog • Python Logging</title>
+
+    
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="Mike's Blog - Atom Feed" href="https://mhpark.me/atom.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://mhpark.me/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    <link rel="stylesheet" href="https://mhpark.me/rach.css?h=3b7a2a01573cee5367b5">
+
+    
+        <link rel="stylesheet" href="https://mhpark.me/main.css?h=fe8c9607d92b0cda0f8f" />
+        <link rel="stylesheet" href="https://mhpark.me/skins/sakura.css?h=2d9c69af51135683e3bd" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="Just a very quick post/memo to myself about an awesome
+way to configure logging in python based on an excellent
+Github repo I stumbled across via a YouTube video…" />
+        <meta property="og:description" content="Just a very quick post/memo to myself about an awesome
+way to configure logging in python based on an excellent
+Github repo I stumbled across via a YouTube video…" />
+
+    
+
+    <meta property="og:title" content="Python Logging" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;mhpark.me&#x2F;posts&#x2F;logging-md&#x2F;" /><meta property="og:site_name" content="Mike&#x27;s Blog">
+        <noscript><link rel="stylesheet" href="https://mhpark.me/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://mhpark.me/js/initializeTheme.min.js"></script>
+        <script defer src="https://mhpark.me/js/themeSwitcher.min.js"></script>
+        <script defer src="https://mhpark.me/js/searchElasticlunr.min.js?h=3626c0ef99daa745b31e"></script>
+
+        
+    
+</head>
+
+
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://mhpark.me">Mike&#x27;s Blog</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/posts/">posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/tags/">tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/projects/">projects
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/about-me">about-me
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            <li class="js menu-icon">
+                                <div role="button" tabindex="0" id="search-button" class="search-icon interactive-icon" title="Click or press $SHORTCUT to open search" aria-label="Click or press $SHORTCUT to open search">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                                        <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                                    </svg>
+                                </div>
+                            </li>
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+    <div class="banner">
+      <a id="rotator"
+        ><img src="https://mhpark.me/me.webp"
+        /></a
+      >
+    </div>
+</header>
+
+    <div class="content">
+
+        
+        
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            Python Logging
+        </h1>
+        <a class="u-url u-uid" href="https://mhpark.me/posts/logging-md/"></a>
+
+        <ul class="meta"><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;mhpark.me" class="u-url " title=""></a>
+</span>
+<li><time class="dt-published" datetime="2024-01-24">24th Jan 2024</time></li><li title="68 words"><span class='separator' aria-hidden='true'>•</span>1 min read</li>
+        </ul><section class="e-content body"><p>Just a very quick post/memo to myself about an awesome
+way to configure logging in python based on an excellent
+Github <a rel="external" href="https://github.com/mCodingLLC/VideosSampleCode/">repo</a> I stumbled across via a YouTube video.</p>
+<span id="continue-reading"></span><h2 id="json-logging">JSON Logging</h2>
+<p>This is going to be a quick dump of code that I can always come
+back to and copy paste into projects when I need logging in
+the application.</p>
+<pre class="giallo z-code"><code data-lang="python"><span class="giallo-l"><span class="z-keyword">import</span><span> atexit</span></span>
+<span class="giallo-l"><span class="z-keyword">import</span><span> json</span></span>
+<span class="giallo-l"><span class="z-keyword">import</span><span> logging</span></span>
+<span class="giallo-l"><span class="z-keyword">import</span><span> logging.config</span></span>
+<span class="giallo-l"><span class="z-keyword">import</span><span> logging.handlers</span></span>
+<span class="giallo-l"><span class="z-keyword">import</span><span> os</span></span>
+<span class="giallo-l"><span class="z-keyword">from</span><span> datetime</span><span class="z-keyword"> import</span><span class="z-constant"> UTC</span><span>, datetime</span></span>
+<span class="giallo-l"><span class="z-keyword">from</span><span> typing</span><span class="z-keyword"> import</span><span> override</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment"># Credit for a great config: https://github.com/mCodingLLC/VideosSampleCode/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-constant">CONFIG</span><span class="z-keyword"> =</span><span> {</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;version&quot;</span><span>:</span><span class="z-constant"> 1</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;disable_existing_loggers&quot;</span><span>:</span><span class="z-constant"> False</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;filters&quot;</span><span>: {</span><span class="z-punctuation z-definition z-string z-string">&quot;no_errors&quot;</span><span>: {</span><span class="z-punctuation z-definition z-string z-string">&quot;()&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;mlog.NonErrorFilter&quot;</span><span>}},</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;formatters&quot;</span><span>: {</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">        &quot;simple&quot;</span><span>: {</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;format&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;[</span><span class="z-constant">%(levelname)s</span><span class="z-string">|</span><span class="z-constant">%(module)s</span><span class="z-string">|L</span><span class="z-constant">%(lineno)d</span><span class="z-string">] </span><span class="z-constant">%(asctime)s</span><span class="z-string">: </span><span class="z-constant">%(message)s</span><span class="z-punctuation z-definition z-string">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;datefmt&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;%Y-%m-</span><span class="z-constant">%d</span><span class="z-string z-punctuation z-definition z-string">T%H:%M:%S%z&quot;</span><span>,</span></span>
+<span class="giallo-l"><span>        },</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">        &quot;json&quot;</span><span>: {</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;()&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;mlog.JSONFormatter&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;fmt_keys&quot;</span><span>: {</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">                &quot;level&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;levelname&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">                &quot;message&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;message&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">                &quot;timestamp&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;timestamp&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">                &quot;logger&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;name&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">                &quot;module&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;module&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">                &quot;function&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;funcName&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">                &quot;line&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;lineno&quot;</span><span>,</span></span>
+<span class="giallo-l"><span>            },</span></span>
+<span class="giallo-l"><span>        },</span></span>
+<span class="giallo-l"><span>    },</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;handlers&quot;</span><span>: {</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">        &quot;stderr&quot;</span><span>: {</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;class&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;logging.StreamHandler&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;level&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;WARNING&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;formatter&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;json&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;stream&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;ext://sys.stderr&quot;</span><span>,</span></span>
+<span class="giallo-l"><span>        },</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">        &quot;stdout&quot;</span><span>: {</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;class&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;logging.StreamHandler&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;level&quot;</span><span>: os.environ.get(</span><span class="z-punctuation z-definition z-string z-string">&quot;LOG_LEVEL&quot;</span><span>,</span><span class="z-punctuation z-definition z-string z-string"> &quot;DEBUG&quot;</span><span>),</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;formatter&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;json&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;stream&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;ext://sys.stdout&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;filters&quot;</span><span>: [</span><span class="z-punctuation z-definition z-string z-string">&quot;no_errors&quot;</span><span>],</span></span>
+<span class="giallo-l"><span>        },</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">        &quot;queue_handler&quot;</span><span>: {</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;class&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;logging.handlers.QueueHandler&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;handlers&quot;</span><span>: [</span><span class="z-punctuation z-definition z-string z-string">&quot;stderr&quot;</span><span>,</span><span class="z-punctuation z-definition z-string z-string"> &quot;stdout&quot;</span><span>],</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;respect_handler_level&quot;</span><span>:</span><span class="z-constant"> True</span><span>,</span></span>
+<span class="giallo-l"><span>        },</span></span>
+<span class="giallo-l"><span>    },</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;loggers&quot;</span><span>: {</span><span class="z-punctuation z-definition z-string z-string">&quot;root&quot;</span><span>: {</span><span class="z-punctuation z-definition z-string z-string">&quot;level&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;DEBUG&quot;</span><span>,</span><span class="z-punctuation z-definition z-string z-string"> &quot;handlers&quot;</span><span>: [</span><span class="z-punctuation z-definition z-string z-string">&quot;queue_handler&quot;</span><span>]}},</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-constant">LOG_RECORD_BUILTIN_ATTRS</span><span class="z-keyword"> =</span><span> {</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;args&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;asctime&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;created&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;exc_info&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;exc_text&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;filename&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;funcName&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;levelname&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;levelno&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;lineno&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;module&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;msecs&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;message&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;msg&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;name&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;pathname&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;process&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;processName&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;relativeCreated&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;stack_info&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;thread&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;threadName&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;taskName&quot;</span><span>,</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-storage z-type">class</span><span class="z-entity z-name"> JSONFormatter</span><span>(</span><span class="z-entity">logging</span><span>.</span><span class="z-entity">Formatter</span><span>):</span></span>
+<span class="giallo-l"><span class="z-storage z-type">    def</span><span class="z-support"> __init__</span><span>(</span></span>
+<span class="giallo-l"><span class="z-variable z-parameter z-function">        self,</span></span>
+<span class="giallo-l"><span class="z-keyword">        *</span><span>,</span></span>
+<span class="giallo-l"><span class="z-variable z-parameter z-function">        fmt_keys: dict[</span><span class="z-support">str</span><span>,</span><span class="z-support"> str</span><span>]</span><span class="z-keyword"> |</span><span class="z-constant"> None</span><span class="z-keyword"> =</span><span class="z-constant"> None</span><span>,</span></span>
+<span class="giallo-l"><span>    ):</span></span>
+<span class="giallo-l"><span class="z-support">        super</span><span>().</span><span class="z-support">__init__</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-language">        self</span><span>.fmt_keys</span><span class="z-keyword"> =</span><span> fmt_keys</span><span class="z-keyword"> if</span><span> fmt_keys</span><span class="z-keyword"> is not</span><span class="z-constant"> None</span><span class="z-keyword"> else</span><span> {}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-entity z-name">    @override</span></span>
+<span class="giallo-l"><span class="z-storage z-type">    def</span><span class="z-support"> format</span><span class="z-variable z-parameter z-function">(self, record: logging.LogRecord) -&gt;</span><span class="z-support"> str</span><span>:</span></span>
+<span class="giallo-l"><span>        message</span><span class="z-keyword"> =</span><span class="z-variable z-language"> self</span><span>._prepare_log_dict(record)</span></span>
+<span class="giallo-l"><span class="z-keyword">        return</span><span> json.dumps(message,</span><span class="z-variable"> default</span><span class="z-keyword">=</span><span class="z-support">str</span><span>)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-storage z-type">    def</span><span class="z-entity z-name"> _prepare_log_dict</span><span class="z-variable z-parameter z-function">(self, record: logging.LogRecord):</span></span>
+<span class="giallo-l"><span>        fields</span><span class="z-keyword"> =</span><span> {</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;message&quot;</span><span>: record.getMessage(),</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;timestamp&quot;</span><span>: datetime.fromtimestamp(record.created,</span><span class="z-variable"> tz</span><span class="z-keyword">=</span><span class="z-constant">UTC</span><span>).isoformat(),</span></span>
+<span class="giallo-l"><span>        }</span></span>
+<span class="giallo-l"><span class="z-keyword">        if</span><span> record.exc_info:</span></span>
+<span class="giallo-l"><span>            fields[</span><span class="z-punctuation z-definition z-string z-string">&quot;exc_info&quot;</span><span>]</span><span class="z-keyword"> =</span><span class="z-variable z-language"> self</span><span>.formatException(record.exc_info)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-keyword">        if</span><span> record.stack_info:</span></span>
+<span class="giallo-l"><span>            fields[</span><span class="z-punctuation z-definition z-string z-string">&quot;stack_info&quot;</span><span>]</span><span class="z-keyword"> =</span><span class="z-variable z-language"> self</span><span>.formatStack(record.stack_info)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>        message</span><span class="z-keyword"> =</span><span> {</span></span>
+<span class="giallo-l"><span>            key: msg_val</span></span>
+<span class="giallo-l"><span class="z-keyword">            if</span><span> (msg_val</span><span class="z-keyword"> :=</span><span> fields.pop(val,</span><span class="z-constant"> None</span><span>))</span><span class="z-keyword"> is not</span><span class="z-constant"> None</span></span>
+<span class="giallo-l"><span class="z-keyword">            else</span><span class="z-support"> getattr</span><span>(record, val)</span></span>
+<span class="giallo-l"><span class="z-keyword">            for</span><span> key, val</span><span class="z-keyword"> in</span><span class="z-variable z-language"> self</span><span>.fmt_keys.items()</span></span>
+<span class="giallo-l"><span>        }</span></span>
+<span class="giallo-l"><span>        message.update(fields)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-keyword">        for</span><span> key, val</span><span class="z-keyword"> in</span><span> record.</span><span class="z-support z-variable">__dict__</span><span>.items():</span></span>
+<span class="giallo-l"><span class="z-keyword">            if</span><span> key</span><span class="z-keyword"> not in</span><span class="z-constant"> LOG_RECORD_BUILTIN_ATTRS</span><span>:</span></span>
+<span class="giallo-l"><span>                message[key]</span><span class="z-keyword"> =</span><span> val</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-keyword">        return</span><span> message</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-storage z-type">class</span><span class="z-entity z-name"> NonErrorFilter</span><span>(</span><span class="z-entity">logging</span><span>.</span><span class="z-entity">Filter</span><span>):</span></span>
+<span class="giallo-l"><span class="z-entity z-name">    @override</span></span>
+<span class="giallo-l"><span class="z-storage z-type">    def</span><span class="z-support"> filter</span><span class="z-variable z-parameter z-function">(self, record: logging.LogRecord) -&gt;</span><span class="z-support"> bool</span><span class="z-keyword"> |</span><span> logging.LogRecord:</span></span>
+<span class="giallo-l"><span class="z-keyword">        return</span><span> record.levelno</span><span class="z-keyword"> &lt;=</span><span> logging.</span><span class="z-constant">INFO</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-storage z-type">def</span><span class="z-entity z-name"> setup_logging</span><span>():</span></span>
+<span class="giallo-l"><span>    logging.config.dictConfig(</span><span class="z-constant">CONFIG</span><span>)</span></span>
+<span class="giallo-l"><span>    queue_handler</span><span class="z-keyword"> =</span><span> logging.getHandlerByName(</span><span class="z-punctuation z-definition z-string z-string">&quot;queue_handler&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">    if</span><span> queue_handler</span><span class="z-keyword"> is not</span><span class="z-constant"> None</span><span>:</span></span>
+<span class="giallo-l"><span>        queue_handler.listener.start()</span></span>
+<span class="giallo-l"><span>        atexit.register(queue_handler.listener.stop)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-storage z-type">def</span><span class="z-entity z-name"> main</span><span>():</span></span>
+<span class="giallo-l"><span>    setup_logging()</span></span>
+<span class="giallo-l"><span>    logging.basicConfig(</span><span class="z-variable">level</span><span class="z-keyword">=</span><span class="z-punctuation z-definition z-string z-string">&quot;INFO&quot;</span><span>)</span></span>
+<span class="giallo-l"><span>    logger</span><span class="z-keyword"> =</span><span> logging.getLogger(</span><span class="z-support z-variable">__name__</span><span>)</span></span>
+<span class="giallo-l"><span>    logger.debug(</span><span class="z-punctuation z-definition z-string z-string">&quot;debug message&quot;</span><span>,</span><span class="z-variable"> extra</span><span class="z-keyword">=</span><span>{</span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>:</span><span class="z-punctuation z-definition z-string z-string"> &quot;hello&quot;</span><span>})</span></span>
+<span class="giallo-l"><span>    logger.info(</span><span class="z-punctuation z-definition z-string z-string">&quot;info message&quot;</span><span>)</span></span>
+<span class="giallo-l"><span>    logger.warning(</span><span class="z-punctuation z-definition z-string z-string">&quot;warning message&quot;</span><span>)</span></span>
+<span class="giallo-l"><span>    logger.error(</span><span class="z-punctuation z-definition z-string z-string">&quot;error message&quot;</span><span>)</span></span>
+<span class="giallo-l"><span>    logger.critical(</span><span class="z-punctuation z-definition z-string z-string">&quot;critical message&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">    try</span><span>:</span></span>
+<span class="giallo-l"><span class="z-support">        print</span><span>(</span><span class="z-constant">1</span><span class="z-keyword"> /</span><span class="z-constant"> 0</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">    except</span><span class="z-support"> ZeroDivisionError</span><span class="z-keyword"> as</span><span> e:</span></span>
+<span class="giallo-l"><span>        logger.exception(</span><span class="z-storage z-type">f</span><span class="z-string">&quot;</span><span class="z-constant">{</span><span>e</span><span class="z-constant">}</span><span class="z-string">&quot;</span><span>)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-keyword">if</span><span class="z-support z-variable"> __name__</span><span class="z-keyword"> ==</span><span class="z-punctuation z-definition z-string z-string"> &quot;__main__&quot;</span><span>:</span></span>
+<span class="giallo-l"><span>    main()</span></span></code></pre>
+<p>The end!</p>
+
+        </section>
+
+        
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+
+<span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://mhpark.me/js/copyCodeToClipboard.min.js"></script>
+
+
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://mhpark.me/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://mhpark.me/social_icons/rss.svg">
+                        </a>
+                    </li><li class="js"><a class="nav-links no-hover-padding social" href="#" data-encoded-email="d2VibWFzdGVyQG1ocGFyay5tZQ=="><img loading="lazy" alt="email" title="email" src="https://mhpark.me/social_icons/email.svg">
+                            </a>
+                        </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/mhpark.me">
+                                    <img loading="lazy" alt="bluesky" title="bluesky" src="https://mhpark.me/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/KingMichaelPark/">
+                                    <img loading="lazy" alt="github" title="github" src="https://mhpark.me/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://news.ycombinator.com/user?id=Zizizizz">
+                                    <img loading="lazy" alt="hacker-news" title="hacker-news" src="https://mhpark.me/social_icons/hacker-news.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://fosstodon.org/@mdawg">
+                                    <img loading="lazy" alt="mastodon" title="mastodon" src="https://mhpark.me/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    <script src="https://mhpark.me/js/decodeMail.min.js" async></script><div id="searchModal" class="search-modal js" role="dialog" aria-labelledby="modalTitle">
+    <h1 id="modalTitle" class="visually-hidden">Search</h1>
+    <div id="modal-content">
+        <div id="searchBar">
+            <div class="search-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                </svg>
+            </div>
+            <input id="searchInput" role="combobox" autocomplete="off" spellcheck="false" aria-expanded="false" aria-controls="results-container" placeholder="Search…"/>
+            <div id="clear-search" class="close-icon interactive-icon" tabindex="0" role="button" title="Clear search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </div>
+        </div>
+        <div id="results-container">
+            <div id="results-info"><span id="zero_results"> No results</span>
+                <span id="one_results"> $NUMBER result</span>
+                <span id="many_results"> $NUMBER results</span><span id="two_results"> $NUMBER results</span>
+                <span id="few_results"> $NUMBER results</span>
+            </div>
+            <div id="results" role="listbox"></div>
+        </div>
+    </div>
+</div>
+</footer>
+
+
+    
+    
+</body>
+
+</html>

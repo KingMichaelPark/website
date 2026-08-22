@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <!-- Verifications -->
+    <link href="https://github.com/KingMichaelPark" rel="me">
+    <link href="https://mhpark.me" rel="me">
+    <link href="https://fosstodon.org/@mdawg" rel="me">
+    <link href="https://bsky.app/profile/mhpark.me" rel="me"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src &#x27;self&#x27; data:;img-src &#x27;self&#x27; https:&#x2F;&#x2F;* data:;media-src &#x27;self&#x27;;style-src &#x27;self&#x27;;frame-src player.vimeo.com https:&#x2F;&#x2F;www.youtube-nocookie.com;connect-src 'self';script-src 'self' 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://mhpark.me">
+
+    
+    <title>
+Mike's Blog • Git Signing and Authentication with SSH</title>
+
+    
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="Mike's Blog - Atom Feed" href="https://mhpark.me/atom.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://mhpark.me/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    <link rel="stylesheet" href="https://mhpark.me/rach.css?h=3b7a2a01573cee5367b5">
+
+    
+        <link rel="stylesheet" href="https://mhpark.me/main.css?h=fe8c9607d92b0cda0f8f" />
+        <link rel="stylesheet" href="https://mhpark.me/skins/sakura.css?h=2d9c69af51135683e3bd" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="This is a quick guide to set up git with SSH ed25519 keys
+not only for authenticating with GitHub or GitLab but also
+for signing commits without the need to install GPG/PGP
+which has some serious criticisms / flaws that has led me to move
+into a world without it. The new world isn't as straightforward
+as the old so I thought I'd just throw together a quick guide
+to help you out…" />
+        <meta property="og:description" content="This is a quick guide to set up git with SSH ed25519 keys
+not only for authenticating with GitHub or GitLab but also
+for signing commits without the need to install GPG/PGP
+which has some serious criticisms / flaws that has led me to move
+into a world without it. The new world isn't as straightforward
+as the old so I thought I'd just throw together a quick guide
+to help you out…" />
+
+    
+
+    <meta property="og:title" content="Git Signing and Authentication with SSH" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;mhpark.me&#x2F;posts&#x2F;ssh-signing-and-auth-with-git&#x2F;" /><meta property="og:site_name" content="Mike&#x27;s Blog">
+        <noscript><link rel="stylesheet" href="https://mhpark.me/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://mhpark.me/js/initializeTheme.min.js"></script>
+        <script defer src="https://mhpark.me/js/themeSwitcher.min.js"></script>
+        <script defer src="https://mhpark.me/js/searchElasticlunr.min.js?h=3626c0ef99daa745b31e"></script>
+
+        
+    
+</head>
+
+
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://mhpark.me">Mike&#x27;s Blog</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/posts/">posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/tags/">tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/projects/">projects
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/about-me">about-me
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            <li class="js menu-icon">
+                                <div role="button" tabindex="0" id="search-button" class="search-icon interactive-icon" title="Click or press $SHORTCUT to open search" aria-label="Click or press $SHORTCUT to open search">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                                        <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                                    </svg>
+                                </div>
+                            </li>
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+    <div class="banner">
+      <a id="rotator"
+        ><img src="https://mhpark.me/me.webp"
+        /></a
+      >
+    </div>
+</header>
+
+    <div class="content">
+
+        
+        
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            Git Signing and Authentication with SSH
+        </h1>
+        <a class="u-url u-uid" href="https://mhpark.me/posts/ssh-signing-and-auth-with-git/"></a>
+
+        <ul class="meta"><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;mhpark.me" class="u-url " title=""></a>
+</span>
+<li><time class="dt-published" datetime="2023-10-04">4th Oct 2023</time></li><li title="228 words"><span class='separator' aria-hidden='true'>•</span>2 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span>Tags:&nbsp;</li><li class="tag"><a class="p-category" href="https://mhpark.me/tags/ssh/">ssh</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://mhpark.me/tags/git/">git</a></li>
+        </ul><section class="e-content body"><p>This is a quick guide to set up git with SSH ed25519 keys
+not only for authenticating with GitHub or GitLab but also
+for signing commits without the need to install GPG/PGP
+which has some serious <a rel="external" href="https://www.latacora.com/blog/2019/07/16/the-pgp-problem/">criticisms / flaws</a> that has led me to move
+into a world without it. The new world isn't <em>as</em> straightforward
+as the old so I thought I'd just throw together a quick guide
+to help you out.</p>
+<span id="continue-reading"></span><h3 id="ssh">SSH</h3>
+<p>When connecting to remote instances, GitHub, GitLab, etc... you will likely
+need an SSH key. The great thing about new versions of git and the providers is
+that <a rel="external" href="https://en.wikipedia.org/wiki/EdDSA">ed25519</a> keys support authentication and signing. So you can set up your
+<code>git</code> and SSH to avoid the entire need for GPG/PGP (if you need to share data
+securely I recommend <a rel="external" href="https://github.com/FiloSottile/age">Age</a> or <a rel="external" href="https://github.com/magic-wormhole/magic-wormhole">Magic
+Wormhole</a> for secure
+transfers).</p>
+<p>To get started simply:</p>
+<pre class="giallo z-code"><code data-lang="shellscript"><span class="giallo-l"><span class="z-entity z-name">EMAIL</span><span class="z-string z-punctuation z-definition z-string"> = &quot;Your Email Address&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-entity z-name">ssh-keygen</span><span class="z-constant"> -t</span><span class="z-string"> ed25519</span><span class="z-constant"> -C</span><span class="z-punctuation z-definition z-string"> &quot;</span><span class="z-variable z-other">$EMAIL</span><span class="z-punctuation z-definition z-string">&quot;</span><span class="z-punctuation z-definition z-comment z-comment"> # Generate a key-pair</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment"># Will make two files id_ed25519.pub and id_ed25519</span></span>
+<span class="giallo-l"><span class="z-entity z-name">git</span><span class="z-string"> config</span><span class="z-constant"> --global</span><span class="z-string z-punctuation z-definition z-string"> user.name &quot;First Last&quot;</span></span>
+<span class="giallo-l"><span class="z-entity z-name">git</span><span class="z-string"> config</span><span class="z-constant"> --global</span><span class="z-string z-punctuation z-definition z-string"> user.email &quot;</span><span class="z-variable z-other">$EMAIL</span><span class="z-punctuation z-definition z-string">&quot;</span></span>
+<span class="giallo-l"><span class="z-entity z-name">git</span><span class="z-string"> config</span><span class="z-constant"> --global --unset</span><span class="z-string"> gpg.format</span></span>
+<span class="giallo-l"><span class="z-entity z-name">git</span><span class="z-string"> config</span><span class="z-constant"> --global</span><span class="z-string"> gpg.format ssh</span><span class="z-punctuation z-definition z-comment z-comment">  # Set the GPG format to use ssh instead of gpg</span></span>
+<span class="giallo-l"><span class="z-entity z-name">git</span><span class="z-string"> config</span><span class="z-constant"> --global</span><span class="z-string"> user.signingkey ~/.ssh/id_ed25519.pub</span><span class="z-punctuation z-definition z-comment z-comment"> # Set the signing key</span></span>
+<span class="giallo-l"><span class="z-entity z-name">git</span><span class="z-string"> config</span><span class="z-constant"> --global</span><span class="z-string"> commit.gpgsign</span><span class="z-constant"> true</span><span class="z-punctuation z-definition z-comment z-comment"> # Configure git to sign commits</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-entity z-name">touch</span><span class="z-string"> ~/.ssh/allowed_signers</span><span class="z-punctuation z-definition z-comment z-comment"> # Create a lookup of allowed signers</span></span>
+<span class="giallo-l"><span class="z-support">echo</span><span class="z-punctuation z-definition z-string"> &quot;</span><span class="z-variable z-other">$EMAIL</span><span class="z-string"> $(</span><span class="z-entity z-name">cat</span><span class="z-string z-punctuation z-definition z-string"> ~/.ssh/id_ed25519.pub)&quot;</span><span class="z-keyword"> &gt;&gt;</span><span class="z-string"> ~/.ssh/allowed_signers</span><span class="z-punctuation z-definition z-comment z-comment"> # Add this one</span></span>
+<span class="giallo-l"><span class="z-entity z-name">git</span><span class="z-string"> config</span><span class="z-constant"> --global</span><span class="z-string z-punctuation z-definition z-string"> gpg.ssh.allowedSignersFile &quot;</span><span class="z-variable z-other">$HOME</span><span class="z-string z-punctuation z-definition z-string">/.ssh/allowed_signers&quot;</span><span class="z-punctuation z-definition z-comment z-comment"> # Point git at your signers</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment"># Add the key to your keychain</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment"># Mac</span></span>
+<span class="giallo-l"><span class="z-entity z-name">ssh-add</span><span class="z-constant"> --apple-use-keychain</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment"># Linux</span></span>
+<span class="giallo-l"><span class="z-entity z-name">ssh-add</span><span class="z-constant"> -k</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment"># You can verify it&#39;s there with</span></span>
+<span class="giallo-l"><span class="z-entity z-name">ssh-add</span><span class="z-constant"> -L</span></span></code></pre>
+<p>Then just navigate to <a rel="external" href="https://github.com/settings/keys">GitHub</a> and paste the
+contents of your public ssh key (The contents of ~/.ssh/id_ed25519.pub) and
+upload it twice, once as an authentication key and once as a signing key.</p>
+<p>On GitLab you only need to upload it once and select it's purpose as being for both
+authentication and signing.</p>
+
+        </section>
+
+        
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+
+<span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://mhpark.me/js/copyCodeToClipboard.min.js"></script>
+
+
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://mhpark.me/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://mhpark.me/social_icons/rss.svg">
+                        </a>
+                    </li><li class="js"><a class="nav-links no-hover-padding social" href="#" data-encoded-email="d2VibWFzdGVyQG1ocGFyay5tZQ=="><img loading="lazy" alt="email" title="email" src="https://mhpark.me/social_icons/email.svg">
+                            </a>
+                        </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/mhpark.me">
+                                    <img loading="lazy" alt="bluesky" title="bluesky" src="https://mhpark.me/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/KingMichaelPark/">
+                                    <img loading="lazy" alt="github" title="github" src="https://mhpark.me/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://news.ycombinator.com/user?id=Zizizizz">
+                                    <img loading="lazy" alt="hacker-news" title="hacker-news" src="https://mhpark.me/social_icons/hacker-news.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://fosstodon.org/@mdawg">
+                                    <img loading="lazy" alt="mastodon" title="mastodon" src="https://mhpark.me/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    <script src="https://mhpark.me/js/decodeMail.min.js" async></script><div id="searchModal" class="search-modal js" role="dialog" aria-labelledby="modalTitle">
+    <h1 id="modalTitle" class="visually-hidden">Search</h1>
+    <div id="modal-content">
+        <div id="searchBar">
+            <div class="search-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                </svg>
+            </div>
+            <input id="searchInput" role="combobox" autocomplete="off" spellcheck="false" aria-expanded="false" aria-controls="results-container" placeholder="Search…"/>
+            <div id="clear-search" class="close-icon interactive-icon" tabindex="0" role="button" title="Clear search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </div>
+        </div>
+        <div id="results-container">
+            <div id="results-info"><span id="zero_results"> No results</span>
+                <span id="one_results"> $NUMBER result</span>
+                <span id="many_results"> $NUMBER results</span><span id="two_results"> $NUMBER results</span>
+                <span id="few_results"> $NUMBER results</span>
+            </div>
+            <div id="results" role="listbox"></div>
+        </div>
+    </div>
+</div>
+</footer>
+
+
+    
+    
+</body>
+
+</html>

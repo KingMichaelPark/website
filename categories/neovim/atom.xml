@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://mhpark.me/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;mhpark.me</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>neovim</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://mhpark.me/skins/sakura.css?h=2d9c69af51135683e3bd" /><title>Mike's Blog - neovim</title>
+        <subtitle>The personal, rarely updated, blog of Michael Park</subtitle>
+    <link href="https://mhpark.me/categories/neovim/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://mhpark.me/categories/neovim/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-05-04T00:00:00+00:00</updated>
+    <id>https://mhpark.me/categories/neovim/atom.xml</id><entry xml:lang="en">
+        <title>Convenient auto-command for vim.pack.update</title>
+        <published>2026-05-04T00:00:00+00:00</published>
+        <updated>2026-05-04T00:00:00+00:00</updated>
+        <author>
+            <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://mhpark.me/posts/vim-pack-update-convenience/" type="text/html"/>
+        <id>https://mhpark.me/posts/vim-pack-update-convenience/</id>
+        <summary type="html">Neovim 0.12's new built-in package management is a breath of fresh air, but the
+default confirmation buffer is a bit bare-bones when it comes to quick
+interactions. If you're like me and want to just hit a key to sync everything
+up instead of using the code action ca and selecting update on each package…</summary>
+        </entry><entry xml:lang="en">
+        <title>Updating Treesitter&#x27;s Config to use Main</title>
+        <published>2025-12-15T00:00:00+00:00</published>
+        <updated>2025-12-15T00:00:00+00:00</updated>
+        <author>
+            <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://mhpark.me/posts/update-treesitter-main/" type="text/html"/>
+        <id>https://mhpark.me/posts/update-treesitter-main/</id>
+        <summary type="html">If you woke up to the news that treesitter has set
+their default branch to main from the now frozen
+master then you may wish to know how to now configure
+your plugins that depend on it in neovim. Here's how I did
+it in my local dotfiles…</summary>
+        </entry><entry xml:lang="en">
+        <title>Treesitter Highlights for Jenkinsfile</title>
+        <published>2024-01-31T00:00:00+00:00</published>
+        <updated>2024-01-31T00:00:00+00:00</updated>
+        <author>
+            <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://mhpark.me/posts/jenkinsfile-md/" type="text/html"/>
+        <id>https://mhpark.me/posts/jenkinsfile-md/</id>
+        <summary type="html">Ever wanted syntax in neovim for Jenkinsfiles?
+Let's create an autocommand to do just that!…</summary>
+        </entry>
+</feed>

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <!-- Verifications -->
+    <link href="https://github.com/KingMichaelPark" rel="me">
+    <link href="https://mhpark.me" rel="me">
+    <link href="https://fosstodon.org/@mdawg" rel="me">
+    <link href="https://bsky.app/profile/mhpark.me" rel="me"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src &#x27;self&#x27; data:;img-src &#x27;self&#x27; https:&#x2F;&#x2F;* data:;media-src &#x27;self&#x27;;style-src &#x27;self&#x27;;frame-src player.vimeo.com https:&#x2F;&#x2F;www.youtube-nocookie.com;connect-src 'self';script-src 'self' 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://mhpark.me">
+
+    
+    <title>
+Mike's Blog • Updating Treesitter's Config to use Main</title>
+
+    
+    
+    
+
+    
+    
+        
+            
+            
+                
+                    <link rel="alternate" type="application/atom+xml" title="Mike's Blog - Atom Feed" href="https://mhpark.me/atom.xml">
+                
+            
+        
+    
+
+    
+    
+    
+        
+            <link rel="stylesheet" href="https://mhpark.me/custom_subset.css?h=0b9535a28bc3d5bf2321">
+        
+    
+
+    <link rel="stylesheet" href="https://mhpark.me/rach.css?h=3b7a2a01573cee5367b5">
+
+    
+        <link rel="stylesheet" href="https://mhpark.me/main.css?h=fe8c9607d92b0cda0f8f" />
+        <link rel="stylesheet" href="https://mhpark.me/skins/sakura.css?h=2d9c69af51135683e3bd" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="If you woke up to the news that treesitter has set
+their default branch to main from the now frozen
+master then you may wish to know how to now configure
+your plugins that depend on it in neovim. Here's how I did
+it in my local dotfiles…" />
+        <meta property="og:description" content="If you woke up to the news that treesitter has set
+their default branch to main from the now frozen
+master then you may wish to know how to now configure
+your plugins that depend on it in neovim. Here's how I did
+it in my local dotfiles…" />
+
+    
+
+    <meta property="og:title" content="Updating Treesitter's Config to use Main" />
+    <meta property="og:type" content="article" />
+
+    
+<meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;mhpark.me&#x2F;posts&#x2F;update-treesitter-main&#x2F;" /><meta property="og:site_name" content="Mike&#x27;s Blog">
+        <noscript><link rel="stylesheet" href="https://mhpark.me/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://mhpark.me/js/initializeTheme.min.js"></script>
+        <script defer src="https://mhpark.me/js/themeSwitcher.min.js"></script>
+        <script defer src="https://mhpark.me/js/searchElasticlunr.min.js?h=3626c0ef99daa745b31e"></script>
+
+        
+    
+</head>
+
+
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://mhpark.me">Mike&#x27;s Blog</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/posts/">posts
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/tags/">tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/projects/">projects
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding" href="https://mhpark.me/about-me">about-me
+                                </a>
+                            </li>
+                        <li class="menu-icons-container">
+                        <ul class="menu-icons-group">
+                            <li class="js menu-icon">
+                                <div role="button" tabindex="0" id="search-button" class="search-icon interactive-icon" title="Click or press $SHORTCUT to open search" aria-label="Click or press $SHORTCUT to open search">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                                        <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                                    </svg>
+                                </div>
+                            </li>
+
+                            
+                            
+
+                            <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </nav>
+    <div class="banner">
+      <a id="rotator"
+        ><img src="https://mhpark.me/me.webp"
+        /></a
+      >
+    </div>
+</header>
+
+    <div class="content">
+
+        
+        
+
+
+
+
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            Updating Treesitter's Config to use Main
+        </h1>
+        <a class="u-url u-uid" href="https://mhpark.me/posts/update-treesitter-main/"></a>
+
+        <ul class="meta"><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;mhpark.me" class="u-url " title=""></a>
+</span>
+<li><time class="dt-published" datetime="2025-12-15">15th Dec 2025</time></li><li title="240 words"><span class='separator' aria-hidden='true'>•</span>2 min read</li>
+        </ul><section class="e-content body"><p>If you woke up to the news that treesitter has set
+their default branch to <code>main</code> from the now <em>frozen</em>
+<code>master</code> then you may wish to know how to now configure
+your plugins that depend on it in neovim. Here's how I did
+it in my local <a rel="external" href="https://github.com/KingMichaelPark/dotfiles">dotfiles</a>.</p>
+<span id="continue-reading"></span><h2 id="treesitter">Treesitter</h2>
+<p>The <a rel="external" href="https://github.com/nvim-treesitter/nvim-treesitter">treesitter</a> config is simplified quite a bit, however there is no longer a
+<em>ensure_installed</em> config option so you need to do it this way instead.</p>
+<blockquote>
+<p>Note: I am using lazy.nvim to manage my packages and have a layout that loads
+configs that use the structure where I have a plugins/ directory that
+returns the table that lazy needs to install.</p>
+</blockquote>
+<pre class="giallo z-code"><code data-lang="lua"><span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">-- treesitter.lua</span></span>
+<span class="giallo-l"><span class="z-keyword">return</span><span> {</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;nvim-treesitter/nvim-treesitter&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    lazy</span><span class="z-keyword"> =</span><span class="z-constant"> false</span><span>,</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    build</span><span class="z-keyword"> =</span><span class="z-punctuation z-definition z-string z-string"> &quot;:TSUpdate&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-entity z-name">    config</span><span class="z-keyword"> = function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-keyword">        local</span><span class="z-variable z-other"> ts</span><span class="z-keyword"> =</span><span class="z-support"> require</span><span class="z-punctuation z-definition z-string z-string"> &#39;nvim-treesitter&#39;</span></span>
+<span class="giallo-l"><span class="z-keyword">        local</span><span class="z-variable z-other"> parsers</span><span class="z-keyword"> =</span><span> {</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;bash&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;comment&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;css&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;diff&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;dockerfile&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;elixir&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;git_config&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;gitcommit&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;gitignore&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;groovy&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;go&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;heex&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;hcl&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;html&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;http&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;java&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;javascript&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;jsdoc&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;json&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;json5&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;lua&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;make&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;markdown&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;markdown_inline&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;python&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;regex&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;rst&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;rust&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;scss&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;ssh_config&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;sql&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;terraform&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;typst&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;toml&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;tsx&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;typescript&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;vim&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;vimdoc&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">            &quot;yaml&quot;</span><span>,</span></span>
+<span class="giallo-l"><span>        }</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-keyword">        for</span><span class="z-variable z-other"> _, parser</span><span class="z-keyword"> in</span><span class="z-support"> ipairs</span><span class="z-variable z-other">(parsers) </span><span class="z-keyword">do</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            ts.</span><span class="z-support">install</span><span class="z-variable z-other">(parser)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">        -- Not every tree-sitter parser is the same as the file type detected</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">        -- So the patterns need to be registered more cleverly</span></span>
+<span class="giallo-l"><span class="z-keyword">        local</span><span class="z-variable z-other"> patterns</span><span class="z-keyword"> =</span><span> {}</span></span>
+<span class="giallo-l"><span class="z-keyword">        for</span><span class="z-variable z-other"> _, parser</span><span class="z-keyword"> in</span><span class="z-support"> ipairs</span><span class="z-variable z-other">(parsers) </span><span class="z-keyword">do</span></span>
+<span class="giallo-l"><span class="z-keyword">            local</span><span class="z-variable z-other"> parser_patterns</span><span class="z-keyword"> =</span><span class="z-variable z-other"> vim.</span><span class="z-entity">treesitter</span><span>.</span><span class="z-entity">language</span><span>.</span><span class="z-support">get_filetypes</span><span class="z-variable z-other">(parser)</span></span>
+<span class="giallo-l"><span class="z-keyword">            for</span><span class="z-variable z-other"> _, pp</span><span class="z-keyword"> in</span><span class="z-support"> pairs</span><span class="z-variable z-other">(parser_patterns) </span><span class="z-keyword">do</span></span>
+<span class="giallo-l"><span class="z-support">                table.insert</span><span class="z-variable z-other">(patterns, pp)</span></span>
+<span class="giallo-l"><span class="z-keyword">            end</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">treesitter</span><span>.</span><span class="z-entity">language</span><span>.</span><span class="z-support">register</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;groovy&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;Jenkinsfile&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">wo</span><span>[</span><span class="z-constant">0</span><span>][</span><span class="z-constant">0</span><span>].</span><span class="z-entity">foldexpr</span><span class="z-keyword"> =</span><span class="z-punctuation z-definition z-string z-string"> &#39;v:lua.vim.treesitter.foldexpr()&#39;</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">wo</span><span>[</span><span class="z-constant">0</span><span>][</span><span class="z-constant">0</span><span>].</span><span class="z-entity">foldmethod</span><span class="z-keyword"> =</span><span class="z-punctuation z-definition z-string z-string"> &#39;expr&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">api</span><span>.</span><span class="z-support">nvim_create_autocmd</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&#39;FileType&#39;</span><span>, {</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            pattern</span><span class="z-keyword"> =</span><span class="z-variable z-other"> patterns,</span></span>
+<span class="giallo-l"><span class="z-entity z-name">            callback</span><span class="z-keyword"> = function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">                vim.</span><span class="z-entity">treesitter</span><span>.</span><span class="z-support">start</span><span>()</span></span>
+<span class="giallo-l"><span class="z-keyword">            end</span><span>,</span></span>
+<span class="giallo-l"><span>        })</span></span>
+<span class="giallo-l"><span class="z-keyword">    end</span><span>,</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span></code></pre>
+<blockquote>
+<p>Update: 2026-02-05</p>
+<p>A friendly reader <a rel="external" href="https://www.manueldetoma.it/">Manuel De Toma</a> noticed that my
+autocommand wasn't properly starting treesitter for filetypes that had different
+vim filetypes to the tree-sitter parser name. This meant that it wasn't starting
+for - example - tsx files because the filetype for tsx files is typescriptreact.
+So I have added the <code>local patterns = ...</code> block to account for any mismatches
+in parser -&gt; pattern names. Thanks again!</p>
+</blockquote>
+<h2 id="treesitter-text-objects">Treesitter Text-Objects</h2>
+<p>For
+<a rel="external" href="https://github.com/nvim-treesitter/nvim-treesitter-textobjects">treesitter-text-objects</a>,
+I just split that out into a new file, and called the recommended setup. Quite
+a straightforward copy paste job, bit still worth ensuring that the pinned
+dependent version is the main branch.</p>
+<pre class="giallo z-code"><code data-lang="lua"><span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">-- tree-sitter-context.lua</span></span>
+<span class="giallo-l"><span class="z-keyword">return</span><span> {</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-string z-string">    &quot;nvim-treesitter/nvim-treesitter-textobjects&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    branch</span><span class="z-keyword"> =</span><span class="z-punctuation z-definition z-string z-string"> &quot;main&quot;</span><span>,</span></span>
+<span class="giallo-l"><span class="z-variable z-other">    dependencies</span><span class="z-keyword"> =</span><span> { </span><span class="z-punctuation z-definition z-string z-string">&quot;nvim-treesitter/nvim-treesitter&quot;</span><span class="z-variable z-other">, branch</span><span class="z-keyword"> =</span><span class="z-punctuation z-definition z-string z-string"> &quot;main&quot; </span><span>},</span></span>
+<span class="giallo-l"><span class="z-entity z-name">    init</span><span class="z-keyword"> = function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">g</span><span>.</span><span class="z-entity">no_plugin_maps</span><span class="z-keyword"> =</span><span class="z-constant"> true</span></span>
+<span class="giallo-l"><span class="z-keyword">    end</span><span>,</span></span>
+<span class="giallo-l"><span class="z-entity z-name">    config</span><span class="z-keyword"> = function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-support">        require</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;nvim-treesitter-textobjects&quot;</span><span>).</span><span class="z-support">setup</span><span> {</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            select</span><span class="z-keyword"> =</span><span> {</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">                -- Automatically jump forward to textobj, similar to targets.vim</span></span>
+<span class="giallo-l"><span class="z-variable z-other">                lookahead</span><span class="z-keyword"> =</span><span class="z-constant"> true</span><span>,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">                -- You can choose the select mode (default is charwise &#39;v&#39;)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-variable z-other">                selection_modes</span><span class="z-keyword"> =</span><span> {</span></span>
+<span class="giallo-l"><span>                    [</span><span class="z-punctuation z-definition z-string z-string">&#39;@parameter.outer&#39;</span><span>] </span><span class="z-keyword">=</span><span class="z-punctuation z-definition z-string z-string"> &#39;v&#39;</span><span>, </span><span class="z-punctuation z-definition z-comment z-comment">-- charwise</span></span>
+<span class="giallo-l"><span>                    [</span><span class="z-punctuation z-definition z-string z-string">&#39;@function.outer&#39;</span><span>] </span><span class="z-keyword">=</span><span class="z-punctuation z-definition z-string z-string"> &#39;V&#39;</span><span>,  </span><span class="z-punctuation z-definition z-comment z-comment">-- linewise</span></span>
+<span class="giallo-l"><span>                    [</span><span class="z-punctuation z-definition z-string z-string">&#39;@class.outer&#39;</span><span>] </span><span class="z-keyword">=</span><span class="z-punctuation z-definition z-string z-string"> &#39;&lt;c-v&gt;&#39;</span><span>, </span><span class="z-punctuation z-definition z-comment z-comment">-- blockwise</span></span>
+<span class="giallo-l"><span>                },</span></span>
+<span class="giallo-l"><span class="z-variable z-other">                include_surrounding_whitespace</span><span class="z-keyword"> =</span><span class="z-constant"> false</span><span>,</span></span>
+<span class="giallo-l"><span>            },</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            move</span><span class="z-keyword"> =</span><span> {</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">                -- whether to set jumps in the jumplist</span></span>
+<span class="giallo-l"><span class="z-variable z-other">                set_jumps</span><span class="z-keyword"> =</span><span class="z-constant"> true</span><span>,</span></span>
+<span class="giallo-l"><span>            },</span></span>
+<span class="giallo-l"><span>        }</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">        -- Selects</span></span>
+<span class="giallo-l"><span class="z-keyword">        local</span><span class="z-variable z-other"> select</span><span class="z-keyword"> =</span><span class="z-support"> require</span><span class="z-punctuation z-definition z-string z-string"> &quot;nvim-treesitter-textobjects.select&quot;</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;am&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-support">            select</span><span>.</span><span class="z-support">select_textobject</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@function.outer&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;textobjects&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;im&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-support">            select</span><span>.</span><span class="z-support">select_textobject</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@function.inner&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;textobjects&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;ac&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-support">            select</span><span>.</span><span class="z-support">select_textobject</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@class.outer&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;textobjects&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;ic&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-support">            select</span><span>.</span><span class="z-support">select_textobject</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@class.inner&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;textobjects&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">        -- You can also use captures from other query groups like `locals.scm`</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;as&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-support">            select</span><span>.</span><span class="z-support">select_textobject</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@local.scope&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;locals&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">        -- Swaps</span></span>
+<span class="giallo-l"><span class="z-keyword">        local</span><span class="z-variable z-other"> swap</span><span class="z-keyword"> =</span><span class="z-support"> require</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;nvim-treesitter-textobjects.swap&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;&lt;leader&gt;a&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            swap.</span><span class="z-support">swap_next</span><span class="z-punctuation z-definition z-string z-string"> &quot;@parameter.inner&quot;</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;&lt;leader&gt;A&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            swap.</span><span class="z-support">swap_previous</span><span class="z-punctuation z-definition z-string z-string"> &quot;@parameter.outer&quot;</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-keyword">        local</span><span class="z-variable z-other"> move</span><span class="z-keyword"> =</span><span class="z-support"> require</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;nvim-treesitter-textobjects.move&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;]m&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            move.</span><span class="z-support">goto_next_start</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@function.outer&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;textobjects&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;]]&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            move.</span><span class="z-support">goto_next_start</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@class.outer&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;textobjects&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">        -- You can also pass a list to group multiple queries.</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;]o&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            move.</span><span class="z-support">goto_next_start</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;@loop.inner&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;@loop.outer&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;textobjects&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">        -- You can also use captures from other query groups like `locals.scm` or `folds.scm`</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;]s&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            move.</span><span class="z-support">goto_next_start</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@local.scope&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;locals&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;]z&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            move.</span><span class="z-support">goto_next_start</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@fold&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;folds&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;]M&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            move.</span><span class="z-support">goto_next_end</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@function.outer&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;textobjects&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;][&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            move.</span><span class="z-support">goto_next_end</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@class.outer&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;textobjects&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;[m&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            move.</span><span class="z-support">goto_previous_start</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@function.outer&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;textobjects&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;[[&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            move.</span><span class="z-support">goto_previous_start</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@class.outer&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;textobjects&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;[M&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            move.</span><span class="z-support">goto_previous_end</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@function.outer&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;textobjects&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;[]&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            move.</span><span class="z-support">goto_previous_end</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@class.outer&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;textobjects&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">        -- Go to either the start or the end, whichever is closer.</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">        -- Use if you want more granular movements</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;]d&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            move.</span><span class="z-support">goto_next</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@conditional.outer&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;textobjects&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;[d&quot;</span><span>, </span><span class="z-keyword">function</span><span>()</span></span>
+<span class="giallo-l"><span class="z-variable z-other">            move.</span><span class="z-support">goto_previous</span><span>(</span><span class="z-punctuation z-definition z-string z-string">&quot;@conditional.outer&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;textobjects&quot;</span><span>)</span></span>
+<span class="giallo-l"><span class="z-keyword">        end</span><span>)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-keyword">        local</span><span class="z-variable z-other"> ts_repeat_move</span><span class="z-keyword"> =</span><span class="z-support"> require</span><span class="z-punctuation z-definition z-string z-string"> &quot;nvim-treesitter-textobjects.repeatable_move&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">        -- Repeat movement with ; and ,</span></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">        -- ensure ; goes forward and , goes backward regardless of the last direction</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;;&quot;</span><span class="z-variable z-other">, ts_repeat_move.</span><span class="z-entity">repeat_last_move_next</span><span>)</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;,&quot;</span><span class="z-variable z-other">, ts_repeat_move.</span><span class="z-entity">repeat_last_move_previous</span><span>)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-punctuation z-definition z-comment z-comment">        -- Optionally, make builtin f, F, t, T also repeatable with ; and ,</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;f&quot;</span><span class="z-variable z-other">, ts_repeat_move.</span><span class="z-entity">builtin_f_expr</span><span class="z-variable z-other">, { expr</span><span class="z-keyword"> =</span><span class="z-constant"> true</span><span> })</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;F&quot;</span><span class="z-variable z-other">, ts_repeat_move.</span><span class="z-entity">builtin_F_expr</span><span class="z-variable z-other">, { expr</span><span class="z-keyword"> =</span><span class="z-constant"> true</span><span> })</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;t&quot;</span><span class="z-variable z-other">, ts_repeat_move.</span><span class="z-entity">builtin_t_expr</span><span class="z-variable z-other">, { expr</span><span class="z-keyword"> =</span><span class="z-constant"> true</span><span> })</span></span>
+<span class="giallo-l"><span class="z-variable z-other">        vim.</span><span class="z-entity">keymap</span><span>.</span><span class="z-support">set</span><span>({ </span><span class="z-punctuation z-definition z-string z-string">&quot;n&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;x&quot;</span><span>, </span><span class="z-punctuation z-definition z-string z-string">&quot;o&quot; </span><span>}, </span><span class="z-punctuation z-definition z-string z-string">&quot;T&quot;</span><span class="z-variable z-other">, ts_repeat_move.</span><span class="z-entity">builtin_T_expr</span><span class="z-variable z-other">, { expr</span><span class="z-keyword"> =</span><span class="z-constant"> true</span><span> })</span></span>
+<span class="giallo-l"><span class="z-keyword">    end</span><span>,</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p>Happy Vimming!</p>
+
+        </section>
+
+        
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
+
+
+<span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://mhpark.me/js/copyCodeToClipboard.min.js"></script>
+
+
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs"><ul><li>
+                        <a class="nav-links no-hover-padding social" rel="" 
+
+ href="https://mhpark.me/atom.xml">
+                        <img loading="lazy" alt="feed" title="feed" src="https://mhpark.me/social_icons/rss.svg">
+                        </a>
+                    </li><li class="js"><a class="nav-links no-hover-padding social" href="#" data-encoded-email="d2VibWFzdGVyQG1ocGFyay5tZQ=="><img loading="lazy" alt="email" title="email" src="https://mhpark.me/social_icons/email.svg">
+                            </a>
+                        </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://bsky.app/profile/mhpark.me">
+                                    <img loading="lazy" alt="bluesky" title="bluesky" src="https://mhpark.me/social_icons/bluesky.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://github.com/KingMichaelPark/">
+                                    <img loading="lazy" alt="github" title="github" src="https://mhpark.me/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://news.ycombinator.com/user?id=Zizizizz">
+                                    <img loading="lazy" alt="hacker-news" title="hacker-news" src="https://mhpark.me/social_icons/hacker-news.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me" 
+
+ href="https://fosstodon.org/@mdawg">
+                                    <img loading="lazy" alt="mastodon" title="mastodon" src="https://mhpark.me/social_icons/mastodon.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+
+                
+                Powered by
+                <a rel="" 
+
+ href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel="" 
+
+ href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    <script src="https://mhpark.me/js/decodeMail.min.js" async></script><div id="searchModal" class="search-modal js" role="dialog" aria-labelledby="modalTitle">
+    <h1 id="modalTitle" class="visually-hidden">Search</h1>
+    <div id="modal-content">
+        <div id="searchBar">
+            <div class="search-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                </svg>
+            </div>
+            <input id="searchInput" role="combobox" autocomplete="off" spellcheck="false" aria-expanded="false" aria-controls="results-container" placeholder="Search…"/>
+            <div id="clear-search" class="close-icon interactive-icon" tabindex="0" role="button" title="Clear search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+            </div>
+        </div>
+        <div id="results-container">
+            <div id="results-info"><span id="zero_results"> No results</span>
+                <span id="one_results"> $NUMBER result</span>
+                <span id="many_results"> $NUMBER results</span><span id="two_results"> $NUMBER results</span>
+                <span id="few_results"> $NUMBER results</span>
+            </div>
+            <div id="results" role="listbox"></div>
+        </div>
+    </div>
+</div>
+</footer>
+
+
+    
+    
+</body>
+
+</html>
