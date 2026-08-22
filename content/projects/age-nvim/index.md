@@ -2,6 +2,7 @@
 title = "age.nvim"
 description = "A minimal neovim plugin to load secrets."
 weight = 32
+date = 2025-01-26
 
 [taxonomies]
 tags = ["neovim", "encryption", "lua" ]
@@ -9,6 +10,8 @@ tags = ["neovim", "encryption", "lua" ]
 [extra]
 local_image = "projects/age-nvim/age-nvim.webp"
 canonical_url = "https://github.com/KingMichaelPark/age.nvim"
+hide_from_feed = true
+show_date = false
 +++
 
 

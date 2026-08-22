@@ -28,7 +28,7 @@ include_content = true
 # At which character to truncate the content to. Useful if you have a lot of pages and the index would
 # become too big to load on the site. Defaults to not being set.
 # truncate_content_length = 100
-# Wether to produce the search index as a javascript file or as a JSON file.
+# Whether to produce the search index as a javascript file or as a JSON file.
 # Accepted value "elasticlunr_javascript" or "elasticlunr_json".
 index_format = "elasticlunr_json"
 
@@ -38,6 +38,8 @@ bottom_footnotes = true
 # To use a Zola built-in theme, CSP needs to allow unsafe-inline for style-src.
 highlight_theme = "css"
 smart_punctuation = true
+# Set to 'external' to add an indicator next to external links.
+external_links_class = "external"
 
 [link_checker]
 internal_level = "warn"
@@ -60,6 +62,13 @@ title = "~/tabi"
 description = "tabi és un tema accessible per a Zola amb cerca, suport multilingüe, JavaScript opcional, una puntuació perfecta a Lighthouse i documentació exhaustiva. Dissenyat per a llocs web i blogs personals."
 generate_feeds = true
 taxonomies = [{name = "tags", feed = true}]
+
+[languages.ar]
+title = "~/تابي"
+description = "تابي هو قالب Zola سريع وحديث مع دعم متعدد اللغات و JavaScript اختياري ودرجة Lighthouse مثالية."
+generate_feeds = true
+taxonomies = [{name = "tags", feed = true}]
+build_search_index = false
 
 [extra]
 # Check out the documentation (or the comments below) to learn how to customise tabi:
@@ -126,13 +135,13 @@ show_remote_changes = true  # Defaults to true.
 # Show a link to the repository of the site, right next to the "Powered by Zola & tabi" text.
 show_remote_source = true  # Defaults to true.
 
-# Add a "copy" button to codeblocks (loads ~700 bytes of JavaScript).
+# Add a "copy" button to code blocks (loads ~700 bytes of JavaScript).
 # Can be set at page or section levels, following the hierarchy: page > section > config. See: https://welpo.github.io/tabi/blog/mastering-tabi-settings/#settings-hierarchy
 copy_button = true
 
-# Loads the necessary JavaScript (~400 bytes) to use the "Show source or path" shortcode: https://welpo.github.io/tabi/blog/shortcodes/#show-source-or-path
+# Make code block names clickable if they are URLs (loads ~400 bytes of JavaScript).
 # Can be set at page or section levels, following the hierarchy: page > section > config. See: https://welpo.github.io/tabi/blog/mastering-tabi-settings/#settings-hierarchy
-add_src_to_code_block = false
+code_block_name_links = false
 
 # Force left-to-right (LTR) direction for code blocks.
 # Set to false to allow code to follow the document's natural direction.
@@ -418,3 +427,69 @@ avatar = true
 voting = true
 page_author_hashes = ""  # hash (or list of hashes) of the author.
 lazy_loading = true  # Loads when the comments are in the viewport (using the Intersection Observer API).
+
+[extra.webmentions]
+# To disable for a specific section or page, set webmentions = false in that page/section's front matter's [extra] section.
+enable = false
+# Specify the domain registered with webmention.io.
+domain = ""
+
+# The HTML ID for the object to fill in with the webmention data.
+# Defaults to "webmentions"
+# id = "webmentions"
+
+# data configuration for the webmention.min.js script
+# The base URL to use for this page. Defaults to window.location
+# page_url =
+
+# Additional URLs to check, separated by |s
+# add_urls
+
+# The maximum number of words to render in reply mentions.
+# wordcount = 20
+
+# The maximum number of mentions to retrieve. Defaults to 30.
+# max_webmentions = 30
+
+# By default, Webmentions render using the mf2 'url' element, which plays
+# nicely with webmention bridges (such as brid.gy and telegraph)
+# but allows certain spoofing attacks. If you would like to prevent
+# spoofing, set this to a non-empty string (e.g. "true").
+# prevent_spoofing
+
+# What to order the responses by; defaults to 'published'. See
+# https://github.com/aaronpk/webmention.io#api
+# sort_by
+
+# The order to sort the responses by; defaults to 'up' (i.e. oldest
+# first). See https://github.com/aaronpk/webmention.io#api
+# sort_dir
+
+# If set to a non-empty string (e.g. "true"), will display comment-type responses
+# (replies/mentions/etc.) as being part of the reactions
+# (favorites/bookmarks/etc.) instead of in a separate comment list.
+# comments_are_reactions = "true"
+
+# h-card configuration
+# Will identify you on the indieweb (see https://microformats.org/wiki/h-card)
+[extra.hcard]
+# Enable home page h-card.
+# enable = true
+# Add your email to the card if extra.email is set and not encoded.
+# with_mail = true
+# Add your social links ('socials' config) to the card.
+# with_social_links = true
+# Homepage url. Defaults to the value of 'base_url'.
+# homepage = "https://myhomepage.net"
+# avatar = "img/profile.webp"
+# Display name, default to the value of 'author'.
+# full_name = "John Doe"
+# Small bio, as shown on social media profiles.
+# biography = "Fond of the indieweb"
+#
+# You can add any property from https://microformats.org/wiki/h-card#Properties
+# Make sure to replace all '-' characters by '_'
+# Examples:
+# p_nickname = "nickname"
+# p_locality = "Bordeaux"
+# p_country_name = "France"

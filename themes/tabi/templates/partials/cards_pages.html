@@ -7,11 +7,7 @@
             {% break %}
         {% endif %}
         {# Determine which URL to use, default is page.permalink #}
-        {%- if page.extra.link_to and config.markdown.external_links_target_blank -%}
-            {%- set blank_target = "target=_blank" -%}
-        {%- else -%}
-            {%- set blank_target = "" -%}
-        {%- endif -%}
+        {%- set blank_target = macros_target_attribute::target_attribute(new_tab=config.markdown.external_links_target_blank and page.extra.link_to) -%}
 
         {% set target_url = page.extra.link_to | default(value=page.permalink) %}
 
@@ -38,10 +34,10 @@
             {% endif %}
 
             <div class="card-info">
-                <h2 class="card-title">{{ page.title }}</h2>
+                <h2 class="card-title">{{ page.title | markdown(inline=true) | safe }}</h2>
                 <div class="card-description">
                     {% if page.description %}
-                        {{ page.description }}
+                        {{ page.description | markdown(inline=true) | safe }}
                     {% endif %}
                 </div>
             </div>

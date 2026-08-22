@@ -16,7 +16,7 @@
         <link rel="icon" type="image/png" href="{{ get_url(path=config.extra.favicon) }}"/>
     {% endif %}
     {% if config.extra.favicon_emoji %}
-        <link rel=icon href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 105 55"><text y=".7em" font-size="82">{{ config.extra.favicon_emoji }}</text></svg>'>
+        <link rel=icon href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50%" x="50%" dominant-baseline="central" text-anchor="middle" font-size="88">{{ config.extra.favicon_emoji }}</text></svg>'>
     {% endif %}
 
     {# Feeds #}
@@ -44,6 +44,10 @@
     {% if config.extra.enable_subset %}
         {% if config.extra.custom_subset == true %}
             <link rel="stylesheet" href="{{ get_url(path="custom_subset.css" , cachebust=true) }}">
+        {% elif lang == 'en' %}
+            <link rel="stylesheet" href="{{ get_url(path="inter_subset_en.css", cachebust=true ) }}">
+        {% elif lang == 'es' %}
+            <link rel="stylesheet" href="{{ get_url(path="inter_subset_es.css", cachebust=true ) }}">
         {% endif %}
     {% endif %}
 
@@ -173,4 +177,6 @@
         {%- endif -%}
     {%- endif -%}
 
+    {# Users can optionally provide this template to add content to the head element. #}
+    {% include "tabi/extend_head.html" ignore missing %}
 </head>

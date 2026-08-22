@@ -1,5 +1,5 @@
 +++
-title = "The Value of Depleting Time"
+title = "The Value of Time and Struggle"
 date = 2026-08-21
 
 [taxonomies]
@@ -63,7 +63,7 @@ perspective. I don't want to invalidate the effort and feelings that you
 have put in. It just takes a lot of time and effort to guard every sentence in
 that way and it's not very fun to read.
 
-{{ resize_image(path="get-on-with-it.gif", op="fit_width") }}
+{{ resize_image(path="posts/get-on-with-it.gif", width=380, height=0, op="fit_width") }}
 
 Okay.
 

@@ -23,14 +23,29 @@
 @use 'parts/_tags.scss';
 @use 'parts/_theme-switch.scss';
 @use 'parts/_zola-error.scss';
-
-
-
+@use 'parts/_webmention.scss';
 
 @font-face {
-    src: local('Iosevka SS08'),
-        url('fonts/IosevkaSS08-Regular.woff2') format("woff2");
-    font-family: 'Iosevka SS08';
+    src: local('Inter'),
+        url('fonts/Inter4.woff2') format("woff2");
+    /* Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter). Licensed under the SIL Open Font License, Version 1.1. More information available at: http://scripts.sil.org/OFL */
+    font-family: 'Inter';
+    font-display: swap;
+}
+
+@font-face {
+    src: local('Source Serif'),
+        url('fonts/SourceSerif4Variable-Roman.ttf.woff2') format("woff2");
+    /* Copyright 2014 - 2023 Adobe (http://www.adobe.com/), with Reserved Font Name ‘Source’.adobe.com/). Licensed under the SIL Open Font License, Version 1.1. More information available at: http://scripts.sil.org/OFL */
+    font-family: 'Source Serif';
+    font-display: swap;
+}
+
+@font-face {
+    src: local('Cascadia Code'),
+        url('fonts/CascadiaCode-SemiLight.woff2') format("woff2");
+    /* Copyright 2019 - Present, Microsoft Corporation, with Reserved Font Name 'Cascadia Code'. Licensed under the SIL Open Font License, Version 1.1. More information available at: http://scripts.sil.org/OFL */
+    font-family: 'Cascadia Code';
     font-display: swap;
 }
 
@@ -54,14 +69,14 @@
     }
 
     @else {
-        --background-color: #11111b;
-        --bg-0: #11111b;
-        --bg-1: #181825;
-        --bg-2: #1e1e2e;
-        --bg-3: #313244;
+        --background-color: #1f1f1f;
+        --bg-0: #2f2f2f;
+        --bg-1: #3c3c3c;
+        --bg-2: #171717;
+        --bg-3: #535555;
         --hover-color: black;
         --primary-color: #91e0ee;
-        --divider-color: #45475a;
+        --divider-color: #4a4a4a;
         --text-color: #D4D4D4;
         --text-color-high-contrast: #eceeef;
         --meta-color: #B0B0B0;
@@ -81,20 +96,15 @@
     --small-layout-width: 200px;
     --paragraph-spacing: max(2.3vmin, 24px);
 
-    font-family: Inter, sans-serif;
-    font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
-    --sans-serif-font: 'Inter', sans-serif;
-    --code-font: 'Iosevka SS08';
+    --sans-serif-font: 'Inter', Helvetica, Arial, sans-serif;
+    --serif-font: 'Source Serif', 'Georgia', serif;
+    --code-font: 'Cascadia Code';
 
     scrollbar-color: var(--primary-color) transparent;
     accent-color: var(--primary-color);
 
     line-height: 190%;
     font-family: var(--sans-serif-font);
-}
-
-@supports (font-variation-settings: normal) {
-  :root { font-family: InterVariable, sans-serif; }
 }
 
 [data-theme='dark'] {
@@ -187,7 +197,7 @@ article {
 }
 
 .section-title {
-    display: block;
+    display: flex;
     margin: 0;
     margin-top: -0.15em;
     color: var(--text-color-high-contrast);

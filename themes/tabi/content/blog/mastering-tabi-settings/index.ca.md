@@ -1,7 +1,7 @@
 +++
 title = "Domina la configuració de tabi: guia completa"
 date = 2023-09-18
-updated = 2025-01-12
+updated = 2025-06-08
 description = "Descobreix les múltiples maneres en què pots personalitzar tabi."
 
 [taxonomies]
@@ -172,12 +172,15 @@ pinned = true
 {{ admonition(type="warning", text='Quan s'utilitza la paginació (`paginate_by`), les entrades fixades poden aparèixer dues vegades: una vegada a la part superior de la primera pàgina, i una altra en la seva posició cronològica normal en pàgines posteriors.') }}
 
 ##### Mostrar la data dels articles al llistat
-
 Per defecte, quan es llisten els articles, es mostra la data de creació. Pots configurar quina(es) data(es) mostrar utilitzant l'opció `post_listing_date`. Configuracions disponibles:
 
 - `date`: Mostra només la data de publicació original de l'article (opció per defecte).
 - `updated`: Mostra només la data de l'última actualització de l'article. Si no hi ha data d'actualització, es mostra la data de publicació original.
 - `both`: Mostra tant la data de publicació original com la data de l'última actualització.
+
+{% admonition(type="tip") %}
+Aquesta configuració segueix la jerarquia: pots establir un valor global a `config.toml` o canviar-lo per a seccions específiques al seu arxiu `_index.md`. En ambdós casos, afegeix-lo a la secció `[extra]`.
+{% end %}
 
 #### Llistat de Projectes
 
@@ -233,6 +236,25 @@ tabi utilitza una font serif per als paràgrafs dels articles (la que estàs vei
 Fes clic a la imatge a continuació per comparar les fonts:
 
 {{ image_toggler(default_src="blog/mastering-tabi-settings/img/serif.webp", toggled_src="blog/mastering-tabi-settings/img/sans-serif.webp", default_alt="Font serif", toggled_alt="Font sans-serif", full_width=true) }}
+
+### Indicador d'enllaços externs
+
+| Pàgina | Secció | `config.toml` | Segueix Jerarquia | Requereix JavaScript |
+|:------:|:------:|:-------------:|:-----------------:|:-------------------:|
+|   ❌   |   ❌   |      ✅       |         ❌        |         ❌          |
+
+{{ admonition(type="info", text="Requereix Zola 0.20.0 o posterior.") }}
+
+Si vols afegir una icona als enllaços externs, configura la secció `[markdown]` (no `[extra]`) al teu `config.toml`:
+
+```toml
+[markdown]
+external_links_class = "external"
+```
+
+Això afegirà una petita icona al costat dels enllaços externs:
+
+{{ dual_theme_image(light_src="blog/mastering-tabi-settings/img/external_link_light.webp", dark_src="blog/mastering-tabi-settings/img/external_link_dark.webp", alt="Icona d'enllaç extern", full_width=true) }}
 
 ### Estils CSS personalitzats
 
@@ -438,10 +460,14 @@ Per defecte, l'arxiu llistarà les publicacions situades a `blog/`. Per personal
   section_path = ["blog/", "notes/", "camí-tres/"]
   ```
 
-**Nota**:
+L'arxiu mostra les publicacions en ordre cronològic invers (les més recents primer). Pots invertir aquest ordre establint `archive_reverse = true` a la secció `[extra]`:
 
-- La pàgina d'arxiu només llistarà publicacions amb data.
-- L'ordre de les publicacions ve determinada per la variable `sort_by` de les seccions arxivades. Aquesta demo utilitza `sort_by = "date"` en `blog/_index.md`.
+```toml
+[extra]
+archive_reverse = true  # mostra les publicacions més antigues primer
+```
+
+{{ admonition(type="note", title="nota" text="La pàgina d'arxiu només llistarà publicacions que tinguin data al seu encapçalament.") }}
 
 ### Etiquetes
 
@@ -587,7 +613,9 @@ fediverse_creator = { handle = "username", domain = "example.com" }
 |:------:|:------:|:-------------:|:---------------:|:-------------------:|
 |   ❌   |   ❌   |      ✅       |        ❌       |         ❌          |
 
-La barra de navegació és la franja a la part superior de la pàgina que conté el títol del lloc i el menú de navegació. Pots personalitzar els elements que apareixen configurant `menu` en `config.toml`. Per exemple:
+La barra de navegació és la franja a la part superior de la pàgina que conté el títol del lloc i el menú de navegació. Pots personalitzar els elements que apareixen configurant `menu` en `config.toml`.
+
+Soporta links relatius per a pàgines internes i links absoluts per a enllaços externs. Per exemple:
 
 ```toml
 menu = [
@@ -596,6 +624,7 @@ menu = [
     { name = "etiquetes", url = "tags", trailing_slash = true },
     { name = "projectes", url = "projects", trailing_slash = true },
     { name = "sobre nosaltres", url = "about", trailing_slash = true },
+    { name = "github", url = "https://github.com/welpo/tabi", trailing_slash = false },
 ]
 ```
 
@@ -668,13 +697,13 @@ Establir `copy_button = true` afegirà un petit botó de copiar a la part superi
 
 {{ dual_theme_image(light_src="blog/mastering-tabi-settings/img/copy_button_on_code_blocks_light.webp", dark_src="blog/mastering-tabi-settings/img/copy_button_on_code_blocks_dark.webp", alt="Botó de copiar en blocs de codi", full_width=true) }}
 
-### Mostrar ruta/URL en blocs de codi
+### Nom del bloc de codi clicable
 
 | Pàgina | Secció | `config.toml` | Segueix la jerarquia | Requereix JavaScript |
 |:------:|:-------:|:-------------:|:---------------:|:-------------------:|
 |   ✅   |   ✅    |      ✅       |        ✅       |         ✅          |
 
-Estableix `add_src_to_code_block = true` per habilitar l'ús del [shortcode `add_src_to_code_block`](@/blog/shortcodes/index.ca.md#mostrar-ruta-o-url).
+En establir `code_block_name_links = true` s'habiliten els enllaços clicables als noms dels blocs de codi. Consulta la [documentació](@/blog/shortcodes/index.ca.md#mostrar-ruta-o-url) per veure exemples i ús.
 
 ### Forçar blocs de codi d'esquerra a dreta
 
@@ -732,7 +761,10 @@ Per defecte, el feed Atom només conté el resum o descripció de les teves publ
 |:----:|:-------:|:-------------:|:-----------------:|:-------------------:|
 |  ✅  |   ✅    |      ✅       |         ✅        |         ❌          |
 
-Pots amagar pàgines específiques o seccions senceres del feed amb `hide_from_feed = true`.
+Pots controlar com apareix el contingut als feeds utilitzant dues configuracions:
+
+- `hide_from_feed = true`: Amaga el contingut de tots els feeds (feed principal, feeds de secció i feeds d'etiquetes)
+- `hide_from_main_feed = true`: Amaga el contingut només del feed principal mentre el manté visible als feeds de secció i d'etiquetes
 
 ### Comentaris {#afegir-comentaris}
 
@@ -972,6 +1004,68 @@ allowed_domains = [
 Aquesta opció està habilitada per defecte. Per desactivar-la per una pàgina, secció o globalment, estableix `enable_csp = false`. La configuració de `enable_csp` segueix la jerarquia.
 
 Per a més informació, consulta la [pàgina de documentació de CSP](@/blog/security/index.ca.md).
+
+---
+
+## Indieweb
+
+### Webmentions
+
+| Pàgina | Secció | `config.toml` | Segueix jerarquia | Requereix JavaScript |
+|:------:|:------:|:-------------:|:-----------------:|:--------------------:|
+|   ❓   |   ❓   |      ✅       |         ❓        |         ✅           |
+
+Com es descriu en l'estàndard W3C recomanat, [Webmention](https://www.w3.org/TR/webmention/#abstract-p-1) és una manera senzilla de notificar qualsevol URL quan la menciones al teu lloc web. Des de la perspectiva del receptor, és una manera de sol·licitar notificacions quan altres llocs web la mencionen.
+
+Per a llocs web estàtics, [webmention.io](https://webmention.io/) allotja un punt final de webmention que es pot utilitzar per rebre webmentions. Aquesta funcionalitat recupera les webmentions emmagatzemades a webmention.io i les mostra per a una pàgina. Hauràs de configurar un compte per al teu lloc web a webmention.io. Quan habilitis la funcionalitat de webmention, anunciarà el teu punt final de webmention.io i mostrarà les webmentions per a qualsevol pàgina.
+
+Habilita les webmentions per al teu lloc web afegint el següent al teu fitxer `config.toml`.
+
+```toml
+[extra.webmentions]
+enable = true
+# Especifica el domini registrat amb webmention.io.
+domain = "www.example.com"
+```
+
+❓: Per desactivar les webmentions per a una secció o pàgina específica, estableix `webmentions = false` a la secció `[extra]` del front matter d'aquesta secció o pàgina.
+
+La secció de webmentions es veu així:
+
+{{ dual_theme_image(light_src="blog/mastering-tabi-settings/img/webmention_light.webp", dark_src="blog/mastering-tabi-settings/img/webmention_dark.webp" alt="Captura de pantalla de webmentions mostrant republications, m'agrada, marcadors i comentaris", full_width=true) }}
+
+### h-card representativa
+
+| Pàgina | Secció | `config.toml` | Segueix la jerarquia | Requereix JavaScript |
+| :--: | :-----: | :-----------: | :---------------: | :-----------------: |
+|  ❌  |   ❌    |      ✅       |        ❌         |         ❌          |
+
+Per defecte, tabi afegeix una h-card representativa [h-card](https://microformats.org/wiki/h-card) **oculta** a la pàgina d'inici. Tot i que és invisible per als visitants, està disponible per als analitzadors de microformats. Pots comprovar la validesa de la targeta amb l'eina [Indiewebify.me](https://indiewebify.me/validate-h-card/).
+
+Per desactivar l'h-card, estableix `enable = false` a la secció `[extra.hcard]` de `config.toml`.
+
+L'h-card predeterminada inclou el teu nom, l'URL del lloc web i els enllaços a les xarxes socials.
+
+Pots establir una imatge de perfil i una petita biografia amb els paràmetres `avatar` i `biography`.
+
+Totes les altres [propietats h-card](https://microformats.org/wiki/h-card#Properties) es poden afegir llistant-les a la secció `[extra.hcard]` del fitxer de configuració. Simplement substitueix tots els caràcters `-` per `_`.
+
+---
+
+## Estenent elements HTML a tabi
+
+Alguns elements HTML a tabi es poden estendre per admetre casos d'ús addicionals, com ara afegir JavaScript personalitzat per a comportaments a tot el lloc al final de l'etiqueta `<body>` o incloure contingut addicional al final de l'element `<head>` que no estigui suportat per altres configuracions de tabi.
+
+Consulta la taula a continuació per veure els elements que es poden estendre:
+
+| Element | Plantilla                         |
+| :------: | :-------------------------------: |
+| `<head>` | `templates/tabi/extend_head.html` |
+| `<body>` | `templates/tabi/extend_body.html` |
+
+No hi ha configuracions explícites que hagis d'establir per al teu lloc o pàgines. Simplement crea el fitxer de plantilla corresponent per al teu lloc, i tabi l'inclourà automàticament.
+
+---
 
 [^1]: Si estàs utilitzant un repositori Git remot, potser voldràs automatitzar el procés d'actualització del camp `updated`. Aquí tens una guia per a això: [Zola Git Hook: actualitzant les dates de les publicacions](https://osc.garden/ca/blog/zola-date-git-hook/).
 
