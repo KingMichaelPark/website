@@ -1,0 +1,66 @@
+// Typography
+$font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+$font-mono: 'JetBrains Mono', 'Cascadia Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+// Dark theme defaults (Victorian gritstone, heather purple, River Wharfe blue)
+:root {
+  --font-sans: #{$font-sans};
+  --font-mono: #{$font-mono};
+  --color-bg: #1c1a19;
+  --color-surface: #282523;
+  --color-surface-hover: #34302d;
+  --color-border: #3d3835;
+  --color-text: #ede6dc;
+  --color-text-muted: #aba194;
+  --color-primary: #70a4c2;
+  --color-primary-hover: #8fc0dc;
+  --color-accent: #bf86cf;
+  --color-accent-hover: #d2a1e0;
+  --color-code-bg: #141312;
+  --color-code-text: #ede6dc;
+  --color-tag-bg: rgba(191, 134, 207, 0.15);
+  --color-tag-text: #d8aee4;
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+// Light theme overrides (Sunlit Yorkshire sandstone, dry moorland buff, deep river & heather)
+[data-theme="light"] {
+  --font-sans: #{$font-sans};
+  --font-mono: #{$font-mono};
+  --color-bg: #f7f4ef;
+  --color-surface: #ffffff;
+  --color-surface-hover: #faf8f5;
+  --color-border: #e3dcd1;
+  --color-text: #242220;
+  --color-text-muted: #665f58;
+  --color-primary: #1e5e80;
+  --color-primary-hover: #14445e;
+  --color-accent: #6b2f77;
+  --color-accent-hover: #502159;
+  --color-code-bg: #242220;
+  --color-code-text: #f7f4ef;
+  --color-tag-bg: rgba(107, 47, 119, 0.1);
+  --color-tag-text: #6b2f77;
+  --shadow-card: 0 2px 8px rgba(36, 34, 32, 0.08);
+}
+
+// Explicit dark theme selector
+[data-theme="dark"] {
+  --font-sans: #{$font-sans};
+  --font-mono: #{$font-mono};
+  --color-bg: #1c1a19;
+  --color-surface: #282523;
+  --color-surface-hover: #34302d;
+  --color-border: #3d3835;
+  --color-text: #ede6dc;
+  --color-text-muted: #aba194;
+  --color-primary: #70a4c2;
+  --color-primary-hover: #8fc0dc;
+  --color-accent: #bf86cf;
+  --color-accent-hover: #d2a1e0;
+  --color-code-bg: #141312;
+  --color-code-text: #ede6dc;
+  --color-tag-bg: rgba(191, 134, 207, 0.15);
+  --color-tag-text: #d8aee4;
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
