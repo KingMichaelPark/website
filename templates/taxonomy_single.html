@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}{% if taxonomy.name == "tags" %}#{{ term.name }}{% else %}{{ term.name | capitalize }}{% endif %} • {{ config.title }}{% endblock title %}
+
+{% block content %}
+<header style="margin-bottom: 2rem;">
+  <p style="color: var(--color-text-muted); font-family: var(--font-mono); margin-bottom: 0.25rem;">{{ taxonomy.name | capitalize }}</p>
+  <h1>{% if taxonomy.name == "tags" %}#{% endif %}{{ term.name }}</h1>
+  <p style="color: var(--color-text-muted);">{{ term.pages | length }} post{% if term.pages | length != 1 %}s{% endif %}</p>
+</header>
+
+<ul class="post-list">
+  {% for post in term.pages %}
+    <li class="post-item">
+      <div class="post-meta">
+        {% if post.date %}
+          <time datetime="{{ post.date }}">{{ post.date | date(format="%d %B %Y") }}</time>
+        {% endif %}
+        {% if post.reading_time %}
+          {% if post.date %}<span aria-hidden="true">&bull;</span>{% endif %}
+          <span>{{ post.reading_time }} min read</span>
+        {% endif %}
+      </div>
+      <h2 class="post-title"><a href="{{ post.permalink }}">{{ post.title }}</a></h2>
+      {% if post.summary %}
+        <div class="post-summary">{{ post.summary | safe }}</div>
+      {% elif post.description %}
+        <div class="post-summary">{{ post.description }}</div>
+      {% endif %}
+      <a href="{{ post.permalink }}" class="read-more">Read article &rarr;</a>
+    </li>
+  {% endfor %}
+</ul>
+
+<div style="margin-top: 2rem;">
+  <a href="{{ get_url(path=taxonomy.name, trailing_slash=true) }}" class="read-more">&larr; All {{ taxonomy.name }}</a>
+</div>
+{% endblock content %}
