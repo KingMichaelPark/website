@@ -61,7 +61,7 @@ perspective. I don't want to invalidate the effort and feelings that you
 have put in. It just takes a lot of time and effort to guard every sentence in
 that way and it's not very fun to read.
 
-{{ resize_image(path="posts/get-on-with-it.gif", width=380, height=0, op="fit_width") }}
+{{ <img path="posts/get-on-with-it.gif" width={380} height={0} op="fit_width" /> }}
 
 Okay.
 

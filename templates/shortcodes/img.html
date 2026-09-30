@@ -1,0 +1,4 @@
+{% component img(path, width=0, height=0, op="fit_width", alt="") %}
+{% set image = resize_image(path=path, width=width, height=height, op=op) %}
+<img src="{{ image.url }}" alt="{{ alt | default(value='') }}" />
+{% endcomponent img %}

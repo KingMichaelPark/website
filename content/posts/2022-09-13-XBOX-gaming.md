@@ -54,7 +54,7 @@ Take note of these 8 ports.
 
 ### In OpenWRT Admin
 
-In the OpenWRT [admin](http://192.168.1.1)
+In the OpenWRT `http://192.168.1.1`
 
 1. Scroll down and find the XBOX device, set the ip for this device to static (you may not
    need to do this but I like to make it so this local ip stays set for the next step.

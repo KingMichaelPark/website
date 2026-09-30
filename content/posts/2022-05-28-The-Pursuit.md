@@ -81,5 +81,5 @@ stafford gambit) to make the loss go away. So instead, just be more like
 this dude.
 
 
-{{ resize_image(path="images/the-dude.jpg", width=380, height=0, op="fit_width") }}
+{{ <img path="images/the-dude.jpg" width={380} height={0} op="fit_width" /> }}
 

@@ -2,6 +2,7 @@
 base_url = "https://mhpark.me"
 title = "Mike's Blog"
 description = "The personal, rarely updated, blog of Michael Park"
+author = "Michael Park"
 
 # Compile all Sass files in sass/
 compile_sass = true
