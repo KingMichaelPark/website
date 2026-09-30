@@ -10,8 +10,7 @@ header = {title = "About Me", img = "#", img_alt = "" }
 
 +++
 
-
-![me](about-me.jpg)
+{{ <img path="about-me/about-me.jpg" width={480} height={0} op="fit_width" alt="me" /> }}
 
 Fortunately, 2020-21 led to the unforeseen benefit of having some free time,
 so I decided to put together a simple website with no tracking or ads that
@@ -23,7 +22,7 @@ It costs me around £5 a month to have my own domain, site, and email address
 Stop being a taker on the internet and create your own page to push back
 against all the massive companies leading us to the same ten websites!
 
-### Secure Contact
+## Secure Contact
 
 If you need to send me something secure you can
 send it to the email in my social links and
