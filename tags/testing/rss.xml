@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - testing</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/tags/testing/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Thu, 16 Feb 2023 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Testing in the Terminal</title>
+          <pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/enter-entr/</link>
+          <guid>https://mhpark.me/posts/enter-entr/</guid>
+          <description xml:base="https://mhpark.me/posts/enter-entr/">&lt;p&gt;Find yourself running a &lt;code&gt;pytest&lt;/code&gt; command repeatedly trying to work out
+what a problem is and getting sick of clicking back on the terminal
+window where the output is and pressing arrow up to re-run the test?
+Or even running tests in an IDE and sick of re-running the test
+time after time with your mouse?&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

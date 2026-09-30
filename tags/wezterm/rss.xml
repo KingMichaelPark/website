@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - wezterm</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/tags/wezterm/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 10 Mar 2023 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Tmux in Linux and Mac With Wezterm</title>
+          <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/tmux-between-linux-mac/</link>
+          <guid>https://mhpark.me/posts/tmux-between-linux-mac/</guid>
+          <description xml:base="https://mhpark.me/posts/tmux-between-linux-mac/">&lt;p&gt;After struggling to get &lt;code&gt;tmux&lt;/code&gt; to run seamlessly between Mac (on ARM i.e. M1/M2)
+and linux due to the fact that &lt;code&gt;brew&lt;/code&gt; installs packages to &lt;code&gt;/opt/homebrew/bin/&lt;/code&gt;
+and it isn&#39;t on the path before the shell loads, I have finally worked out how to
+get tmux to launch/attach to existing sessions when launching a new terminal both
+in linux and on MacOS.&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

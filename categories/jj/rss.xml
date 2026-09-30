@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - jj</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/categories/jj/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Thu, 11 Jun 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Starship JJ Theme</title>
+          <pubDate>Thu, 11 Jun 2026 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/jj-starship/</link>
+          <guid>https://mhpark.me/posts/jj-starship/</guid>
+          <description xml:base="https://mhpark.me/posts/jj-starship/">&lt;p&gt;There are a few nice modules for JJ that exist currently for &lt;a href=&quot;https://mhpark.me/posts/jj-starship/starship.rs&quot;&gt;starship.rs&lt;/a&gt; but none of them fit what I was after...&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Two useful aliases for use with JJ</title>
+          <pubDate>Wed, 04 Feb 2026 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/jj-aliases/</link>
+          <guid>https://mhpark.me/posts/jj-aliases/</guid>
+          <description xml:base="https://mhpark.me/posts/jj-aliases/">&lt;p&gt;Everyone will have the &lt;code&gt;jj tug&lt;/code&gt; alias defined in their list of aliases in
+their &lt;a rel=&quot;external&quot; href=&quot;https://github.com/KingMichaelPark/dotfiles/blob/main/jj/.config/jj/config.toml&quot;&gt;jj config&lt;/a&gt;.
+I would like to share two that I think are quite nifty and useful!&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

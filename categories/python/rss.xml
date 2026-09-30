@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - python</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/categories/python/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Tue, 15 Oct 2024 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Speed up Python Github Actions</title>
+          <pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/speed-up-python-ci-builds/</link>
+          <guid>https://mhpark.me/posts/speed-up-python-ci-builds/</guid>
+          <description xml:base="https://mhpark.me/posts/speed-up-python-ci-builds/">&lt;p&gt;If you want to speed up your CI builds you can use this
+setup on your GitHub actions. Doing this from the previous
+method cut my build times from 2 minutes to 1 minute.&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

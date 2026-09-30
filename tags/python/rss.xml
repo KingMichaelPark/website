@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - python</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/tags/python/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Mon, 20 Nov 2023 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>SQLAlchemy, OnUpdate &amp; Datetime UTCNOW deprecation in 3.12</title>
+          <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/sqlalchemy-updatedat-on-update/</link>
+          <guid>https://mhpark.me/posts/sqlalchemy-updatedat-on-update/</guid>
+          <description xml:base="https://mhpark.me/posts/sqlalchemy-updatedat-on-update/">&lt;p&gt;This is a quick post about migrating your &lt;code&gt;utcnow()&lt;/code&gt; to &lt;code&gt;now(tz=UTC)&lt;/code&gt;
+in SQLAlchemy for your &lt;code&gt;onupdate&lt;/code&gt; function argument to your SQL Models.&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Big Uploads and Checksum Validation</title>
+          <pubDate>Wed, 04 Oct 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/big-uploads-with-fastapi/</link>
+          <guid>https://mhpark.me/posts/big-uploads-with-fastapi/</guid>
+          <description xml:base="https://mhpark.me/posts/big-uploads-with-fastapi/">&lt;p&gt;Ever wanted to upload big files without storing
+them in memory as they are being written with FastAPI?&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Mocking the Post Method on an Async HTTPX Post Request</title>
+          <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/mocking-async-httpx-metods/</link>
+          <guid>https://mhpark.me/posts/mocking-async-httpx-metods/</guid>
+          <description xml:base="https://mhpark.me/posts/mocking-async-httpx-metods/">&lt;p&gt;A quick snippet for mocking HTTP requests with an the async
+&lt;a rel=&quot;external&quot; href=&quot;https://www.python-httpx.org/&quot;&gt;httpx&lt;/a&gt; context manager.&lt;/p&gt;
+&lt;pre class=&quot;giallo z-code&quot; &gt;&lt;code data-lang=&quot;python&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-10&quot;&gt;async with&lt;/span&gt;&lt;span&gt; httpx.AsyncClient()&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; as&lt;/span&gt;&lt;span&gt; client:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    signup_response&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; = await&lt;/span&gt;&lt;span&gt; client.post(&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-10&quot;&gt;        f&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;quot;https://&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;{AUTH0_DOMAIN}&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;/api/v2/users&amp;quot;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-12&quot;&gt;        data&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt;=&lt;/span&gt;&lt;span&gt;signup_request_body,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-12&quot;&gt;        headers&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt;=&lt;/span&gt;&lt;span&gt;signup_request_headers,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-12&quot;&gt;        timeout&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;30&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    )&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;</description>
+      </item>
+      <item>
+          <title>Testing in the Terminal</title>
+          <pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/enter-entr/</link>
+          <guid>https://mhpark.me/posts/enter-entr/</guid>
+          <description xml:base="https://mhpark.me/posts/enter-entr/">&lt;p&gt;Find yourself running a &lt;code&gt;pytest&lt;/code&gt; command repeatedly trying to work out
+what a problem is and getting sick of clicking back on the terminal
+window where the output is and pressing arrow up to re-run the test?
+Or even running tests in an IDE and sick of re-running the test
+time after time with your mouse?&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

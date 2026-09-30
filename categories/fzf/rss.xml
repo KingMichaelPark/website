@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - fzf</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/categories/fzf/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Tue, 10 Mar 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Finding Nerd Fonts in Neovim</title>
+          <pubDate>Tue, 10 Mar 2026 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/nerd-font-icon-picker-fzf-lua/</link>
+          <guid>https://mhpark.me/posts/nerd-font-icon-picker-fzf-lua/</guid>
+          <description xml:base="https://mhpark.me/posts/nerd-font-icon-picker-fzf-lua/">&lt;p&gt;I have been writing quite a few presentations in &lt;a rel=&quot;external&quot; href=&quot;https://mfontanini.github.io/presenterm/&quot;&gt;presenterm&lt;/a&gt;
+and was repeatedly going over to the nerd font website to search for the icon that I wanted to pick
+copying it, then pasting it in neovim. Surely... there is a better way.&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

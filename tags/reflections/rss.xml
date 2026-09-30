@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - reflections</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/tags/reflections/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Thu, 23 Dec 2021 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Looking Forward to 2022; The Ease of Being a Cynic</title>
+          <pubDate>Thu, 23 Dec 2021 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/christmas-wishes/</link>
+          <guid>https://mhpark.me/posts/christmas-wishes/</guid>
+          <description xml:base="https://mhpark.me/posts/christmas-wishes/">&lt;p&gt;My goals for 2022 are nothing out of the ordinary; apart from having some of
+them be to actually travel somewhere of relatively far distance in a hopefully
+more open world. The main goal that should hopefully help drive the rest is
+&lt;strong&gt;optimism&lt;/strong&gt;&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

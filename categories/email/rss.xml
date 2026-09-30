@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - email</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/categories/email/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Tue, 12 Nov 2024 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Wildcard Routing with Cloudflare Email Forwarding</title>
+          <pubDate>Tue, 12 Nov 2024 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/cloudflare-wildcards/</link>
+          <guid>https://mhpark.me/posts/cloudflare-wildcards/</guid>
+          <description xml:base="https://mhpark.me/posts/cloudflare-wildcards/">&lt;p&gt;If you have your own domain name but are cheap like me and don&#39;t want to pay
+for a third party service you can use Cloudflare to route your
+&lt;a rel=&quot;external&quot; href=&quot;https://developers.cloudflare.com/email-routing/&quot;&gt;emails&lt;/a&gt; to your gmail
+address. (And after reading this quick post, can forward even plus suffixed
+email addresses to your gmail account.&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

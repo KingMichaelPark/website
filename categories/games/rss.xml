@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - games</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/categories/games/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sat, 28 May 2022 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>The Pursuit</title>
+          <pubDate>Sat, 28 May 2022 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/the-pursuit/</link>
+          <guid>https://mhpark.me/posts/the-pursuit/</guid>
+          <description xml:base="https://mhpark.me/posts/the-pursuit/">&lt;p&gt;The pursuit of excellence can sometimes be
+overwhelming. Whether it be in sports, your career,
+games.&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

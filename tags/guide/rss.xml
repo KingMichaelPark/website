@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - guide</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/tags/guide/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Tue, 13 Sep 2022 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Gaming on Xbox with OpenWRT</title>
+          <pubDate>Tue, 13 Sep 2022 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/xbox-gaming/</link>
+          <guid>https://mhpark.me/posts/xbox-gaming/</guid>
+          <description xml:base="https://mhpark.me/posts/xbox-gaming/">&lt;p&gt;If you are like me and decided to switch their router firmware
+to the much praised &lt;a rel=&quot;external&quot; href=&quot;https://openwrt.org/&quot;&gt;OpenWRT&lt;/a&gt; you may - like me -
+found the lag in FPS games pretty unbreable after switching the firmware.&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

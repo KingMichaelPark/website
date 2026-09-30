@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - ssh</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/tags/ssh/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Thu, 19 Oct 2023 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Connecting to Internal VPC Through Bastion in One Hop</title>
+          <pubDate>Thu, 19 Oct 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/connecting-to-internal-vpc-with-ssh/</link>
+          <guid>https://mhpark.me/posts/connecting-to-internal-vpc-with-ssh/</guid>
+          <description xml:base="https://mhpark.me/posts/connecting-to-internal-vpc-with-ssh/">&lt;p&gt;If you&#39;ve ever wanted to load up your local database IDE to view
+a database that sits inside an internal VPC. You may be a bit puzzled
+on how to do it considering most tools like DBeaver, DataGrip, TablePlus
+allow you to connect via SSH, but that SSH connection is always to a
+bastion instance. How does one connect directly?&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Git Signing and Authentication with SSH</title>
+          <pubDate>Wed, 04 Oct 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/ssh-signing-and-auth-with-git/</link>
+          <guid>https://mhpark.me/posts/ssh-signing-and-auth-with-git/</guid>
+          <description xml:base="https://mhpark.me/posts/ssh-signing-and-auth-with-git/">&lt;p&gt;This is a quick guide to set up git with SSH ed25519 keys
+not only for authenticating with GitHub or GitLab but also
+for signing commits without the need to install GPG/PGP
+which has some serious &lt;a rel=&quot;external&quot; href=&quot;https://www.latacora.com/blog/2019/07/16/the-pgp-problem/&quot;&gt;criticisms / flaws&lt;/a&gt; that has led me to move
+into a world without it. The new world isn&#39;t &lt;em&gt;as&lt;/em&gt; straightforward
+as the old so I thought I&#39;d just throw together a quick guide
+to help you out.&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

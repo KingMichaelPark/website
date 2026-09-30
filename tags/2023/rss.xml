@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - 2023</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/tags/2023/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sun, 10 Dec 2023 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>2023 - A Tech Year in Review</title>
+          <pubDate>Sun, 10 Dec 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/2023-tools-in-review-md/</link>
+          <guid>https://mhpark.me/posts/2023-tools-in-review-md/</guid>
+          <description xml:base="https://mhpark.me/posts/2023-tools-in-review-md/">&lt;p&gt;2023 gave me the ability to experience a lot of different
+tools, languages, and technologies, many did not make the
+cut long-term but I would like to put together a list of
+the core tooling that I use day to day with an example or two
+along the way.&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Mike&#39;s Blog - openwrt</title>
+    <subtitle>The personal, rarely updated, blog of Michael Park</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://mhpark.me/tags/openwrt/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://mhpark.me"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2022-09-13T00:00:00+00:00</updated>
+    <id>https://mhpark.me/tags/openwrt/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Gaming on Xbox with OpenWRT</title>
+        <published>2022-09-13T00:00:00+00:00</published>
+        <updated>2022-09-13T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/xbox-gaming/"/>
+        <id>https://mhpark.me/posts/xbox-gaming/</id>
+        
+        <summary type="html">&lt;p&gt;If you are like me and decided to switch their router firmware
+to the much praised &lt;a rel=&quot;external&quot; href=&quot;https://openwrt.org/&quot;&gt;OpenWRT&lt;/a&gt; you may - like me -
+found the lag in FPS games pretty unbreable after switching the firmware.&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

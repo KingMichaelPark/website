@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - covid</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/categories/covid/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sun, 28 Nov 2021 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>The Little Things</title>
+          <pubDate>Sun, 28 Nov 2021 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/the-little-things/</link>
+          <guid>https://mhpark.me/posts/the-little-things/</guid>
+          <description xml:base="https://mhpark.me/posts/the-little-things/">&lt;p&gt;The dozens of predictions that economists have been making over the last two
+years centers around this idea that once everything returns to a certain level
+of &lt;em&gt;normal&lt;/em&gt; - probably better to use safe instead of normal but I&#39;m sure we all
+agree &lt;em&gt;normal&lt;/em&gt; means something different than it used to - consumers are going
+to start splurging on all the money they have been saving up. Personally, even
+if this turns out to be the case eventually, I think this saga of our
+lives really has given us enjoyment in the little things.&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

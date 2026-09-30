@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>The Value of Time and Struggle</title>
+          <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/what-its-all-for/</link>
+          <guid>https://mhpark.me/posts/what-its-all-for/</guid>
+          <description xml:base="https://mhpark.me/posts/what-its-all-for/">&lt;p&gt;I have many conflicting thoughts that I -- as a data engineer, a consultant, a
+member of society, a friend to some, and husband to one -- am going to try to
+articulate throughout the course of this post. I will do my best to organise my
+thoughts throughout this piece in way that at least helps me formalise how I am
+currently feeling about my long-term future in data and software engineering over the last two years of using AI to various degrees.&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Starship JJ Theme</title>
+          <pubDate>Thu, 11 Jun 2026 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/jj-starship/</link>
+          <guid>https://mhpark.me/posts/jj-starship/</guid>
+          <description xml:base="https://mhpark.me/posts/jj-starship/">&lt;p&gt;There are a few nice modules for JJ that exist currently for &lt;a href=&quot;https://mhpark.me/posts/jj-starship/starship.rs&quot;&gt;starship.rs&lt;/a&gt; but none of them fit what I was after...&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Convenient auto-command for vim.pack.update</title>
+          <pubDate>Mon, 04 May 2026 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/vim-pack-update-convenience/</link>
+          <guid>https://mhpark.me/posts/vim-pack-update-convenience/</guid>
+          <description xml:base="https://mhpark.me/posts/vim-pack-update-convenience/">&lt;p&gt;Neovim 0.12&#39;s new built-in package management is a breath of fresh air, but the
+default confirmation buffer is a bit bare-bones when it comes to quick
+interactions. If you&#39;re like me and want to just hit a key to sync everything
+up instead of using the code action &lt;code&gt;ca&lt;/code&gt; and selecting update on each package...&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Finding Nerd Fonts in Neovim</title>
+          <pubDate>Tue, 10 Mar 2026 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/nerd-font-icon-picker-fzf-lua/</link>
+          <guid>https://mhpark.me/posts/nerd-font-icon-picker-fzf-lua/</guid>
+          <description xml:base="https://mhpark.me/posts/nerd-font-icon-picker-fzf-lua/">&lt;p&gt;I have been writing quite a few presentations in &lt;a rel=&quot;external&quot; href=&quot;https://mfontanini.github.io/presenterm/&quot;&gt;presenterm&lt;/a&gt;
+and was repeatedly going over to the nerd font website to search for the icon that I wanted to pick
+copying it, then pasting it in neovim. Surely... there is a better way.&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Two useful aliases for use with JJ</title>
+          <pubDate>Wed, 04 Feb 2026 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/jj-aliases/</link>
+          <guid>https://mhpark.me/posts/jj-aliases/</guid>
+          <description xml:base="https://mhpark.me/posts/jj-aliases/">&lt;p&gt;Everyone will have the &lt;code&gt;jj tug&lt;/code&gt; alias defined in their list of aliases in
+their &lt;a rel=&quot;external&quot; href=&quot;https://github.com/KingMichaelPark/dotfiles/blob/main/jj/.config/jj/config.toml&quot;&gt;jj config&lt;/a&gt;.
+I would like to share two that I think are quite nifty and useful!&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Updating Treesitter&#39;s Config to use Main</title>
+          <pubDate>Mon, 15 Dec 2025 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/update-treesitter-main/</link>
+          <guid>https://mhpark.me/posts/update-treesitter-main/</guid>
+          <description xml:base="https://mhpark.me/posts/update-treesitter-main/">&lt;p&gt;If you woke up to the news that treesitter has set
+their default branch to &lt;code&gt;main&lt;/code&gt; from the now &lt;em&gt;frozen&lt;/em&gt;
+&lt;code&gt;master&lt;/code&gt; then you may wish to know how to now configure
+your plugins that depend on it in neovim. Here&#39;s how I did
+it in my local &lt;a rel=&quot;external&quot; href=&quot;https://github.com/KingMichaelPark/dotfiles&quot;&gt;dotfiles&lt;/a&gt;.&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>age.nvim</title>
+          <pubDate>Sun, 26 Jan 2025 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/projects/age-nvim/</link>
+          <guid>https://mhpark.me/projects/age-nvim/</guid>
+          <description xml:base="https://mhpark.me/projects/age-nvim/">&lt;h4 id=&quot;github&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#github&quot; aria-label=&quot;Anchor link for: github&quot;&gt;🔗&lt;/a&gt;&lt;a rel=&quot;external&quot; href=&quot;https://github.com/KingMichaelPark/age.nvim&quot;&gt;GitHub&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;A simply utility for loading encrypted secrets from an
+&lt;a rel=&quot;external&quot; href=&quot;https://github.com/FiloSottile/age&quot;&gt;age&lt;/a&gt; encrypted file.&lt;/p&gt;
+&lt;p&gt;This utility can be required by other plugins as a dependency to load a secret
+from your dotfiles to pass to a plugin.&lt;/p&gt;
+&lt;p&gt;For example, the &lt;a rel=&quot;external&quot; href=&quot;https://github.com/huggingface/llm.nvim&quot;&gt;llm.nvim&lt;/a&gt; plugin
+requires an API key. For those people who keep their dotfiles public but want
+to load an API key for its setup.&lt;/p&gt;
+&lt;p&gt;I take no responsibility for leaked passwords or API keys. It is &lt;strong&gt;on you&lt;/strong&gt; to
+decide what age is, this approach, and making sure to not commit your identity
+keys. Inspired by &lt;a rel=&quot;external&quot; href=&quot;https://www.passwordstore.org/&quot;&gt;pass&lt;/a&gt; and
+&lt;a rel=&quot;external&quot; href=&quot;https://github.com/FiloSottile/passage/blob/main/INSTALL&quot;&gt;passage&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;requirements&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#requirements&quot; aria-label=&quot;Anchor link for: requirements&quot;&gt;🔗&lt;/a&gt;Requirements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https://github.com/FiloSottile/age&quot;&gt;age&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;non-neovim-instructions&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#non-neovim-instructions&quot; aria-label=&quot;Anchor link for: non-neovim-instructions&quot;&gt;🔗&lt;/a&gt;Non-Neovim Instructions&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Generate a private key &lt;strong&gt;not&lt;/strong&gt; in directory tracked by git.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;giallo z-code&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-7&quot;&gt;mkdir&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt; ~/.age&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-4&quot;&gt;cd&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt; ~/.age&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-7&quot;&gt;age-keygen&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt; -o&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt; identity.txt&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The contents of this &lt;code&gt;identity.txt&lt;/code&gt; file will look like this (Taken from the
+tests directory in this project for example).&lt;/p&gt;
+&lt;pre class=&quot;giallo z-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;# created: 2023-10-14T17:25:45+01:00&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;# public key: age1kk84zfvr4whsfdmrg2hk8pf7l3v705a8x9k5khuh0lmtrnuaz4gqnwty3q&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;AGE-SECRET-KEY-1USUPGW9GDQAQEHM8X3JKQSJMN7YY5T26PXWFHWMRR4Y9TDAHMA5SJDRUUJ&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;Encrypt your secret.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;giallo z-code&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;age_public_key&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;#39;age1kk84zfvr4whsfdmrg2hk8pf7l3v705a8x9k5khuh0lmtrnuaz4gqnwty3q&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-4&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt; &amp;#39;MY_SUPER_COOL_API_KEY&amp;#39;&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; |&lt;/span&gt;&lt;span class=&quot;z-7&quot;&gt; age&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt; -e -r&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span&gt;$age_public_key&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt; -o&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt; ~/.dotfiles/api_key.age&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;neovim-instructions&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#neovim-instructions&quot; aria-label=&quot;Anchor link for: neovim-instructions&quot;&gt;🔗&lt;/a&gt;Neovim Instructions&lt;/h2&gt;
+&lt;h3 id=&quot;package-manager&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#package-manager&quot; aria-label=&quot;Anchor link for: package-manager&quot;&gt;🔗&lt;/a&gt;Package manager&lt;/h3&gt;
+&lt;h4 id=&quot;using-lazy-nvim&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#using-lazy-nvim&quot; aria-label=&quot;Anchor link for: using-lazy-nvim&quot;&gt;🔗&lt;/a&gt;Using &lt;a rel=&quot;external&quot; href=&quot;https://github.com/folke/lazy.nvim&quot;&gt;lazy.nvim&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;This example is using the excellent
+&lt;a rel=&quot;external&quot; href=&quot;https://github.com/jackMort/ChatGPT.nvim&quot;&gt;ChatGPT.nvim&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&quot;giallo z-code&quot; &gt;&lt;code data-lang=&quot;lua&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-10&quot;&gt;local&lt;/span&gt;&lt;span&gt; identity&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; =&lt;/span&gt;&lt;span&gt; vim.&lt;/span&gt;&lt;span class=&quot;z-7&quot;&gt;fn&lt;/span&gt;&lt;span&gt;.&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;expand&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;#39;$HOME/.age/identity.txt&amp;#39;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-10&quot;&gt;local&lt;/span&gt;&lt;span&gt; secret&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; =&lt;/span&gt;&lt;span&gt; vim.&lt;/span&gt;&lt;span class=&quot;z-7&quot;&gt;fn&lt;/span&gt;&lt;span&gt;.&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;expand&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;#39;$HOME/.dotfiles/chatgpt.age&amp;#39;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-4&quot;&gt;require&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;quot;lazy&amp;quot;&lt;/span&gt;&lt;span&gt;).&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;setup&lt;/span&gt;&lt;span&gt;({&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-6&quot;&gt;    &amp;quot;jackMort/ChatGPT.nvim&amp;quot;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    event&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt; &amp;quot;VeryLazy&amp;quot;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    dependencies&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; =&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-4&quot;&gt;        ...&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-6&quot;&gt;        &amp;quot;KingMichaelPark/age.nvim&amp;quot; &lt;/span&gt;&lt;span class=&quot;z-3&quot;&gt;-- Add age dependency&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-7&quot;&gt;    config&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; = function&lt;/span&gt;&lt;span&gt;()&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        vim.&lt;/span&gt;&lt;span class=&quot;z-7&quot;&gt;env&lt;/span&gt;&lt;span&gt;.&lt;/span&gt;&lt;span class=&quot;z-7&quot;&gt;OPENAI_API_KEY&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt; require&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;#39;age&amp;#39;&lt;/span&gt;&lt;span&gt;).&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;get&lt;/span&gt;&lt;span&gt;(secret, identity) &lt;/span&gt;&lt;span class=&quot;z-3&quot;&gt;-- Get secret&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-4&quot;&gt;        require&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;quot;chatgpt&amp;quot;&lt;/span&gt;&lt;span&gt;).&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;setup&lt;/span&gt;&lt;span&gt;()&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-10&quot;&gt;    end&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;})&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;usage&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#usage&quot; aria-label=&quot;Anchor link for: usage&quot;&gt;🔗&lt;/a&gt;Usage&lt;/h2&gt;
+&lt;p&gt;At the moment there are 4 options for decryption, I have added SOPs decrypt as
+an option for &lt;code&gt;json&lt;/code&gt; only as there is a built-in json decoder in neovim.&lt;/p&gt;
+&lt;pre class=&quot;giallo z-code&quot; &gt;&lt;code data-lang=&quot;lua&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-10&quot;&gt;local&lt;/span&gt;&lt;span&gt; age&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt; require&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;#39;age&amp;#39;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;age.&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;get&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-6&quot;&gt;    &amp;quot;super-secret.txt.age&amp;quot;&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;z-3&quot;&gt;-- The file to decrypt&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-6&quot;&gt;    &amp;quot;identity.txt&amp;quot; &lt;/span&gt;&lt;span class=&quot;z-3&quot;&gt;-- Your private age key&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;age.&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;list&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-6&quot;&gt;    &amp;quot;super-secrets-multiline.txt.age&amp;quot;&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;z-3&quot;&gt;-- The file to decrypt&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-6&quot;&gt;    &amp;quot;identity.txt&amp;quot; &lt;/span&gt;&lt;span class=&quot;z-3&quot;&gt;-- Your private age key&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-3&quot;&gt;-- Returns a table&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;age.&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;from_json&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-6&quot;&gt;    &amp;quot;super-secrets.json.age&amp;quot;&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;z-3&quot;&gt;-- The file to decrypt&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-6&quot;&gt;    &amp;quot;identity.txt&amp;quot; &lt;/span&gt;&lt;span class=&quot;z-3&quot;&gt;-- Your private age key&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-3&quot;&gt;-- Returns a table&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;age.&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;from_sops&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;quot;tests/sops_api_keys.json&amp;quot;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-3&quot;&gt;-- SOPs uses a special path so you don&amp;#39;t need to pass your identity&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;running-tests&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#running-tests&quot; aria-label=&quot;Anchor link for: running-tests&quot;&gt;🔗&lt;/a&gt;Running Tests&lt;/h2&gt;
+&lt;p&gt;To run tests:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open neovim&lt;/li&gt;
+&lt;li&gt;Have plenary.nvim installed&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;:PlenaryBustedDirectory tests/&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;authors&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#authors&quot; aria-label=&quot;Anchor link for: authors&quot;&gt;🔗&lt;/a&gt;Authors&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https://www.github.com/KingMichaelPark&quot;&gt;@KingMichaelPark&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;contributing&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#contributing&quot; aria-label=&quot;Anchor link for: contributing&quot;&gt;🔗&lt;/a&gt;Contributing&lt;/h2&gt;
+&lt;p&gt;Contributions are always welcome!&lt;/p&gt;
+</description>
+      </item>
+      <item>
+          <title>Wildcard Routing with Cloudflare Email Forwarding</title>
+          <pubDate>Tue, 12 Nov 2024 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/cloudflare-wildcards/</link>
+          <guid>https://mhpark.me/posts/cloudflare-wildcards/</guid>
+          <description xml:base="https://mhpark.me/posts/cloudflare-wildcards/">&lt;p&gt;If you have your own domain name but are cheap like me and don&#39;t want to pay
+for a third party service you can use Cloudflare to route your
+&lt;a rel=&quot;external&quot; href=&quot;https://developers.cloudflare.com/email-routing/&quot;&gt;emails&lt;/a&gt; to your gmail
+address. (And after reading this quick post, can forward even plus suffixed
+email addresses to your gmail account.&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Speed up Python Github Actions</title>
+          <pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/speed-up-python-ci-builds/</link>
+          <guid>https://mhpark.me/posts/speed-up-python-ci-builds/</guid>
+          <description xml:base="https://mhpark.me/posts/speed-up-python-ci-builds/">&lt;p&gt;If you want to speed up your CI builds you can use this
+setup on your GitHub actions. Doing this from the previous
+method cut my build times from 2 minutes to 1 minute.&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Treesitter Highlights for Jenkinsfile</title>
+          <pubDate>Wed, 31 Jan 2024 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/jenkinsfile-md/</link>
+          <guid>https://mhpark.me/posts/jenkinsfile-md/</guid>
+          <description xml:base="https://mhpark.me/posts/jenkinsfile-md/">&lt;p&gt;Ever wanted syntax in neovim for &lt;code&gt;Jenkinsfiles&lt;/code&gt;?
+Let&#39;s create an autocommand to do just that!&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>The Flaw in Taking Photos to Capture Memories (and how to fix it)</title>
+          <pubDate>Sun, 28 Jan 2024 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/memories-md/</link>
+          <guid>https://mhpark.me/posts/memories-md/</guid>
+          <description xml:base="https://mhpark.me/posts/memories-md/">&lt;p&gt;Years ago, I was looking through old photo collections of my youth.
+Despite the happiness on my face, the people smiling
+around me, there something missing, my father.&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Python Logging</title>
+          <pubDate>Wed, 24 Jan 2024 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/logging-md/</link>
+          <guid>https://mhpark.me/posts/logging-md/</guid>
+          <description xml:base="https://mhpark.me/posts/logging-md/">&lt;p&gt;Just a very quick post/memo to myself about an awesome
+way to configure logging in python based on an excellent
+Github &lt;a rel=&quot;external&quot; href=&quot;https://github.com/mCodingLLC/VideosSampleCode/&quot;&gt;repo&lt;/a&gt; I stumbled across via a YouTube video.&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>2023 - A Tech Year in Review</title>
+          <pubDate>Sun, 10 Dec 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/2023-tools-in-review-md/</link>
+          <guid>https://mhpark.me/posts/2023-tools-in-review-md/</guid>
+          <description xml:base="https://mhpark.me/posts/2023-tools-in-review-md/">&lt;p&gt;2023 gave me the ability to experience a lot of different
+tools, languages, and technologies, many did not make the
+cut long-term but I would like to put together a list of
+the core tooling that I use day to day with an example or two
+along the way.&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>SQLAlchemy, OnUpdate &amp; Datetime UTCNOW deprecation in 3.12</title>
+          <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/sqlalchemy-updatedat-on-update/</link>
+          <guid>https://mhpark.me/posts/sqlalchemy-updatedat-on-update/</guid>
+          <description xml:base="https://mhpark.me/posts/sqlalchemy-updatedat-on-update/">&lt;p&gt;This is a quick post about migrating your &lt;code&gt;utcnow()&lt;/code&gt; to &lt;code&gt;now(tz=UTC)&lt;/code&gt;
+in SQLAlchemy for your &lt;code&gt;onupdate&lt;/code&gt; function argument to your SQL Models.&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Connecting to Internal VPC Through Bastion in One Hop</title>
+          <pubDate>Thu, 19 Oct 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/connecting-to-internal-vpc-with-ssh/</link>
+          <guid>https://mhpark.me/posts/connecting-to-internal-vpc-with-ssh/</guid>
+          <description xml:base="https://mhpark.me/posts/connecting-to-internal-vpc-with-ssh/">&lt;p&gt;If you&#39;ve ever wanted to load up your local database IDE to view
+a database that sits inside an internal VPC. You may be a bit puzzled
+on how to do it considering most tools like DBeaver, DataGrip, TablePlus
+allow you to connect via SSH, but that SSH connection is always to a
+bastion instance. How does one connect directly?&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Big Uploads and Checksum Validation</title>
+          <pubDate>Wed, 04 Oct 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/big-uploads-with-fastapi/</link>
+          <guid>https://mhpark.me/posts/big-uploads-with-fastapi/</guid>
+          <description xml:base="https://mhpark.me/posts/big-uploads-with-fastapi/">&lt;p&gt;Ever wanted to upload big files without storing
+them in memory as they are being written with FastAPI?&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Git Signing and Authentication with SSH</title>
+          <pubDate>Wed, 04 Oct 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/ssh-signing-and-auth-with-git/</link>
+          <guid>https://mhpark.me/posts/ssh-signing-and-auth-with-git/</guid>
+          <description xml:base="https://mhpark.me/posts/ssh-signing-and-auth-with-git/">&lt;p&gt;This is a quick guide to set up git with SSH ed25519 keys
+not only for authenticating with GitHub or GitLab but also
+for signing commits without the need to install GPG/PGP
+which has some serious &lt;a rel=&quot;external&quot; href=&quot;https://www.latacora.com/blog/2019/07/16/the-pgp-problem/&quot;&gt;criticisms / flaws&lt;/a&gt; that has led me to move
+into a world without it. The new world isn&#39;t &lt;em&gt;as&lt;/em&gt; straightforward
+as the old so I thought I&#39;d just throw together a quick guide
+to help you out.&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Mocking the Post Method on an Async HTTPX Post Request</title>
+          <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/mocking-async-httpx-metods/</link>
+          <guid>https://mhpark.me/posts/mocking-async-httpx-metods/</guid>
+          <description xml:base="https://mhpark.me/posts/mocking-async-httpx-metods/">&lt;p&gt;A quick snippet for mocking HTTP requests with an the async
+&lt;a rel=&quot;external&quot; href=&quot;https://www.python-httpx.org/&quot;&gt;httpx&lt;/a&gt; context manager.&lt;/p&gt;
+&lt;pre class=&quot;giallo z-code&quot; &gt;&lt;code data-lang=&quot;python&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-10&quot;&gt;async with&lt;/span&gt;&lt;span&gt; httpx.AsyncClient()&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; as&lt;/span&gt;&lt;span&gt; client:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    signup_response&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; = await&lt;/span&gt;&lt;span&gt; client.post(&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-10&quot;&gt;        f&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;quot;https://&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;{AUTH0_DOMAIN}&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;/api/v2/users&amp;quot;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-12&quot;&gt;        data&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt;=&lt;/span&gt;&lt;span&gt;signup_request_body,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-12&quot;&gt;        headers&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt;=&lt;/span&gt;&lt;span&gt;signup_request_headers,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-12&quot;&gt;        timeout&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;30&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    )&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;</description>
+      </item>
+      <item>
+          <title>Tmux in Linux and Mac With Wezterm</title>
+          <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/tmux-between-linux-mac/</link>
+          <guid>https://mhpark.me/posts/tmux-between-linux-mac/</guid>
+          <description xml:base="https://mhpark.me/posts/tmux-between-linux-mac/">&lt;p&gt;After struggling to get &lt;code&gt;tmux&lt;/code&gt; to run seamlessly between Mac (on ARM i.e. M1/M2)
+and linux due to the fact that &lt;code&gt;brew&lt;/code&gt; installs packages to &lt;code&gt;/opt/homebrew/bin/&lt;/code&gt;
+and it isn&#39;t on the path before the shell loads, I have finally worked out how to
+get tmux to launch/attach to existing sessions when launching a new terminal both
+in linux and on MacOS.&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Testing in the Terminal</title>
+          <pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/enter-entr/</link>
+          <guid>https://mhpark.me/posts/enter-entr/</guid>
+          <description xml:base="https://mhpark.me/posts/enter-entr/">&lt;p&gt;Find yourself running a &lt;code&gt;pytest&lt;/code&gt; command repeatedly trying to work out
+what a problem is and getting sick of clicking back on the terminal
+window where the output is and pressing arrow up to re-run the test?
+Or even running tests in an IDE and sick of re-running the test
+time after time with your mouse?&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Gaming on Xbox with OpenWRT</title>
+          <pubDate>Tue, 13 Sep 2022 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/xbox-gaming/</link>
+          <guid>https://mhpark.me/posts/xbox-gaming/</guid>
+          <description xml:base="https://mhpark.me/posts/xbox-gaming/">&lt;p&gt;If you are like me and decided to switch their router firmware
+to the much praised &lt;a rel=&quot;external&quot; href=&quot;https://openwrt.org/&quot;&gt;OpenWRT&lt;/a&gt; you may - like me -
+found the lag in FPS games pretty unbreable after switching the firmware.&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>The Pursuit</title>
+          <pubDate>Sat, 28 May 2022 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/the-pursuit/</link>
+          <guid>https://mhpark.me/posts/the-pursuit/</guid>
+          <description xml:base="https://mhpark.me/posts/the-pursuit/">&lt;p&gt;The pursuit of excellence can sometimes be
+overwhelming. Whether it be in sports, your career,
+games.&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Looking Forward to 2022; The Ease of Being a Cynic</title>
+          <pubDate>Thu, 23 Dec 2021 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/christmas-wishes/</link>
+          <guid>https://mhpark.me/posts/christmas-wishes/</guid>
+          <description xml:base="https://mhpark.me/posts/christmas-wishes/">&lt;p&gt;My goals for 2022 are nothing out of the ordinary; apart from having some of
+them be to actually travel somewhere of relatively far distance in a hopefully
+more open world. The main goal that should hopefully help drive the rest is
+&lt;strong&gt;optimism&lt;/strong&gt;&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>The Little Things</title>
+          <pubDate>Sun, 28 Nov 2021 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/the-little-things/</link>
+          <guid>https://mhpark.me/posts/the-little-things/</guid>
+          <description xml:base="https://mhpark.me/posts/the-little-things/">&lt;p&gt;The dozens of predictions that economists have been making over the last two
+years centers around this idea that once everything returns to a certain level
+of &lt;em&gt;normal&lt;/em&gt; - probably better to use safe instead of normal but I&#39;m sure we all
+agree &lt;em&gt;normal&lt;/em&gt; means something different than it used to - consumers are going
+to start splurging on all the money they have been saving up. Personally, even
+if this turns out to be the case eventually, I think this saga of our
+lives really has given us enjoyment in the little things.&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

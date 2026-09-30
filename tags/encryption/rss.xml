@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - encryption</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/tags/encryption/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sun, 26 Jan 2025 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>age.nvim</title>
+          <pubDate>Sun, 26 Jan 2025 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/projects/age-nvim/</link>
+          <guid>https://mhpark.me/projects/age-nvim/</guid>
+          <description xml:base="https://mhpark.me/projects/age-nvim/">&lt;h4 id=&quot;github&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#github&quot; aria-label=&quot;Anchor link for: github&quot;&gt;🔗&lt;/a&gt;&lt;a rel=&quot;external&quot; href=&quot;https://github.com/KingMichaelPark/age.nvim&quot;&gt;GitHub&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;A simply utility for loading encrypted secrets from an
+&lt;a rel=&quot;external&quot; href=&quot;https://github.com/FiloSottile/age&quot;&gt;age&lt;/a&gt; encrypted file.&lt;/p&gt;
+&lt;p&gt;This utility can be required by other plugins as a dependency to load a secret
+from your dotfiles to pass to a plugin.&lt;/p&gt;
+&lt;p&gt;For example, the &lt;a rel=&quot;external&quot; href=&quot;https://github.com/huggingface/llm.nvim&quot;&gt;llm.nvim&lt;/a&gt; plugin
+requires an API key. For those people who keep their dotfiles public but want
+to load an API key for its setup.&lt;/p&gt;
+&lt;p&gt;I take no responsibility for leaked passwords or API keys. It is &lt;strong&gt;on you&lt;/strong&gt; to
+decide what age is, this approach, and making sure to not commit your identity
+keys. Inspired by &lt;a rel=&quot;external&quot; href=&quot;https://www.passwordstore.org/&quot;&gt;pass&lt;/a&gt; and
+&lt;a rel=&quot;external&quot; href=&quot;https://github.com/FiloSottile/passage/blob/main/INSTALL&quot;&gt;passage&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;requirements&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#requirements&quot; aria-label=&quot;Anchor link for: requirements&quot;&gt;🔗&lt;/a&gt;Requirements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https://github.com/FiloSottile/age&quot;&gt;age&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;non-neovim-instructions&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#non-neovim-instructions&quot; aria-label=&quot;Anchor link for: non-neovim-instructions&quot;&gt;🔗&lt;/a&gt;Non-Neovim Instructions&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Generate a private key &lt;strong&gt;not&lt;/strong&gt; in directory tracked by git.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;giallo z-code&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-7&quot;&gt;mkdir&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt; ~/.age&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-4&quot;&gt;cd&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt; ~/.age&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-7&quot;&gt;age-keygen&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt; -o&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt; identity.txt&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The contents of this &lt;code&gt;identity.txt&lt;/code&gt; file will look like this (Taken from the
+tests directory in this project for example).&lt;/p&gt;
+&lt;pre class=&quot;giallo z-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;# created: 2023-10-14T17:25:45+01:00&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;# public key: age1kk84zfvr4whsfdmrg2hk8pf7l3v705a8x9k5khuh0lmtrnuaz4gqnwty3q&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;AGE-SECRET-KEY-1USUPGW9GDQAQEHM8X3JKQSJMN7YY5T26PXWFHWMRR4Y9TDAHMA5SJDRUUJ&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;Encrypt your secret.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;giallo z-code&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;age_public_key&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;#39;age1kk84zfvr4whsfdmrg2hk8pf7l3v705a8x9k5khuh0lmtrnuaz4gqnwty3q&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-4&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt; &amp;#39;MY_SUPER_COOL_API_KEY&amp;#39;&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; |&lt;/span&gt;&lt;span class=&quot;z-7&quot;&gt; age&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt; -e -r&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span&gt;$age_public_key&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt; -o&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt; ~/.dotfiles/api_key.age&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;neovim-instructions&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#neovim-instructions&quot; aria-label=&quot;Anchor link for: neovim-instructions&quot;&gt;🔗&lt;/a&gt;Neovim Instructions&lt;/h2&gt;
+&lt;h3 id=&quot;package-manager&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#package-manager&quot; aria-label=&quot;Anchor link for: package-manager&quot;&gt;🔗&lt;/a&gt;Package manager&lt;/h3&gt;
+&lt;h4 id=&quot;using-lazy-nvim&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#using-lazy-nvim&quot; aria-label=&quot;Anchor link for: using-lazy-nvim&quot;&gt;🔗&lt;/a&gt;Using &lt;a rel=&quot;external&quot; href=&quot;https://github.com/folke/lazy.nvim&quot;&gt;lazy.nvim&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;This example is using the excellent
+&lt;a rel=&quot;external&quot; href=&quot;https://github.com/jackMort/ChatGPT.nvim&quot;&gt;ChatGPT.nvim&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&quot;giallo z-code&quot; &gt;&lt;code data-lang=&quot;lua&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-10&quot;&gt;local&lt;/span&gt;&lt;span&gt; identity&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; =&lt;/span&gt;&lt;span&gt; vim.&lt;/span&gt;&lt;span class=&quot;z-7&quot;&gt;fn&lt;/span&gt;&lt;span&gt;.&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;expand&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;#39;$HOME/.age/identity.txt&amp;#39;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-10&quot;&gt;local&lt;/span&gt;&lt;span&gt; secret&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; =&lt;/span&gt;&lt;span&gt; vim.&lt;/span&gt;&lt;span class=&quot;z-7&quot;&gt;fn&lt;/span&gt;&lt;span&gt;.&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;expand&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;#39;$HOME/.dotfiles/chatgpt.age&amp;#39;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-4&quot;&gt;require&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;quot;lazy&amp;quot;&lt;/span&gt;&lt;span&gt;).&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;setup&lt;/span&gt;&lt;span&gt;({&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-6&quot;&gt;    &amp;quot;jackMort/ChatGPT.nvim&amp;quot;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    event&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt; &amp;quot;VeryLazy&amp;quot;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    dependencies&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; =&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-4&quot;&gt;        ...&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-6&quot;&gt;        &amp;quot;KingMichaelPark/age.nvim&amp;quot; &lt;/span&gt;&lt;span class=&quot;z-3&quot;&gt;-- Add age dependency&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-7&quot;&gt;    config&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; = function&lt;/span&gt;&lt;span&gt;()&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        vim.&lt;/span&gt;&lt;span class=&quot;z-7&quot;&gt;env&lt;/span&gt;&lt;span&gt;.&lt;/span&gt;&lt;span class=&quot;z-7&quot;&gt;OPENAI_API_KEY&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt; require&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;#39;age&amp;#39;&lt;/span&gt;&lt;span&gt;).&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;get&lt;/span&gt;&lt;span&gt;(secret, identity) &lt;/span&gt;&lt;span class=&quot;z-3&quot;&gt;-- Get secret&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-4&quot;&gt;        require&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;quot;chatgpt&amp;quot;&lt;/span&gt;&lt;span&gt;).&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;setup&lt;/span&gt;&lt;span&gt;()&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-10&quot;&gt;    end&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;})&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;usage&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#usage&quot; aria-label=&quot;Anchor link for: usage&quot;&gt;🔗&lt;/a&gt;Usage&lt;/h2&gt;
+&lt;p&gt;At the moment there are 4 options for decryption, I have added SOPs decrypt as
+an option for &lt;code&gt;json&lt;/code&gt; only as there is a built-in json decoder in neovim.&lt;/p&gt;
+&lt;pre class=&quot;giallo z-code&quot; &gt;&lt;code data-lang=&quot;lua&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-10&quot;&gt;local&lt;/span&gt;&lt;span&gt; age&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt; require&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;#39;age&amp;#39;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;age.&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;get&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-6&quot;&gt;    &amp;quot;super-secret.txt.age&amp;quot;&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;z-3&quot;&gt;-- The file to decrypt&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-6&quot;&gt;    &amp;quot;identity.txt&amp;quot; &lt;/span&gt;&lt;span class=&quot;z-3&quot;&gt;-- Your private age key&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;age.&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;list&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-6&quot;&gt;    &amp;quot;super-secrets-multiline.txt.age&amp;quot;&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;z-3&quot;&gt;-- The file to decrypt&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-6&quot;&gt;    &amp;quot;identity.txt&amp;quot; &lt;/span&gt;&lt;span class=&quot;z-3&quot;&gt;-- Your private age key&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-3&quot;&gt;-- Returns a table&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;age.&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;from_json&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-6&quot;&gt;    &amp;quot;super-secrets.json.age&amp;quot;&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;z-3&quot;&gt;-- The file to decrypt&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-6&quot;&gt;    &amp;quot;identity.txt&amp;quot; &lt;/span&gt;&lt;span class=&quot;z-3&quot;&gt;-- Your private age key&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-3&quot;&gt;-- Returns a table&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;age.&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;from_sops&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;quot;tests/sops_api_keys.json&amp;quot;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-3&quot;&gt;-- SOPs uses a special path so you don&amp;#39;t need to pass your identity&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;running-tests&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#running-tests&quot; aria-label=&quot;Anchor link for: running-tests&quot;&gt;🔗&lt;/a&gt;Running Tests&lt;/h2&gt;
+&lt;p&gt;To run tests:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open neovim&lt;/li&gt;
+&lt;li&gt;Have plenary.nvim installed&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;:PlenaryBustedDirectory tests/&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;authors&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#authors&quot; aria-label=&quot;Anchor link for: authors&quot;&gt;🔗&lt;/a&gt;Authors&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https://www.github.com/KingMichaelPark&quot;&gt;@KingMichaelPark&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;contributing&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#contributing&quot; aria-label=&quot;Anchor link for: contributing&quot;&gt;🔗&lt;/a&gt;Contributing&lt;/h2&gt;
+&lt;p&gt;Contributions are always welcome!&lt;/p&gt;
+</description>
+      </item>
+    </channel>
+</rss>

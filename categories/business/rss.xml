@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - business</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/categories/business/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>The Value of Time and Struggle</title>
+          <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/what-its-all-for/</link>
+          <guid>https://mhpark.me/posts/what-its-all-for/</guid>
+          <description xml:base="https://mhpark.me/posts/what-its-all-for/">&lt;p&gt;I have many conflicting thoughts that I -- as a data engineer, a consultant, a
+member of society, a friend to some, and husband to one -- am going to try to
+articulate throughout the course of this post. I will do my best to organise my
+thoughts throughout this piece in way that at least helps me formalise how I am
+currently feeling about my long-term future in data and software engineering over the last two years of using AI to various degrees.&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

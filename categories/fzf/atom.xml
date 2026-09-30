@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Mike&#39;s Blog - fzf</title>
+    <subtitle>The personal, rarely updated, blog of Michael Park</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://mhpark.me/categories/fzf/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://mhpark.me"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-03-10T00:00:00+00:00</updated>
+    <id>https://mhpark.me/categories/fzf/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Finding Nerd Fonts in Neovim</title>
+        <published>2026-03-10T00:00:00+00:00</published>
+        <updated>2026-03-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/nerd-font-icon-picker-fzf-lua/"/>
+        <id>https://mhpark.me/posts/nerd-font-icon-picker-fzf-lua/</id>
+        
+        <summary type="html">&lt;p&gt;I have been writing quite a few presentations in &lt;a rel=&quot;external&quot; href=&quot;https://mfontanini.github.io/presenterm/&quot;&gt;presenterm&lt;/a&gt;
+and was repeatedly going over to the nerd font website to search for the icon that I wanted to pick
+copying it, then pasting it in neovim. Surely... there is a better way.&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

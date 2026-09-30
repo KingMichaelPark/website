@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - nvim</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/categories/nvim/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Mon, 15 Dec 2025 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Updating Treesitter&#39;s Config to use Main</title>
+          <pubDate>Mon, 15 Dec 2025 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/update-treesitter-main/</link>
+          <guid>https://mhpark.me/posts/update-treesitter-main/</guid>
+          <description xml:base="https://mhpark.me/posts/update-treesitter-main/">&lt;p&gt;If you woke up to the news that treesitter has set
+their default branch to &lt;code&gt;main&lt;/code&gt; from the now &lt;em&gt;frozen&lt;/em&gt;
+&lt;code&gt;master&lt;/code&gt; then you may wish to know how to now configure
+your plugins that depend on it in neovim. Here&#39;s how I did
+it in my local &lt;a rel=&quot;external&quot; href=&quot;https://github.com/KingMichaelPark/dotfiles&quot;&gt;dotfiles&lt;/a&gt;.&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

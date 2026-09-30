@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Mike&#39;s Blog - programming</title>
+    <subtitle>The personal, rarely updated, blog of Michael Park</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://mhpark.me/categories/programming/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://mhpark.me"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-05-04T00:00:00+00:00</updated>
+    <id>https://mhpark.me/categories/programming/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Convenient auto-command for vim.pack.update</title>
+        <published>2026-05-04T00:00:00+00:00</published>
+        <updated>2026-05-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/vim-pack-update-convenience/"/>
+        <id>https://mhpark.me/posts/vim-pack-update-convenience/</id>
+        
+        <summary type="html">&lt;p&gt;Neovim 0.12&#39;s new built-in package management is a breath of fresh air, but the
+default confirmation buffer is a bit bare-bones when it comes to quick
+interactions. If you&#39;re like me and want to just hit a key to sync everything
+up instead of using the code action &lt;code&gt;ca&lt;/code&gt; and selecting update on each package...&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Finding Nerd Fonts in Neovim</title>
+        <published>2026-03-10T00:00:00+00:00</published>
+        <updated>2026-03-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/nerd-font-icon-picker-fzf-lua/"/>
+        <id>https://mhpark.me/posts/nerd-font-icon-picker-fzf-lua/</id>
+        
+        <summary type="html">&lt;p&gt;I have been writing quite a few presentations in &lt;a rel=&quot;external&quot; href=&quot;https://mfontanini.github.io/presenterm/&quot;&gt;presenterm&lt;/a&gt;
+and was repeatedly going over to the nerd font website to search for the icon that I wanted to pick
+copying it, then pasting it in neovim. Surely... there is a better way.&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Two useful aliases for use with JJ</title>
+        <published>2026-02-04T00:00:00+00:00</published>
+        <updated>2026-02-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/jj-aliases/"/>
+        <id>https://mhpark.me/posts/jj-aliases/</id>
+        
+        <summary type="html">&lt;p&gt;Everyone will have the &lt;code&gt;jj tug&lt;/code&gt; alias defined in their list of aliases in
+their &lt;a rel=&quot;external&quot; href=&quot;https://github.com/KingMichaelPark/dotfiles/blob/main/jj/.config/jj/config.toml&quot;&gt;jj config&lt;/a&gt;.
+I would like to share two that I think are quite nifty and useful!&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Updating Treesitter&#39;s Config to use Main</title>
+        <published>2025-12-15T00:00:00+00:00</published>
+        <updated>2025-12-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/update-treesitter-main/"/>
+        <id>https://mhpark.me/posts/update-treesitter-main/</id>
+        
+        <summary type="html">&lt;p&gt;If you woke up to the news that treesitter has set
+their default branch to &lt;code&gt;main&lt;/code&gt; from the now &lt;em&gt;frozen&lt;/em&gt;
+&lt;code&gt;master&lt;/code&gt; then you may wish to know how to now configure
+your plugins that depend on it in neovim. Here&#39;s how I did
+it in my local &lt;a rel=&quot;external&quot; href=&quot;https://github.com/KingMichaelPark/dotfiles&quot;&gt;dotfiles&lt;/a&gt;.&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Speed up Python Github Actions</title>
+        <published>2024-10-15T00:00:00+00:00</published>
+        <updated>2024-10-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/speed-up-python-ci-builds/"/>
+        <id>https://mhpark.me/posts/speed-up-python-ci-builds/</id>
+        
+        <summary type="html">&lt;p&gt;If you want to speed up your CI builds you can use this
+setup on your GitHub actions. Doing this from the previous
+method cut my build times from 2 minutes to 1 minute.&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Treesitter Highlights for Jenkinsfile</title>
+        <published>2024-01-31T00:00:00+00:00</published>
+        <updated>2024-01-31T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/jenkinsfile-md/"/>
+        <id>https://mhpark.me/posts/jenkinsfile-md/</id>
+        
+        <summary type="html">&lt;p&gt;Ever wanted syntax in neovim for &lt;code&gt;Jenkinsfiles&lt;/code&gt;?
+Let&#39;s create an autocommand to do just that!&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Python Logging</title>
+        <published>2024-01-24T00:00:00+00:00</published>
+        <updated>2024-01-24T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/logging-md/"/>
+        <id>https://mhpark.me/posts/logging-md/</id>
+        
+        <summary type="html">&lt;p&gt;Just a very quick post/memo to myself about an awesome
+way to configure logging in python based on an excellent
+Github &lt;a rel=&quot;external&quot; href=&quot;https://github.com/mCodingLLC/VideosSampleCode/&quot;&gt;repo&lt;/a&gt; I stumbled across via a YouTube video.&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>2023 - A Tech Year in Review</title>
+        <published>2023-12-10T00:00:00+00:00</published>
+        <updated>2023-12-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/2023-tools-in-review-md/"/>
+        <id>https://mhpark.me/posts/2023-tools-in-review-md/</id>
+        
+        <summary type="html">&lt;p&gt;2023 gave me the ability to experience a lot of different
+tools, languages, and technologies, many did not make the
+cut long-term but I would like to put together a list of
+the core tooling that I use day to day with an example or two
+along the way.&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>SQLAlchemy, OnUpdate &amp; Datetime UTCNOW deprecation in 3.12</title>
+        <published>2023-11-20T00:00:00+00:00</published>
+        <updated>2023-11-20T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/sqlalchemy-updatedat-on-update/"/>
+        <id>https://mhpark.me/posts/sqlalchemy-updatedat-on-update/</id>
+        
+        <summary type="html">&lt;p&gt;This is a quick post about migrating your &lt;code&gt;utcnow()&lt;/code&gt; to &lt;code&gt;now(tz=UTC)&lt;/code&gt;
+in SQLAlchemy for your &lt;code&gt;onupdate&lt;/code&gt; function argument to your SQL Models.&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Connecting to Internal VPC Through Bastion in One Hop</title>
+        <published>2023-10-19T00:00:00+00:00</published>
+        <updated>2023-10-19T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/connecting-to-internal-vpc-with-ssh/"/>
+        <id>https://mhpark.me/posts/connecting-to-internal-vpc-with-ssh/</id>
+        
+        <summary type="html">&lt;p&gt;If you&#39;ve ever wanted to load up your local database IDE to view
+a database that sits inside an internal VPC. You may be a bit puzzled
+on how to do it considering most tools like DBeaver, DataGrip, TablePlus
+allow you to connect via SSH, but that SSH connection is always to a
+bastion instance. How does one connect directly?&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Big Uploads and Checksum Validation</title>
+        <published>2023-10-04T00:00:00+00:00</published>
+        <updated>2023-10-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/big-uploads-with-fastapi/"/>
+        <id>https://mhpark.me/posts/big-uploads-with-fastapi/</id>
+        
+        <summary type="html">&lt;p&gt;Ever wanted to upload big files without storing
+them in memory as they are being written with FastAPI?&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Git Signing and Authentication with SSH</title>
+        <published>2023-10-04T00:00:00+00:00</published>
+        <updated>2023-10-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/ssh-signing-and-auth-with-git/"/>
+        <id>https://mhpark.me/posts/ssh-signing-and-auth-with-git/</id>
+        
+        <summary type="html">&lt;p&gt;This is a quick guide to set up git with SSH ed25519 keys
+not only for authenticating with GitHub or GitLab but also
+for signing commits without the need to install GPG/PGP
+which has some serious &lt;a rel=&quot;external&quot; href=&quot;https://www.latacora.com/blog/2019/07/16/the-pgp-problem/&quot;&gt;criticisms / flaws&lt;/a&gt; that has led me to move
+into a world without it. The new world isn&#39;t &lt;em&gt;as&lt;/em&gt; straightforward
+as the old so I thought I&#39;d just throw together a quick guide
+to help you out.&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Mocking the Post Method on an Async HTTPX Post Request</title>
+        <published>2023-08-02T00:00:00+00:00</published>
+        <updated>2023-08-02T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/mocking-async-httpx-metods/"/>
+        <id>https://mhpark.me/posts/mocking-async-httpx-metods/</id>
+        
+        <summary type="html">&lt;p&gt;A quick snippet for mocking HTTP requests with an the async
+&lt;a rel=&quot;external&quot; href=&quot;https://www.python-httpx.org/&quot;&gt;httpx&lt;/a&gt; context manager.&lt;/p&gt;
+&lt;pre class=&quot;giallo z-code&quot; &gt;&lt;code data-lang=&quot;python&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-10&quot;&gt;async with&lt;/span&gt;&lt;span&gt; httpx.AsyncClient()&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; as&lt;/span&gt;&lt;span&gt; client:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    signup_response&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt; = await&lt;/span&gt;&lt;span&gt; client.post(&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-10&quot;&gt;        f&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;&amp;quot;https://&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;{AUTH0_DOMAIN}&lt;/span&gt;&lt;span class=&quot;z-6&quot;&gt;/api/v2/users&amp;quot;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-12&quot;&gt;        data&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt;=&lt;/span&gt;&lt;span&gt;signup_request_body,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-12&quot;&gt;        headers&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt;=&lt;/span&gt;&lt;span&gt;signup_request_headers,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-12&quot;&gt;        timeout&lt;/span&gt;&lt;span class=&quot;z-10&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;z-4&quot;&gt;30&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    )&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Tmux in Linux and Mac With Wezterm</title>
+        <published>2023-03-10T00:00:00+00:00</published>
+        <updated>2023-03-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/tmux-between-linux-mac/"/>
+        <id>https://mhpark.me/posts/tmux-between-linux-mac/</id>
+        
+        <summary type="html">&lt;p&gt;After struggling to get &lt;code&gt;tmux&lt;/code&gt; to run seamlessly between Mac (on ARM i.e. M1/M2)
+and linux due to the fact that &lt;code&gt;brew&lt;/code&gt; installs packages to &lt;code&gt;/opt/homebrew/bin/&lt;/code&gt;
+and it isn&#39;t on the path before the shell loads, I have finally worked out how to
+get tmux to launch/attach to existing sessions when launching a new terminal both
+in linux and on MacOS.&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Testing in the Terminal</title>
+        <published>2023-02-16T00:00:00+00:00</published>
+        <updated>2023-02-16T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Michael Park</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mhpark.me/posts/enter-entr/"/>
+        <id>https://mhpark.me/posts/enter-entr/</id>
+        
+        <summary type="html">&lt;p&gt;Find yourself running a &lt;code&gt;pytest&lt;/code&gt; command repeatedly trying to work out
+what a problem is and getting sick of clicking back on the terminal
+window where the output is and pressing arrow up to re-run the test?
+Or even running tests in an IDE and sick of re-running the test
+time after time with your mouse?&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

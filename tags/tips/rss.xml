@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - tips</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/tags/tips/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Wed, 31 Jan 2024 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Treesitter Highlights for Jenkinsfile</title>
+          <pubDate>Wed, 31 Jan 2024 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/jenkinsfile-md/</link>
+          <guid>https://mhpark.me/posts/jenkinsfile-md/</guid>
+          <description xml:base="https://mhpark.me/posts/jenkinsfile-md/">&lt;p&gt;Ever wanted syntax in neovim for &lt;code&gt;Jenkinsfiles&lt;/code&gt;?
+Let&#39;s create an autocommand to do just that!&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>The Flaw in Taking Photos to Capture Memories (and how to fix it)</title>
+          <pubDate>Sun, 28 Jan 2024 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/memories-md/</link>
+          <guid>https://mhpark.me/posts/memories-md/</guid>
+          <description xml:base="https://mhpark.me/posts/memories-md/">&lt;p&gt;Years ago, I was looking through old photo collections of my youth.
+Despite the happiness on my face, the people smiling
+around me, there something missing, my father.&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>

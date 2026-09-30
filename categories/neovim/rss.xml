@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mike&#39;s Blog - neovim</title>
+      <link>https://mhpark.me</link>
+      <description>The personal, rarely updated, blog of Michael Park</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://mhpark.me/categories/neovim/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Mon, 04 May 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Convenient auto-command for vim.pack.update</title>
+          <pubDate>Mon, 04 May 2026 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/vim-pack-update-convenience/</link>
+          <guid>https://mhpark.me/posts/vim-pack-update-convenience/</guid>
+          <description xml:base="https://mhpark.me/posts/vim-pack-update-convenience/">&lt;p&gt;Neovim 0.12&#39;s new built-in package management is a breath of fresh air, but the
+default confirmation buffer is a bit bare-bones when it comes to quick
+interactions. If you&#39;re like me and want to just hit a key to sync everything
+up instead of using the code action &lt;code&gt;ca&lt;/code&gt; and selecting update on each package...&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Updating Treesitter&#39;s Config to use Main</title>
+          <pubDate>Mon, 15 Dec 2025 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/update-treesitter-main/</link>
+          <guid>https://mhpark.me/posts/update-treesitter-main/</guid>
+          <description xml:base="https://mhpark.me/posts/update-treesitter-main/">&lt;p&gt;If you woke up to the news that treesitter has set
+their default branch to &lt;code&gt;main&lt;/code&gt; from the now &lt;em&gt;frozen&lt;/em&gt;
+&lt;code&gt;master&lt;/code&gt; then you may wish to know how to now configure
+your plugins that depend on it in neovim. Here&#39;s how I did
+it in my local &lt;a rel=&quot;external&quot; href=&quot;https://github.com/KingMichaelPark/dotfiles&quot;&gt;dotfiles&lt;/a&gt;.&lt;/p&gt;</description>
+      </item>
+      <item>
+          <title>Treesitter Highlights for Jenkinsfile</title>
+          <pubDate>Wed, 31 Jan 2024 00:00:00 +0000</pubDate>
+          <author>Michael Park</author>
+          <link>https://mhpark.me/posts/jenkinsfile-md/</link>
+          <guid>https://mhpark.me/posts/jenkinsfile-md/</guid>
+          <description xml:base="https://mhpark.me/posts/jenkinsfile-md/">&lt;p&gt;Ever wanted syntax in neovim for &lt;code&gt;Jenkinsfiles&lt;/code&gt;?
+Let&#39;s create an autocommand to do just that!&lt;/p&gt;</description>
+      </item>
+    </channel>
+</rss>
