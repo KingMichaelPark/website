@@ -67,6 +67,18 @@
                 {%- endif %}
               {%- endfor %}
             {%- endif %}
+            {%- if config.build_search_index %}
+            <li class="nav-search">
+              <form role="search" id="search-form" autocomplete="off"
+                    data-index="{{ get_url(path='search_index.' ~ config.default_language ~ '.js', trailing_slash=false) | safe }}"
+                    data-lib="{{ get_url(path='elasticlunr.min.js', trailing_slash=false) | safe }}">
+                <label for="search-input" class="visually-hidden">Search posts</label>
+                <input type="search" id="search-input" placeholder="search… /" spellcheck="false"
+                       role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="search-results" />
+                <ul id="search-results" class="search-results" role="listbox" aria-label="Search results" hidden></ul>
+              </form>
+            </li>
+            {%- endif %}
             <li>
               <button id="theme-toggle" class="theme-toggle-btn" onclick="toggleTheme()" type="button" aria-label="Toggle dark/light theme">🌙</button>
             </li>
@@ -106,5 +118,8 @@
 
   <script src="{{ get_url(path='js/theme.js', cachebust=true) | safe }}" defer></script>
   <script src="{{ get_url(path='js/copy-code.js', cachebust=true) | safe }}" defer></script>
+  {%- if config.build_search_index %}
+  <script src="{{ get_url(path='js/search.js', cachebust=true) | safe }}" defer></script>
+  {%- endif %}
 </body>
 </html>

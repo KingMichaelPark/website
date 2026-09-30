@@ -7,12 +7,19 @@ author = "Michael Park"
 # Compile all Sass files in sass/
 compile_sass = true
 generate_feeds = true
+build_search_index = true
 feed_filenames = ["atom.xml", "rss.xml"]
 
 taxonomies = [
     {name = "tags", feed = true},
     {name = "categories", feed = true},
 ]
+
+[search]
+# Loaded lazily by static/js/search.js the first time the search box is used
+index_format = "elasticlunr_javascript"
+include_date = true
+truncate_content_length = 2000
 
 [markdown]
 

@@ -1,4 +1,13 @@
 {% component img(path, width=0, height=0, op="fit_width", alt="") %}
+{#- resize_image flattens GIFs to a single frame, so serve them untouched to keep the animation -#}
+{% if path | lower is ending_with(pat=".gif") %}
+<figure class="post-img">
+  <img src="{{ get_url(path=path) }}" alt="{{ alt | default(value='') }}"{% if width > 0 %} width="{{ width }}"{% endif %} loading="lazy" />
+</figure>
+{% else %}
 {% set image = resize_image(path=path, width=width, height=height, op=op) %}
-<img src="{{ image.url }}" alt="{{ alt | default(value='') }}" />
+<figure class="post-img">
+  <img src="{{ image.url }}" alt="{{ alt | default(value='') }}" width="{{ image.width }}" height="{{ image.height }}" loading="lazy" />
+</figure>
+{% endif %}
 {% endcomponent img %}

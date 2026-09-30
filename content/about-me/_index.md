@@ -1,4 +1,5 @@
 +++
+in_search_index = false
 title = "About Me"
 description = "To a collection of my thoughts, tips & tricks"
 
