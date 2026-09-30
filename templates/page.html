@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="post-article">
+  <header style="margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem;">
+    <h1>{{ page.title }}</h1>
+    <div class="post-meta">
+      {% if page.date and (not page.extra or page.extra.show_date != false) %}
+        <time datetime="{{ page.date }}">{{ page.date | date(format="%d %B %Y") }}</time>
+      {% endif %}
+      {% if page.reading_time %}
+        <span>&bull;</span>
+        <span>{{ page.reading_time }} min read</span>
+      {% endif %}
+      {% if page.taxonomies and page.taxonomies.categories %}
+        <span>&bull;</span>
+        {% for cat in page.taxonomies.categories %}
+          <a href="{{ get_taxonomy_url(kind='categories', term=cat) }}" class="tag-badge">{{ cat }}</a>
+        {% endfor %}
+      {% endif %}
+    </div>
+    {% if page.taxonomies and page.taxonomies.tags %}
+      <div class="tags-list">
+        {% for tag in page.taxonomies.tags %}
+          <a href="{{ get_taxonomy_url(kind='tags', term=tag) }}" class="tag-badge">#{{ tag }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="post-content">
+    {{ page.content | safe }}
+  </div>
+
+  <footer style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border);">
+    {% if page.ancestors %}
+      {% set parent_section = get_section(path=page.ancestors | last) %}
+      <a href="{{ parent_section.permalink }}" class="read-more">&larr; Back to {{ parent_section.title | default(value="all posts", boolean=true) }}</a>
+    {% else %}
+      <a href="{{ get_url(path='posts', trailing_slash=true) }}" class="read-more">&larr; Back to all posts</a>
+    {% endif %}
+  </footer>
+</article>
+{% endblock content %}

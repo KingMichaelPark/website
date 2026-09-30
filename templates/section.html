@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header style="margin-bottom: 2rem;">
+  <h1>{{ section.title | default(value="Posts", boolean=true) }}</h1>
+  {% if section.description %}
+    <p style="color: var(--color-text-muted);">{{ section.description }}</p>
+  {% endif %}
+</header>
+
+{% if section.content %}
+  <div class="section-content" style="margin-bottom: 2rem;">
+    {{ section.content | safe }}
+  </div>
+{% endif %}
+
+{% set pages_to_list = paginator?.pages | default(value=section.pages) %}
+{% if pages_to_list and pages_to_list | length > 0 %}
+<ul class="post-list">
+  {% for post in pages_to_list %}
+    <li class="post-item">
+      <div class="post-meta">
+        {% if post.date %}
+          <time datetime="{{ post.date }}">{{ post.date | date(format="%d %B %Y") }}</time>
+        {% endif %}
+        {% if post.reading_time %}
+          <span>&bull;</span>
+          <span>{{ post.reading_time }} min read</span>
+        {% endif %}
+        {% if post.taxonomies and post.taxonomies.tags %}
+          <span>&bull;</span>
+          {% for tag in post.taxonomies.tags %}
+            <a href="{{ get_taxonomy_url(kind='tags', term=tag) }}" class="tag-badge">#{{ tag }}</a>
+          {% endfor %}
+        {% endif %}
+      </div>
+      <h2 class="post-title"><a href="{{ post.permalink }}">{{ post.title }}</a></h2>
+      {% if post.summary %}
+        <div class="post-summary">{{ post.summary | safe }}</div>
+      {% elif post.description %}
+        <div class="post-summary">{{ post.description }}</div>
+      {% endif %}
+      <a href="{{ post.permalink }}" class="read-more">Read article &rarr;</a>
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% if paginator is defined and paginator.number_pagers > 1 %}
+  <nav class="pagination" aria-label="Pagination">
+    <div>
+      {% if paginator.previous %}
+        <a href="{{ paginator.previous }}">&larr; Newer Posts</a>
+      {% endif %}
+    </div>
+    <span>Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
+    <div>
+      {% if paginator.next %}
+        <a href="{{ paginator.next }}">Older Posts &rarr;</a>
+      {% endif %}
+    </div>
+  </nav>
+{% endif %}
+{% endblock content %}

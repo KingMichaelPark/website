@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="author-bio">
+  {% if config.extra.author and config.extra.author.avatar %}
+    <img src="{{ get_url(path=config.extra.author.avatar) }}" alt="{{ config.extra.author.name | default(value='Author') }}" class="author-avatar" />
+  {% endif %}
+  <div>
+    <h1 class="author-title">{{ section.extra.header.title | default(value="Hello!") }}</h1>
+    <div class="author-intro">
+      {{ section.content | safe }}
+    </div>
+  </div>
+</div>
+
+<section class="recent-posts">
+  <h2>Recent Posts</h2>
+  {% set posts_section = get_section(path="posts/_index.md") %}
+  {% set max_posts = section.extra.max_posts | default(value=5) %}
+  <ul class="post-list">
+    {% for post in posts_section.pages[:max_posts] %}
+      <li class="post-item">
+        <div class="post-meta">
+          {% if post.date %}
+            <time datetime="{{ post.date }}">{{ post.date | date(format="%d %B %Y") }}</time>
+          {% endif %}
+          {% if post.reading_time %}
+            <span>&bull;</span>
+            <span>{{ post.reading_time }} min read</span>
+          {% endif %}
+        </div>
+        <h3 class="post-title"><a href="{{ post.permalink }}">{{ post.title }}</a></h3>
+        {% if post.summary %}
+          <div class="post-summary">{{ post.summary | safe }}</div>
+        {% elif post.description %}
+          <div class="post-summary">{{ post.description }}</div>
+        {% endif %}
+        <a href="{{ post.permalink }}" class="read-more">Read article &rarr;</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <div style="margin-top: 1.5rem;">
+    <a href="{{ get_url(path='posts', trailing_slash=true) }}" class="read-more">View all posts &rarr;</a>
+  </div>
+</section>
+{% endblock content %}
