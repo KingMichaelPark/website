@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="{{ lang | default(value=config.extra.default_language | default(value='en')) }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% if page is defined and page.title %}{{ page.title }} • {{ config.title }}{% elif section is defined and section.title %}{{ section.title }} • {{ config.title }}{% else %}{{ config.title }}{% endif %}{% endblock title %}</title>
+
+  {%- if page is defined and page.description %}
+  <meta name="description" content="{{ page.description }}">
+  <meta property="og:description" content="{{ page.description }}">
+  {%- elif section is defined and section.description %}
+  <meta name="description" content="{{ section.description }}">
+  <meta property="og:description" content="{{ section.description }}">
+  {%- else %}
+  <meta name="description" content="{{ config.description }}">
+  <meta property="og:description" content="{{ config.description }}">
+  {%- endif %}
+
+  <meta property="og:title" content="{% block og_title %}{% if page is defined and page.title %}{{ page.title }} • {{ config.title }}{% elif section is defined and section.title %}{{ section.title }} • {{ config.title }}{% else %}{{ config.title }}{% endif %}{% endblock og_title %}">
+  <meta property="og:type" content="{% if page is defined %}article{% else %}website{% endif %}">
+  <meta property="og:url" content="{{ current_url | default(value=config.base_url) | safe }}">
+  <meta property="og:site_name" content="{{ config.title }}">
+
+  <link rel="canonical" href="{{ current_url | default(value=config.base_url) | safe }}">
+
+  <script>
+    (function() {
+      try {
+        const saved = localStorage.getItem('theme');
+        const theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="stylesheet" href="{{ get_url(path='style.css', cachebust=true) | safe }}">
+
+  {%- if config.generate_feeds %}
+  <link rel="alternate" type="application/atom+xml" title="{{ config.title }} - Atom Feed" href="{{ get_url(path='atom.xml', trailing_slash=false) | safe }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ config.title }} - RSS Feed" href="{{ get_url(path='rss.xml', trailing_slash=false) | safe }}">
+  {%- endif %}
+
+  <link rel="icon" type="image/x-icon" href="{{ get_url(path='fav/favicon.ico') | safe }}">
+
+  {% block extra_head %}{% endblock extra_head %}
+</head>
+<body>
+  <div class="site-wrapper">
+    <header class="site-header">
+      <div class="container">
+        <nav class="navbar" aria-label="Main Navigation">
+          <div class="nav-title">
+            <a href="{{ get_url(path='/') }}">{{ config.title }}</a>
+          </div>
+          <ul class="nav-links">
+            {%- if config.extra.menu %}
+              {%- for item in config.extra.menu %}
+                {%- set item_slash = item.trailing_slash | default(value=true) %}
+                {%- if item.url is starting_with(pat="http") %}
+                  <li><a href="{{ item.url }}">{{ item.name }}</a></li>
+                {%- else %}
+                  <li><a href="{{ get_url(path=item.url, trailing_slash=item_slash) }}">{{ item.name }}</a></li>
+                {%- endif %}
+              {%- endfor %}
+            {%- endif %}
+            <li>
+              <button id="theme-toggle" class="theme-toggle-btn" onclick="toggleTheme()" type="button" aria-label="Toggle dark/light theme">🌙</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="banner">
+        <a id="rotator" href="{{ get_url(path='/') }}">
+          <img src="{{ get_url(path='me.webp', trailing_slash=false) | safe }}" alt="Michael Park avatar" />
+        </a>
+      </div>
+    </header>
+
+    <main class="content container">
+      {% block content %}{% endblock content %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-copy">
+          &copy; {{ now() | date(format="%Y") }} {{ config.extra.author.name }}.
+        </div>
+        <ul class="social-links">
+          {%- if config.extra.socials %}
+            {%- for social in config.extra.socials %}
+              <li><a href="{{ social.url }}" target="_blank" rel="me noopener noreferrer">{{ social.name }}</a></li>
+            {%- endfor %}
+          {%- endif %}
+          {%- if config.generate_feeds %}
+            <li><a href="{{ get_url(path='atom.xml', trailing_slash=false) | safe }}">rss</a></li>
+          {%- endif %}
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <script src="{{ get_url(path='js/theme.js', cachebust=true) | safe }}" defer></script>
+  <script src="{{ get_url(path='js/copy-code.js', cachebust=true) | safe }}" defer></script>
+</body>
+</html>
