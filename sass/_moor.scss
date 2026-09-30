@@ -1,0 +1,267 @@
+// Ilkley Moor header scene (templates/partials/moor.html)
+// Dark: golden-hour sunset over Wharfedale. Light: soft heather-pink summer sky.
+
+@mixin moor-dark {
+  --sky-1: #121226;
+  --sky-2: #2c1f3f;
+  --sky-3: #7a3a4e;
+  --sky-4: #d9723f;
+  --star-opacity: 0.75;
+  --sun: #ffd9a0;
+  --glow-0: rgba(255, 196, 110, 0.95);
+  --glow-1: rgba(240, 130, 70, 0.45);
+  --glow-2: rgba(200, 80, 70, 0);
+  --far-1: #5a3f5e;
+  --far-2: #45304d;
+  --mist: rgba(255, 170, 130, 0.28);
+  --mid: #2e2533;
+  --trees: #1f1a24;
+  --slope: #2f1f33;
+  --heather-a: #8e3d83;
+  --heather-b: #6d2f69;
+  --heather-c: #b35a9f;
+  --heather-dark: #3e2140;
+  --heather-stem: #3a2a26;
+  --trees-far: #3a2d3c;
+  --near: #1f1522;
+  --rock-lit: #8a6456;
+  --rock-mid: #45383a;
+  --rock-dark: #1f1a1d;
+  --rock-crack: rgba(0, 0, 0, 0.45);
+  --rock-edge: rgba(255, 190, 130, 0.55);
+  --rock-shadow: rgba(0, 0, 0, 0.5);
+  --bracken: #5d7434;
+  --bracken-gold: #9a7a34;
+  --moor-ground: #1a1219;
+  --nav-glass: rgba(20, 18, 30, 0.55);
+  --nav-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+}
+
+@mixin moor-light {
+  --sky-1: #d3dcf0;
+  --sky-2: #dccfea;
+  --sky-3: #f1c9d6;
+  --sky-4: #fbe2c8;
+  --star-opacity: 0;
+  --sun: #fffaf0;
+  --glow-0: rgba(255, 252, 240, 0.95);
+  --glow-1: rgba(255, 225, 220, 0.5);
+  --glow-2: rgba(255, 210, 220, 0);
+  --far-1: #a9accb;
+  --far-2: #9398bb;
+  --mist: rgba(255, 255, 255, 0.55);
+  --mid: #7d9a62;
+  --trees: #587a48;
+  --slope: #8f5a8e;
+  --heather-a: #c27bbd;
+  --heather-b: #a45ca3;
+  --heather-c: #e2a4d8;
+  --heather-dark: #6a3d6a;
+  --heather-stem: #6b5040;
+  --trees-far: #8aa672;
+  --near: #744676;
+  --rock-lit: #cfc4b0;
+  --rock-mid: #968a79;
+  --rock-dark: #5e554c;
+  --rock-crack: rgba(60, 50, 40, 0.4);
+  --rock-edge: rgba(255, 250, 235, 0.7);
+  --rock-shadow: rgba(40, 20, 40, 0.35);
+  --bracken: #6f9a3a;
+  --bracken-gold: #a3b14a;
+  --moor-ground: #5a3a5c;
+  --nav-glass: rgba(255, 255, 255, 0.55);
+  --nav-shadow: 0 1px 6px rgba(255, 255, 255, 0.7);
+}
+
+:root,
+[data-theme="dark"] {
+  @include moor-dark;
+}
+
+[data-theme="light"] {
+  @include moor-light;
+}
+
+header.site-header {
+  position: relative;
+  border-bottom: none;
+  // Spacing lives outside the header so the sky gradient doesn't show below the avatar strip
+  margin-bottom: 2rem;
+  background:
+    // A sprinkle of stars (fades out in light mode)
+    radial-gradient(1px 1px at 12% 22%, rgba(255, 255, 255, var(--star-opacity)), transparent),
+    radial-gradient(1px 1px at 27% 12%, rgba(255, 255, 255, var(--star-opacity)), transparent),
+    radial-gradient(1.5px 1.5px at 41% 30%, rgba(255, 255, 255, var(--star-opacity)), transparent),
+    radial-gradient(1px 1px at 58% 9%, rgba(255, 255, 255, var(--star-opacity)), transparent),
+    radial-gradient(1px 1px at 73% 26%, rgba(255, 255, 255, var(--star-opacity)), transparent),
+    radial-gradient(1.5px 1.5px at 86% 14%, rgba(255, 255, 255, var(--star-opacity)), transparent),
+    radial-gradient(1px 1px at 94% 33%, rgba(255, 255, 255, var(--star-opacity)), transparent),
+    linear-gradient(180deg, var(--sky-1) 0%, var(--sky-2) 35%, var(--sky-3) 68%, var(--sky-4) 100%);
+
+  > .container {
+    position: relative;
+    z-index: 2; // keeps nav and the search dropdown above the scenery
+  }
+}
+
+.moor-scene {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 1600 / 240;
+  min-height: 120px;
+  max-height: 230px;
+  width: 100%;
+  // Tuck the far horizon up behind the navbar
+  margin-top: -3.5rem;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.moor-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+// Scene colours
+.moor-sun { fill: var(--sun); }
+.moor-glow-0 { stop-color: var(--glow-0); }
+.moor-glow-1 { stop-color: var(--glow-1); }
+.moor-glow-2 { stop-color: var(--glow-2); }
+.moor-mist-0 { stop-color: var(--mist); stop-opacity: 0; }
+.moor-mist-1 { stop-color: var(--mist); }
+.moor-far-1 { fill: var(--far-1); }
+.moor-far-2 { fill: var(--far-2); }
+.moor-mid { fill: var(--mid); }
+.moor-trees { fill: var(--trees); }
+.moor-slope,
+.moor-slope-fill { fill: var(--slope); }
+.moor-near,
+.moor-near-fill { fill: var(--near); }
+.moor-heather-a { fill: var(--heather-a); }
+.moor-heather-b { fill: var(--heather-b); }
+.moor-heather-c { fill: var(--heather-c); }
+.moor-heather-dark { fill: var(--heather-dark); }
+
+// Heather sprays (<use> clones): bells take currentColor, stems a woody brown
+.moor-tone-a { color: var(--heather-a); }
+.moor-tone-b { color: var(--heather-b); }
+.moor-tone-c { color: var(--heather-c); }
+.moor-sprays { fill: currentColor; }
+.moor-stem {
+  fill: none;
+  stroke: var(--heather-stem);
+  stroke-width: 0.8;
+  stroke-linecap: round;
+}
+
+.moor-trees-far { fill: var(--trees-far); }
+.moor-pine {
+  fill: var(--trees);
+  stroke: var(--trees);
+  stroke-width: 1.2;
+}
+.moor-shadow-0 { stop-color: var(--rock-shadow); }
+.moor-shadow-1 { stop-color: var(--rock-shadow); stop-opacity: 0; }
+.moor-rock-edge {
+  fill: none;
+  stroke: var(--rock-edge);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.moor-rock-lit { stop-color: var(--rock-lit); }
+.moor-rock-mid { stop-color: var(--rock-mid); }
+.moor-rock-dark { stop-color: var(--rock-dark); }
+.moor-rock-crack {
+  fill: none;
+  stroke: var(--rock-crack);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+.moor-bracken,
+.moor-bracken-gold {
+  stroke-width: 0.4;
+  stroke-linecap: round;
+}
+.moor-bracken { stroke: var(--bracken); fill: var(--bracken); }
+.moor-bracken-gold { stroke: var(--bracken-gold); fill: var(--bracken-gold); }
+.moor-rachis { fill: none; stroke-width: 1.2; }
+
+.moor-sun,
+.moor-glow-0,
+.moor-glow-1,
+.moor-far-1,
+.moor-slope {
+  transition: fill 0.3s ease, stop-color 0.3s ease;
+}
+
+// Avatar strip: unchanged behaviour, just grounded in the moor's soil colour
+.banner {
+  background: var(--moor-ground);
+  border-top: none;
+  margin-bottom: 0;
+}
+
+// Navbar legibility over the sky
+.nav-title a,
+.nav-links a {
+  text-shadow: var(--nav-shadow);
+}
+
+.nav-search input[type="search"],
+.theme-toggle-btn {
+  background: var(--nav-glass);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+// Site title
+.nav-title a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.85rem;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-variation-settings: "SOFT" 100, "opsz" 72;
+}
+
+.nav-sprig {
+  width: 0.7em;
+  height: 1.1em;
+  fill: var(--heather-c);
+  flex-shrink: 0;
+  transform-origin: 50% 100%;
+  transition: transform 0.4s ease;
+
+  .nav-sprig-stem {
+    fill: none;
+    stroke: var(--bracken);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+  }
+}
+
+.nav-title a:hover .nav-sprig {
+  transform: rotate(-8deg);
+}
+
+@media (max-width: 600px) {
+  .nav-title a {
+    font-size: 1.6rem;
+  }
+
+  .moor-scene {
+    margin-top: -1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-sprig {
+    transition: none;
+  }
+}

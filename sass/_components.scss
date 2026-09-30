@@ -90,7 +90,7 @@ header.site-header {
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: 6px;
-    transition: border-color 0.15s ease, width 0.2s ease;
+    transition: border-color 0.15s ease;
 
     &::placeholder {
       color: var(--color-text-muted);
@@ -99,7 +99,6 @@ header.site-header {
     &:focus {
       outline: none;
       border-color: var(--color-primary);
-      width: 15rem;
     }
   }
 }
