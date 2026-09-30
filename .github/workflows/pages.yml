@@ -2,18 +2,18 @@
 name: Zola on GitHub Pages
 
 on:
- push:
-  branches:
-   - main
+  push:
+    branches:
+      - main
 
 jobs:
- build:
-  name: Publish site
-  runs-on: ubuntu-latest
-  steps:
-   - name: Checkout main
-     uses: actions/checkout@v4
-   - name: Build and deploy
-     uses: shalzz/zola-deploy-action@v0.23.1
-     env:
-      GITHUB_TOKEN: ${{ secrets.RW }}
+  build:
+    name: Publish site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+      - name: Build and deploy
+        uses: shalzz/zola-deploy-action@v0.23.6
+        env:
+          GITHUB_TOKEN: ${{ secrets.RW }}

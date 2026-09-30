@@ -35,10 +35,9 @@
     })();
   </script>
 
-  <link rel="preconnect" href="https://rsms.me/">
-  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open:ital,wght@0,400;1,400&display=swap">
   {#- Subset to just the site title's glyphs: a few KB instead of the whole family #}
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@1,9..144,600,100&display=swap&text={{ config.title | urlencode }}">
   <link rel="stylesheet" href="{{ get_url(path='style.css', cachebust=true) | safe }}">
